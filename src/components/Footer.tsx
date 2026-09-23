@@ -73,7 +73,8 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#faf6ef]/80">
               <li>
                 <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
-                  Custom T-Shirts (Adult {COMPANY.pricing.adultTee} / Youth {COMPANY.pricing.youthTee})
+                  Custom T-Shirts (Adult {COMPANY.pricing.adultTee} / Youth{" "}
+                  {COMPANY.pricing.youthTee})
                 </Link>
               </li>
               <li>
@@ -143,14 +144,12 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-bold text-[#ff5c1a]">✓</span>
-                <span className="text-[#faf6ef]/80">
-                  24-hour digital art proof provided before print.
-                </span>
+                <span className="text-[#faf6ef]/80">{COMPANY.operations.proofTurnaround}.</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="font-bold text-[#ff5c1a]">!</span>
                 <span className="font-medium text-amber-400/90">
-                  All sales are final. No Returns, No Exchanges.
+                  {COMPANY.operations.salesPolicyNotice}
                 </span>
               </div>
             </div>
@@ -160,8 +159,8 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#2e2a27] pt-6 text-xs text-[#faf6ef]/60 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} Designs by Hott Minds / H.M.I Industries LLC. All rights
-            reserved.
+            © {new Date().getFullYear()} {COMPANY.divisions.apparel} / {COMPANY.legalName}. All
+            rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/" className="transition-colors hover:text-white">

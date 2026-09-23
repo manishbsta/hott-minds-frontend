@@ -3,6 +3,7 @@ import { Inter, Anton } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { COMPANY } from "@/constants/company";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,19 +19,18 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-  title: "Hott Minds | Custom DTF Apparel & H.M.I Catering",
-  description:
-    "Chicago's premier custom DTF apparel studio and celebration catering. Custom tees, hoodies, caps, plus Hott Meals Instantly catering & gourmet infusion cakes.",
+  title: `${COMPANY.name} | Custom DTF Apparel & ${COMPANY.divisions.catering}`,
+  description: `${COMPANY.contacts.location.city}'s premier custom DTF apparel studio and celebration catering. Custom tees, hoodies, caps, plus ${COMPANY.divisions.catering} & gourmet infusion cakes.`,
   keywords: [
-    "Hott Minds",
+    COMPANY.name,
     "DTF Printing",
     "Custom T-Shirts",
     "Custom Hoodies",
     "Snapback Caps",
-    "Hott Meals Instantly",
+    COMPANY.divisions.catering,
     "Catering",
     "Rum Infusion Cakes",
-    "Chicago Apparel",
+    `${COMPANY.contacts.location.city} Apparel`,
   ],
 };
 

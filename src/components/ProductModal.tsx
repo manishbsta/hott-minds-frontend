@@ -3,7 +3,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -31,7 +31,9 @@ interface ProductModalProps {
 export default function ProductModal({ product, open, onOpenChange }: ProductModalProps) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const isLightboxOpenRef = useRef(false);
-  isLightboxOpenRef.current = isLightboxOpen;
+  useEffect(() => {
+    isLightboxOpenRef.current = isLightboxOpen;
+  }, [isLightboxOpen]);
   const lastLightboxCloseTime = useRef(0);
 
   const handleCloseLightbox = () => {

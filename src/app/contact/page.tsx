@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { COMPANY, getSmsLink } from "@/constants/company";
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -28,7 +29,7 @@ export default function ContactPage() {
         <div className="pointer-events-none absolute top-0 right-0 -mt-20 -mr-32 h-[500px] w-[500px] rounded-full bg-[#ff5c1a]/15 blur-3xl" />
         <div className="relative z-10 mx-auto max-w-7xl space-y-4 px-4 text-center sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-            <span>GET IN TOUCH WITH MS. TASH & MR. BILL</span>
+            <span>GET IN TOUCH WITH {COMPANY.owners.combined.toUpperCase()}</span>
           </div>
 
           <h1 className="font-[family-name:var(--font-anton)] text-4xl font-black tracking-tight text-white uppercase sm:text-6xl">
@@ -46,25 +47,25 @@ export default function ContactPage() {
           {/* Quick Direct Action Strip */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4 text-xs">
             <a
-              href="tel:7734179901"
+              href={COMPANY.contacts.phone.tel}
               className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-2.5 font-bold text-white hover:bg-white/20"
             >
               <span className="text-[#ff5c1a]">📞</span>
-              <span>Call: (773) 417-9901</span>
+              <span>Call: {COMPANY.contacts.phone.display}</span>
             </a>
             <a
-              href="sms:7734179901"
+              href={COMPANY.contacts.phone.sms}
               className="flex items-center gap-2 rounded-full bg-[#ff5c1a] px-5 py-2.5 font-bold text-white shadow-lg shadow-[#ff5c1a]/25 hover:bg-[#ff7538]"
             >
               <span>💬</span>
-              <span>Text Orders: (773) 417-9901</span>
+              <span>Text Orders: {COMPANY.contacts.phone.display}</span>
             </a>
             <a
-              href="mailto:HMINDUSTRIESLLC@YAHOO.COM"
+              href={COMPANY.contacts.email.mailto}
               className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-2.5 font-bold text-white hover:bg-white/20"
             >
               <span className="text-[#ff5c1a]">✉️</span>
-              <span>HMINDUSTRIESLLC@YAHOO.COM</span>
+              <span>{COMPANY.contacts.email.display}</span>
             </a>
           </div>
         </div>
@@ -85,12 +86,15 @@ export default function ContactPage() {
                     THANK YOU FOR REACHING OUT!
                   </h3>
                   <p className="mx-auto max-w-md text-sm leading-relaxed text-neutral-600">
-                    We received your project details. Ms. Tash or Mr. Bill will review your request
-                    and get back to you with pricing and digital proofs within 24 hours.
+                    We received your project details. {COMPANY.owners.tash} or {COMPANY.owners.bill}{" "}
+                    will review your request and get back to you with pricing and digital proofs
+                    within 24 hours.
                   </p>
                   <div className="flex flex-col justify-center gap-3 pt-4 sm:flex-row">
                     <a
-                      href={`sms:7734179901?body=Hi Ms. Tash and Mr. Bill, I just submitted an inquiry on the website from ${formData.name || "Customer"}.`}
+                      href={getSmsLink(
+                        `Hi ${COMPANY.owners.combined}, I just submitted an inquiry on the website from ${formData.name || "Customer"}.`
+                      )}
                       className="rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow"
                     >
                       💬 Text Us Directly For Faster Reply
@@ -110,7 +114,8 @@ export default function ContactPage() {
                       TELL US ABOUT YOUR PROJECT
                     </h2>
                     <p className="mt-1 text-xs text-neutral-500">
-                      Fill out the form below or text us directly at (773) 417-9901.
+                      Fill out the form below or text us directly at{" "}
+                      {COMPANY.contacts.phone.display}.
                     </p>
                   </div>
 
@@ -129,7 +134,7 @@ export default function ContactPage() {
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        👕 Custom Apparel
+                        👕 {COMPANY.divisions.apparelShort}
                       </button>
                       <button
                         type="button"
@@ -140,7 +145,7 @@ export default function ContactPage() {
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        🍰 H.M.I Catering
+                        🍰 {COMPANY.divisions.cateringShort}
                       </button>
                       <button
                         type="button"
@@ -241,7 +246,7 @@ export default function ContactPage() {
                     </span>
                     <p className="text-[11px] text-neutral-500">
                       All pictures must be clear and high-resolution. You can also text files
-                      directly to (773) 417-9901.
+                      directly to {COMPANY.contacts.phone.display}.
                     </p>
                   </div>
 
@@ -268,7 +273,7 @@ export default function ContactPage() {
                       Submit Quote Request →
                     </button>
                     <p className="mt-2 text-center text-[11px] text-neutral-500">
-                      All sales are final. No Returns No Exchanges. Proofs sent before printing.
+                      {COMPANY.operations.salesPolicyNotice} {COMPANY.operations.proofTurnaround}.
                     </p>
                   </div>
                 </form>
@@ -285,7 +290,7 @@ export default function ContactPage() {
                   Direct Contacts
                 </span>
                 <h3 className="mt-1 font-[family-name:var(--font-anton)] text-2xl font-black text-white uppercase">
-                  MS. TASH & MR. BILL
+                  {COMPANY.owners.combined.toUpperCase()}
                 </h3>
                 <p className="mt-1 text-xs text-[#faf6ef]/70">
                   We take pride in every custom shirt and every hot meal we deliver.
@@ -298,10 +303,10 @@ export default function ContactPage() {
                   <div>
                     <span className="block text-[#faf6ef]/50">Phone / Text Hotline:</span>
                     <a
-                      href="tel:7734179901"
+                      href={COMPANY.contacts.phone.tel}
                       className="text-base font-bold text-white hover:text-[#ff5c1a]"
                     >
-                      (773) 417-9901
+                      {COMPANY.contacts.phone.display}
                     </a>
                   </div>
                 </div>
@@ -311,10 +316,10 @@ export default function ContactPage() {
                   <div>
                     <span className="block text-[#faf6ef]/50">Official Email:</span>
                     <a
-                      href="mailto:HMINDUSTRIESLLC@YAHOO.COM"
+                      href={COMPANY.contacts.email.mailto}
                       className="text-sm font-semibold break-all text-white hover:text-[#ff5c1a]"
                     >
-                      HMINDUSTRIESLLC@YAHOO.COM
+                      {COMPANY.contacts.email.display}
                     </a>
                   </div>
                 </div>
@@ -324,7 +329,7 @@ export default function ContactPage() {
                   <div>
                     <span className="block text-[#faf6ef]/50">Studio & Workshop:</span>
                     <span className="text-sm font-medium text-white">
-                      Chicago, IL • Nationwide Apparel Shipping
+                      {COMPANY.contacts.location.serviceArea}
                     </span>
                   </div>
                 </div>
@@ -337,8 +342,8 @@ export default function ContactPage() {
                 </span>
                 <p className="leading-relaxed text-[#faf6ef]/80">
                   • Text orders and all artwork pictures must be clear and sharp.
-                  <br />• Free 24-hour digital art proof provided before print.
-                  <br />• All sales are final. No Returns, No Exchanges.
+                  <br />• Free {COMPANY.operations.proofTurnaround.toLowerCase()}.
+                  <br />• {COMPANY.operations.salesPolicyNotice}
                 </p>
               </div>
             </div>
@@ -355,8 +360,9 @@ export default function ContactPage() {
                     What is the standard price for custom shirts?
                   </p>
                   <p className="mt-1">
-                    Adult tees are $25.00, Youth tees are $15.00, and full-back printing starts at
-                    +$5.00.
+                    Adult tees are {COMPANY.pricing.adultTee}, Youth tees are{" "}
+                    {COMPANY.pricing.youthTee}, and full-back printing starts at{" "}
+                    {COMPANY.pricing.fullBackAddon}.
                   </p>
                 </div>
 
@@ -371,8 +377,9 @@ export default function ContactPage() {
                 <div className="rounded-xl bg-[#faf6ef] p-3">
                   <p className="text-ink font-bold">How does the free cake catering offer work?</p>
                   <p className="mt-1">
-                    Any food catering order over $200 receives a free homemade whole Pound Cake
-                    (Lemon, Vanilla, Butter, or Sweet Potato). Excludes infusion cakes.
+                    Any food catering order over {COMPANY.pricing.cateringCakePromoThreshold}{" "}
+                    receives a free homemade whole Pound Cake (Lemon, Vanilla, Butter, or Sweet
+                    Potato). Excludes infusion cakes.
                   </p>
                 </div>
               </div>

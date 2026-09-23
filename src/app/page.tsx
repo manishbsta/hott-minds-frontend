@@ -4,23 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import ProductModal, { type Product } from "@/components/ProductModal";
+import { COMPANY } from "@/constants/company";
 
 const PRODUCTS: Product[] = [
   {
     id: "tee-flame",
-    name: "Designs by Hott Minds Signature Flame Tee",
+    name: `${COMPANY.divisions.apparel} Signature Flame Tee`,
     category: "tees",
     categoryLabel: "T-Shirts",
-    price: "$25.00",
-    youthPrice: "$15.00",
+    price: COMPANY.pricing.adultTee,
+    youthPrice: COMPANY.pricing.youthTee,
     image: "/images/tshirt-flame.jpg",
     badge: "Most Popular",
     description:
       "Heavyweight 100% ring-spun cotton with ultra-crisp DTF flame graphics. Breathable, vibrant, and soft to the touch.",
     specs: [
-      "Adult: $25.00",
-      "Youth: $15.00",
-      "Full-back print: +$5.00 & up",
+      `Adult: ${COMPANY.pricing.adultTee}`,
+      `Youth: ${COMPANY.pricing.youthTee}`,
+      `Full-back print: ${COMPANY.pricing.fullBackAddon}`,
       "60+ wash durability",
     ],
   },
@@ -58,8 +59,8 @@ const PRODUCTS: Product[] = [
     name: "Custom Family Reunion & Party Event Shirts",
     category: "tees",
     categoryLabel: "T-Shirts",
-    price: "$25.00",
-    youthPrice: "$15.00",
+    price: COMPANY.pricing.adultTee,
+    youthPrice: COMPANY.pricing.youthTee,
     image: "/images/tshirt-price-list.jpg",
     badge: "Event Special",
     description:
@@ -67,7 +68,7 @@ const PRODUCTS: Product[] = [
     specs: [
       "Discount on 12+ pieces",
       "Photo collages & names",
-      "Adult ($25) & Youth ($15)",
+      `Adult (${COMPANY.pricing.adultTee}) & Youth (${COMPANY.pricing.youthTee})`,
       "24hr art proof",
     ],
   },
@@ -130,7 +131,7 @@ export default function Home() {
             <div className="space-y-6 lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
                 <span className="h-2 w-2 animate-ping rounded-full bg-[#ff5c1a]" />
-                <span>DESIGNS BY HOTT MINDS • DTF STUDIO</span>
+                <span>{COMPANY.divisions.apparel.toUpperCase()} • DTF STUDIO</span>
               </div>
 
               <h1 className="font-[family-name:var(--font-anton)] text-4xl leading-[0.95] font-black tracking-tight text-white uppercase sm:text-6xl xl:text-7xl">
@@ -154,7 +155,7 @@ export default function Home() {
                     Adult Tees
                   </span>
                   <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
-                    $25.00
+                    {COMPANY.pricing.adultTee}
                   </span>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
@@ -162,7 +163,7 @@ export default function Home() {
                     Youth Tees
                   </span>
                   <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
-                    $15.00
+                    {COMPANY.pricing.youthTee}
                   </span>
                 </div>
                 <div className="col-span-2 rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm sm:col-span-1">
@@ -170,7 +171,7 @@ export default function Home() {
                     Full-Back Print
                   </span>
                   <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-white">
-                    $5.00+
+                    {COMPANY.pricing.fullBackAddon}
                   </span>
                 </div>
               </div>
@@ -178,7 +179,7 @@ export default function Home() {
               {/* CTAs */}
               <div className="flex flex-wrap items-center gap-4 pt-3">
                 <a
-                  href="sms:7734179901"
+                  href={COMPANY.contacts.phone.sms}
                   className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-xl shadow-[#ff5c1a]/30 transition-all duration-200 hover:bg-[#ff7538]"
                 >
                   <span>💬 Text Your Art to Order</span>
@@ -237,7 +238,8 @@ export default function Home() {
                       Signature Flame T-Shirt
                     </h3>
                     <p className="text-xs text-[#faf6ef]/70">
-                      Adult $25.00 • Youth $15.00 • 100% Heavy Cotton
+                      Adult {COMPANY.pricing.adultTee} • Youth {COMPANY.pricing.youthTee} • 100%
+                      Heavy Cotton
                     </p>
                   </div>
                   <button
@@ -257,25 +259,25 @@ export default function Home() {
       <div className="overflow-hidden border-y border-[#ff5c1a] bg-[#ff5c1a] py-3 text-white select-none">
         <div className="animate-marquee flex items-center gap-8 font-[family-name:var(--font-anton)] text-sm font-black tracking-widest whitespace-nowrap uppercase">
           <span>★ NO MINIMUMS ON APPAREL</span>
-          <span>★ ADULT TEES $25.00</span>
-          <span>★ YOUTH TEES $15.00</span>
-          <span>★ FULL-BACK PRINTING $5+</span>
+          <span>★ ADULT TEES {COMPANY.pricing.adultTee}</span>
+          <span>★ YOUTH TEES {COMPANY.pricing.youthTee}</span>
+          <span>★ FULL-BACK PRINTING {COMPANY.pricing.fullBackAddon}</span>
           <span>★ 24-HOUR ART PROOF</span>
           <span>★ 60+ WASH DURABILITY</span>
           <span>★ FAMILY REUNIONS & PARTIES</span>
           <span>★ HOODIES & CAPS</span>
-          <span>★ TEXT (773) 417-9901</span>
-          <span>★ DESIGNS BY HOTT MINDS</span>
+          <span>★ TEXT {COMPANY.contacts.phone.display}</span>
+          <span>★ {COMPANY.divisions.apparel.toUpperCase()}</span>
           <span>★ NO MINIMUMS ON APPAREL</span>
-          <span>★ ADULT TEES $25.00</span>
-          <span>★ YOUTH TEES $15.00</span>
-          <span>★ FULL-BACK PRINTING $5+</span>
+          <span>★ ADULT TEES {COMPANY.pricing.adultTee}</span>
+          <span>★ YOUTH TEES {COMPANY.pricing.youthTee}</span>
+          <span>★ FULL-BACK PRINTING {COMPANY.pricing.fullBackAddon}</span>
           <span>★ 24-HOUR ART PROOF</span>
           <span>★ 60+ WASH DURABILITY</span>
           <span>★ FAMILY REUNIONS & PARTIES</span>
           <span>★ HOODIES & CAPS</span>
-          <span>★ TEXT (773) 417-9901</span>
-          <span>★ DESIGNS BY HOTT MINDS</span>
+          <span>★ TEXT {COMPANY.contacts.phone.display}</span>
+          <span>★ {COMPANY.divisions.apparel.toUpperCase()}</span>
         </div>
       </div>
 
@@ -311,7 +313,7 @@ export default function Home() {
                       </p>
                     </div>
                     <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
-                      $25.00
+                      {COMPANY.pricing.adultTee}
                     </span>
                   </div>
 
@@ -325,7 +327,7 @@ export default function Home() {
                       </p>
                     </div>
                     <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
-                      $15.00
+                      {COMPANY.pricing.youthTee}
                     </span>
                   </div>
 
@@ -339,7 +341,7 @@ export default function Home() {
                       </p>
                     </div>
                     <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff884d]">
-                      $5.00 – UP
+                      {COMPANY.pricing.fullBackAddon}
                     </span>
                   </div>
 
@@ -358,10 +360,10 @@ export default function Home() {
 
                 <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs text-amber-300">
                   <span>
-                    📌 <strong>Important:</strong> Text orders and all pictures must be clear. All
-                    sales are final (no returns, no exchanges).
+                    📌 <strong>Important:</strong> Text orders and all pictures must be clear.{" "}
+                    {COMPANY.operations.salesPolicyNotice}
                   </span>
-                  <span className="font-bold text-white">Ms. Tash & Mr. Bill</span>
+                  <span className="font-bold text-white">{COMPANY.owners.combined}</span>
                 </div>
               </div>
 
@@ -604,8 +606,8 @@ export default function Home() {
               </h3>
               <p className="text-xs leading-relaxed text-neutral-600">
                 Text your high-resolution picture, artwork, or sketch to{" "}
-                <strong className="text-ink">773-417-9901</strong> or email us. All pictures must be
-                clear!
+                <strong className="text-ink">{COMPANY.contacts.phone.plain}</strong> or email us.
+                All pictures must be clear!
               </p>
             </div>
 
@@ -657,7 +659,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
             <div className="max-w-2xl space-y-3">
               <div className="inline-flex items-center gap-2 rounded bg-white/10 px-3 py-1 text-xs font-bold tracking-wider text-[#ffa31a] uppercase">
-                🍰 HOTT MEALS INSTANTLY (H.M.I) CATERING
+                🍰 {COMPANY.divisions.catering.toUpperCase()}
               </div>
               <h2 className="font-[family-name:var(--font-anton)] text-3xl font-black text-white uppercase sm:text-4xl">
                 PLANNING A PARTY OR CELEBRATION? <br />
@@ -666,7 +668,9 @@ export default function Home() {
               <p className="text-sm leading-relaxed text-white/80">
                 Pair your custom shirts with hot savory celebration food trays and our famous
                 homemade Pound Cakes or gourmet Rum Infusion Cakes.{" "}
-                <strong>Orders over $200 get a FREE cake!</strong>
+                <strong>
+                  Orders over {COMPANY.pricing.cateringCakePromoThreshold} get a FREE cake!
+                </strong>
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-4">

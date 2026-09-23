@@ -22,7 +22,9 @@ export default function Header() {
         <span className="inline-flex items-center gap-2">
           <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
           <span>
-            Chicago & Nationwide Custom DTF Printing • Adult {COMPANY.pricing.adultTee} | Youth {COMPANY.pricing.youthTee} • Text Orders: {COMPANY.contacts.phone.display}
+            {COMPANY.contacts.location.city} & Nationwide Custom DTF Printing • Adult{" "}
+            {COMPANY.pricing.adultTee} | Youth {COMPANY.pricing.youthTee} • Text Orders:{" "}
+            {COMPANY.contacts.phone.display}
           </span>
         </span>
       </div>
@@ -39,7 +41,7 @@ export default function Header() {
             </div>
             <div className="flex flex-col">
               <span className="font-[family-name:var(--font-anton)] text-xl leading-none font-black tracking-wider text-white uppercase sm:text-2xl">
-                HOTT MINDS
+                {COMPANY.name.toUpperCase()}
               </span>
               <span className="text-[10px] font-bold tracking-widest text-[#ff5c1a] uppercase sm:text-xs">
                 DTF Print Studio & Goods
@@ -91,7 +93,7 @@ export default function Header() {
             <a
               href={COMPANY.contacts.phone.tel}
               className="rounded-lg bg-[#ff5c1a] p-2 text-white"
-              aria-label="Call Hott Minds"
+              aria-label={`Call ${COMPANY.name}`}
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />

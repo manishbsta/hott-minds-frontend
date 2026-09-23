@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { COMPANY, getSmsLink } from "@/constants/company";
 
 type CakeItem = {
   name: string;
@@ -126,7 +127,7 @@ export default function ServicesPage() {
             <div className="space-y-6 lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[#ff5c1a]" />
-                <span>HOTT MEALS INSTANTLY • H.M.I CATERING</span>
+                <span>{COMPANY.divisions.catering.toUpperCase()}</span>
               </div>
 
               <h1 className="font-[family-name:var(--font-anton)] text-4xl leading-[0.95] font-black tracking-tight text-white uppercase sm:text-6xl xl:text-7xl">
@@ -147,7 +148,8 @@ export default function ServicesPage() {
                 <div className="flex items-center gap-2">
                   <span className="text-xl">🎉</span>
                   <span className="font-[family-name:var(--font-anton)] text-base font-bold tracking-wide text-white uppercase sm:text-lg">
-                    SPECIAL OFFER: ORDERS OVER $200 GET A FREE CAKE!
+                    SPECIAL OFFER: ORDERS OVER {COMPANY.pricing.cateringCakePromoThreshold} GET A
+                    FREE CAKE!
                   </span>
                 </div>
                 <p className="text-xs text-[#faf6ef]/80">
@@ -163,10 +165,12 @@ export default function ServicesPage() {
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
-                  href="sms:7734179901?body=Hi Ms. Tash and Mr. Bill, I would like to inquire about H.M.I Catering services"
+                  href={getSmsLink(
+                    `Hi ${COMPANY.owners.combined}, I would like to inquire about ${COMPANY.divisions.catering} services`
+                  )}
                   className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-xl shadow-[#ff5c1a]/30 transition-all duration-200 hover:bg-[#ff7538]"
                 >
-                  <span>💬 Text to Order: (773) 417-9901</span>
+                  <span>💬 Text to Order: {COMPANY.contacts.phone.display}</span>
                 </a>
                 <Link
                   href="/contact"
@@ -249,7 +253,7 @@ export default function ServicesPage() {
                       Pound Cakes
                     </span>
                     <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
-                      Eligible for $200+ Deal
+                      Eligible for {COMPANY.pricing.cateringCakePromoThreshold}+ Deal
                     </span>
                   </div>
                   <ul className="space-y-1.5 text-xs font-medium text-neutral-600">
@@ -297,10 +301,12 @@ export default function ServicesPage() {
 
               <div className="pt-2">
                 <a
-                  href="sms:7734179901?body=Hi, I would like to order a cake from H.M.I"
+                  href={getSmsLink(
+                    `Hi, I would like to order a cake from ${COMPANY.divisions.catering}`
+                  )}
                   className="inline-flex items-center gap-2 text-sm font-bold text-[#8c2f1b] transition-colors hover:text-[#ff5c1a]"
                 >
-                  <span>Text (773) 417-9901 to order your cakes</span>
+                  <span>Text {COMPANY.contacts.phone.display} to order your cakes</span>
                   <span>→</span>
                 </a>
               </div>
@@ -384,7 +390,7 @@ export default function ServicesPage() {
               <div className="flex items-center justify-between border-t border-neutral-100 pt-4">
                 <span className="text-xs font-medium text-neutral-500">Whole Cake</span>
                 <a
-                  href={`sms:7734179901?body=Hi, I would like to order the ${encodeURIComponent(cake.name)}`}
+                  href={getSmsLink(`Hi, I would like to order the ${cake.name}`)}
                   className="rounded-lg bg-[#141210] px-4 py-2 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-[#ff5c1a]"
                 >
                   Text to Order
@@ -462,10 +468,10 @@ export default function ServicesPage() {
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <a
-                  href="tel:7734179901"
+                  href={COMPANY.contacts.phone.tel}
                   className="rounded-xl bg-[#ff5c1a] px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538]"
                 >
-                  Call (773) 417-9901 for Menu Customization
+                  Call {COMPANY.contacts.phone.display} for Menu Customization
                 </a>
                 <Link
                   href="/contact"
@@ -497,7 +503,7 @@ export default function ServicesPage() {
               href="/"
               className="rounded-xl bg-[#141210] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase hover:bg-black"
             >
-              Browse T-Shirt Catalog ($25 / $15)
+              Browse T-Shirt Catalog ({COMPANY.pricing.adultTee} / {COMPANY.pricing.youthTee})
             </Link>
             <Link
               href="/contact"
