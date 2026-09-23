@@ -165,31 +165,15 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                     ))}
                   </div>
 
-                  {/* Action CTAs */}
-                  <div className="flex flex-col gap-2.5 pt-3">
-                    <a
-                      href={`sms:7734179901?body=Hi Ms. Tash and Mr. Bill, I would like to order: ${encodeURIComponent(product.name)}`}
-                      className="w-full rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538]"
-                    >
-                      💬 Text to Order This Item (773) 417-9901
-                    </a>
-
+                  {/* Action CTA */}
+                  <div className="pt-3">
                     <Link
                       href="/contact"
                       onClick={() => onOpenChange(false)}
-                      className="w-full rounded-xl border border-white/15 bg-white/10 py-3 text-center text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-white/20"
+                      className="flex w-full items-center justify-center rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40"
                     >
                       Request Custom Bulk Quote
                     </Link>
-
-                    <Dialog.Close asChild>
-                      <button
-                        type="button"
-                        className="w-full cursor-pointer rounded-xl border border-white/10 py-2.5 text-center text-xs font-semibold tracking-wider text-neutral-400 uppercase transition-colors hover:bg-white/5 hover:text-white"
-                      >
-                        ✕ Close Window
-                      </button>
-                    </Dialog.Close>
                   </div>
                 </div>
               </div>

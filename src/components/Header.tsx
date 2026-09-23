@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { COMPANY } from "@/constants/company";
 
 export default function Header() {
   const pathname = usePathname();
@@ -21,8 +22,7 @@ export default function Header() {
         <span className="inline-flex items-center gap-2">
           <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
           <span>
-            Chicago & Nationwide Custom DTF Printing • Adult $25 | Youth $15 • Text Orders: (773)
-            417-9901
+            Chicago & Nationwide Custom DTF Printing • Adult {COMPANY.pricing.adultTee} | Youth {COMPANY.pricing.youthTee} • Text Orders: {COMPANY.contacts.phone.display}
           </span>
         </span>
       </div>
@@ -70,13 +70,13 @@ export default function Header() {
           {/* Direct CTA & Phone */}
           <div className="hidden items-center gap-4 lg:flex">
             <a
-              href="tel:7734179901"
+              href={COMPANY.contacts.phone.tel}
               className="flex items-center gap-2 text-xs font-bold text-[#faf6ef]/90 transition-colors hover:text-[#ff5c1a]"
             >
               <svg className="h-4 w-4 text-[#ff5c1a]" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
               </svg>
-              <span>(773) 417-9901</span>
+              <span>{COMPANY.contacts.phone.display}</span>
             </a>
             <Link
               href="/contact"
@@ -89,7 +89,7 @@ export default function Header() {
           {/* Mobile Hamburger Button */}
           <div className="flex items-center gap-2 md:hidden">
             <a
-              href="tel:7734179901"
+              href={COMPANY.contacts.phone.tel}
               className="rounded-lg bg-[#ff5c1a] p-2 text-white"
               aria-label="Call Hott Minds"
             >
@@ -146,10 +146,10 @@ export default function Header() {
           })}
           <div className="flex flex-col gap-2 border-t border-white/10 pt-4">
             <a
-              href="sms:7734179901"
+              href={COMPANY.contacts.phone.sms}
               className="w-full rounded-lg bg-[#ff5c1a] py-3 text-center text-sm font-bold tracking-wider text-white uppercase"
             >
-              💬 Text Orders: (773) 417-9901
+              💬 Text Orders: {COMPANY.contacts.phone.display}
             </a>
             <Link
               href="/contact"

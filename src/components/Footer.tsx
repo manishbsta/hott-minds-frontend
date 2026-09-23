@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { COMPANY } from "@/constants/company";
 
 export default function Footer() {
   return (
@@ -20,10 +21,10 @@ export default function Footer() {
           </div>
           <div className="flex shrink-0 flex-wrap items-center gap-3">
             <a
-              href="sms:7734179901"
+              href={COMPANY.contacts.phone.sms}
               className="rounded-lg bg-[#ff5c1a] px-6 py-3 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7a40]"
             >
-              💬 Text Order (773) 417-9901
+              💬 Text Order {COMPANY.contacts.phone.display}
             </a>
             <Link
               href="/contact"
@@ -46,7 +47,7 @@ export default function Footer() {
               </div>
               <div>
                 <span className="block font-[family-name:var(--font-anton)] text-xl leading-none font-black tracking-wider text-white uppercase">
-                  HOTT MINDS
+                  {COMPANY.name.toUpperCase()}
                 </span>
                 <span className="text-[10px] font-bold tracking-widest text-[#ff5c1a] uppercase">
                   Designs & Studio
@@ -59,7 +60,7 @@ export default function Footer() {
             </p>
             <div className="pt-2">
               <span className="inline-block rounded border border-[#ff5c1a]/30 bg-[#2e2a27] px-2.5 py-1 text-[11px] font-bold tracking-wider text-[#ff5c1a] uppercase">
-                Chicago & Nationwide
+                {COMPANY.contacts.location.coverage}
               </span>
             </div>
           </div>
@@ -72,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#faf6ef]/80">
               <li>
                 <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
-                  Custom T-Shirts (Adult $25 / Youth $15)
+                  Custom T-Shirts (Adult {COMPANY.pricing.adultTee} / Youth {COMPANY.pricing.youthTee})
                 </Link>
               </li>
               <li>
@@ -87,7 +88,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/services" className="transition-colors hover:text-[#ff5c1a]">
-                  H.M.I Catering & Food Trays
+                  {COMPANY.divisions.catering}
                 </Link>
               </li>
               <li>
@@ -105,24 +106,24 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 text-xs text-[#faf6ef]/80">
               <p className="font-semibold text-white">
-                Contact: <span className="text-[#ff5c1a]">Ms. Tash & Mr. Bill</span>
+                Contact: <span className="text-[#ff5c1a]">{COMPANY.contacts.owners}</span>
               </p>
               <p>
                 <span className="block text-[#faf6ef]/50">Phone / Text:</span>
                 <a
-                  href="tel:7734179901"
+                  href={COMPANY.contacts.phone.tel}
                   className="text-sm font-bold text-white hover:text-[#ff5c1a]"
                 >
-                  (773) 417-9901
+                  {COMPANY.contacts.phone.display}
                 </a>
               </p>
               <p>
                 <span className="block text-[#faf6ef]/50">Email:</span>
                 <a
-                  href="mailto:HMINDUSTRIESLLC@YAHOO.COM"
+                  href={COMPANY.contacts.email.mailto}
                   className="font-medium break-all text-white hover:text-[#ff5c1a]"
                 >
-                  HMINDUSTRIESLLC@YAHOO.COM
+                  {COMPANY.contacts.email.display}
                 </a>
               </p>
             </div>
