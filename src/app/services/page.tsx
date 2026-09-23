@@ -185,9 +185,11 @@ export default function ServicesPage() {
                     src="/images/infusion-cake.jpg"
                     alt="H.M.I Gourmet Caribbean Rum Infusion Cake"
                     fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 450px"
+                    className="object-cover transition-transform duration-500 hover:scale-105"
                   />
+
                   <div className="absolute right-4 bottom-4 left-4 rounded-xl border border-white/15 bg-[#141210]/85 p-3 text-white backdrop-blur-md">
                     <span className="block text-[10px] font-bold tracking-wider text-[#ff5c1a] uppercase">
                       Signature Dessert
@@ -214,6 +216,7 @@ export default function ServicesPage() {
                   src="/images/catering-flyer.jpg"
                   alt="Hott Meals Instantly Catering Plate Flyer"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 450px"
                   className="object-contain"
                 />
               </div>
@@ -403,8 +406,10 @@ export default function ServicesPage() {
                   src="/images/catering-buffet.jpg"
                   alt="H.M.I Savory Event Catering Buffet Feast"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 450px"
                   className="object-cover"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute right-6 bottom-6 left-6">
                   <span className="mb-1 block text-xs font-bold text-[#ff5c1a] uppercase">

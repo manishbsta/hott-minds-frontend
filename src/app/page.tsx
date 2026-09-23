@@ -3,19 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-type Product = {
-  id: string;
-  name: string;
-  category: "tees" | "hoodies" | "caps" | "other";
-  categoryLabel: string;
-  price: string;
-  youthPrice?: string;
-  image: string;
-  badge?: string;
-  description: string;
-  specs: string[];
-};
+import ProductModal, { type Product } from "@/components/ProductModal";
 
 const PRODUCTS: Product[] = [
   {
@@ -238,8 +226,9 @@ export default function Home() {
                     src="/images/tshirt-flame.jpg"
                     alt="Designs by Hott Minds Signature Flame T-Shirt"
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 450px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="mt-5 flex items-center justify-between">
@@ -383,6 +372,7 @@ export default function Home() {
                     src="/images/tshirt-price-list.jpg"
                     alt="Designs by Hott Minds Original T-Shirt Price List"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 450px"
                     className="object-contain p-4"
                   />
                 </div>
@@ -457,6 +447,7 @@ export default function Home() {
                   src={product.image}
                   alt={product.name}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -690,79 +681,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* QUICK VIEW / ORDER MODAL */}
-      {selectedProduct && (
-        <div className="animate-in fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm duration-200">
-          <div className="relative w-full max-w-2xl space-y-6 rounded-3xl border border-[#2e2a27] bg-[#141210] p-6 text-[#faf6ef] shadow-2xl sm:p-8">
-            <button
-              onClick={() => setSelectedProduct(null)}
-              className="absolute top-5 right-5 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-              aria-label="Close dialog"
-            >
-              ✕
-            </button>
-
-            <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-2">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-[#2e2a27] bg-black/40">
-                <Image
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="space-y-4">
-                <span className="text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-                  {selectedProduct.categoryLabel}
-                </span>
-                <h3 className="font-[family-name:var(--font-anton)] text-2xl leading-tight font-black text-white uppercase">
-                  {selectedProduct.name}
-                </h3>
-                <div className="flex items-baseline gap-3">
-                  <span className="font-[family-name:var(--font-anton)] text-3xl font-black text-[#ff5c1a]">
-                    {selectedProduct.price}
-                  </span>
-                  {selectedProduct.youthPrice && (
-                    <span className="text-xs text-[#faf6ef]/70">
-                      Youth Size: {selectedProduct.youthPrice}
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-xs leading-relaxed text-[#faf6ef]/70">
-                  {selectedProduct.description}
-                </p>
-
-                <div className="space-y-1.5 border-t border-white/10 pt-2 text-xs">
-                  {selectedProduct.specs.map((spec, i) => (
-                    <div key={i} className="flex items-center gap-2 text-[#faf6ef]/85">
-                      <span className="text-[#ff5c1a]">✓</span>
-                      <span>{spec}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col gap-2.5 pt-4">
-                  <a
-                    href={`sms:7734179901?body=Hi Ms. Tash and Mr. Bill, I would like to order: ${encodeURIComponent(selectedProduct.name)}`}
-                    className="w-full rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538]"
-                  >
-                    💬 Text to Order This Item (773) 417-9901
-                  </a>
-                  <Link
-                    href="/contact"
-                    onClick={() => setSelectedProduct(null)}
-                    className="w-full rounded-xl border border-white/15 bg-white/10 py-3 text-center text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-white/20"
-                  >
-                    Request Custom Bulk Quote
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* QUICK VIEW / ORDER MODAL (RADIX UI DIALOG) */}
+      <ProductModal
+        product={selectedProduct}
+        open={Boolean(selectedProduct)}
+        onOpenChange={(open) => {
+          if (!open) setSelectedProduct(null);
+        }}
+      />
     </div>
   );
 }

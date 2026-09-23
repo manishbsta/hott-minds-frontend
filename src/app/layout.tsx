@@ -44,7 +44,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${anton.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="bg-bone text-ink selection:bg-blaze flex min-h-full flex-col font-sans selection:text-white">
+      <body
+        suppressHydrationWarning
+        className="bg-bone text-ink selection:bg-blaze flex min-h-full flex-col font-sans selection:text-white"
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
