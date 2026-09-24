@@ -73,8 +73,8 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#faf6ef]/80">
               <li>
                 <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
-                  Custom T-Shirts (Adult {COMPANY.pricing.adultTee} / Youth{" "}
-                  {COMPANY.pricing.youthTee})
+                  Custom Shirts (Adult {COMPANY.pricing.adultTee} / Youth {COMPANY.pricing.youthTee}
+                  )
                 </Link>
               </li>
               <li>
@@ -84,7 +84,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
-                  Snapback Caps & Headwear
+                  Snapback Caps
                 </Link>
               </li>
               <li>

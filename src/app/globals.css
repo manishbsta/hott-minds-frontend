@@ -158,3 +158,18 @@ body {
   font-weight: 400;
   font-synthesis: none;
 }
+
+/* Application-wide pointer cursor for buttons, links, and clickables */
+button,
+[role="button"],
+a,
+select,
+summary,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"],
+label[for] {
+  cursor: pointer;
+}

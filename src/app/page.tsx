@@ -11,8 +11,8 @@ const PRODUCTS: Product[] = [
   {
     id: "tee-flame",
     name: `${COMPANY.divisions.apparel} Signature Flame Tee`,
-    category: "tees",
-    categoryLabel: "T-Shirts",
+    category: "shirts",
+    categoryLabel: "Shirts",
     price: COMPANY.pricing.adultTee,
     youthPrice: COMPANY.pricing.youthTee,
     image: "/images/tshirt-flame.jpg",
@@ -47,7 +47,7 @@ const PRODUCTS: Product[] = [
     id: "cap-flame",
     name: "Flame Crest Structured Snapback Cap",
     category: "caps",
-    categoryLabel: "Caps & Hats",
+    categoryLabel: "Caps",
     price: "$18.00",
     image: "/images/cap-flame.jpg",
     badge: "Classic Fit",
@@ -58,11 +58,11 @@ const PRODUCTS: Product[] = [
   {
     id: "tee-reunion",
     name: "Custom Family Reunion & Party Event Shirts",
-    category: "tees",
-    categoryLabel: "T-Shirts",
+    category: "shirts",
+    categoryLabel: "Shirts",
     price: COMPANY.pricing.adultTee,
     youthPrice: COMPANY.pricing.youthTee,
-    image: "/images/tshirt-price-list.jpg",
+    image: "/images/tshirt-reunion.jpg",
     badge: "Event Special",
     description:
       "Full custom group printing for family reunions, birthdays, team trips, and memorial celebrations with front & back options.",
@@ -74,29 +74,12 @@ const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: "transfers-gang",
-    name: "Custom DTF Gang Sheets & Transfers",
-    category: "other",
-    categoryLabel: "Transfers & Mugs",
-    price: "$12.00 / ft",
-    image: "/images/tshirt-flame.jpg",
-    badge: "DIY Ready",
-    description:
-      "Ready-to-press Direct-to-Film transfer rolls. High ink density, cold or hot peel, ready for home heat press or iron.",
-    specs: [
-      "Commercial grade film",
-      "No minimum size",
-      "Stretchable soft-feel",
-      "Same-day output available",
-    ],
-  },
-  {
     id: "drinkware-mugs",
-    name: "Custom UV-DTF Tumblers & Coffee Mugs",
-    category: "other",
-    categoryLabel: "Transfers & Mugs",
+    name: "Custom UV-DTF Coffee Mugs & Tumblers",
+    category: "mugs",
+    categoryLabel: "Mugs",
     price: "$16.00",
-    image: "/images/cap-flame.jpg",
+    image: "/images/drinkware-mugs.jpg",
     badge: "Custom Gift",
     description:
       "Vibrant high-gloss UV-DTF transfers applied onto stainless steel tumblers or ceramic mugs. Water and fade resistant.",
@@ -405,10 +388,10 @@ export default function Home() {
             {(
               [
                 { key: "all", label: "All Items" },
-                { key: "tees", label: "T-Shirts" },
+                { key: "shirts", label: "Shirts" },
                 { key: "hoodies", label: "Hoodies" },
-                { key: "caps", label: "Caps & Hats" },
-                { key: "other", label: "Mugs & Transfers" },
+                { key: "caps", label: "Caps" },
+                { key: "mugs", label: "Mugs" },
               ] as const satisfies readonly { key: ProductFilterCategory; label: string }[]
             ).map((tab) => (
               <button

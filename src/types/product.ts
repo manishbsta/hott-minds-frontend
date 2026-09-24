@@ -1,4 +1,4 @@
-export type ProductCategory = "tees" | "hoodies" | "caps" | "other";
+export type ProductCategory = "shirts" | "hoodies" | "caps" | "mugs";
 
 export type ProductFilterCategory = "all" | ProductCategory;
 
