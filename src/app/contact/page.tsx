@@ -102,58 +102,58 @@ export default function ContactPage() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <h2 className="text-ink font-display text-2xl uppercase sm:text-3xl">
                       TELL US ABOUT YOUR PROJECT
                     </h2>
                     <p className="mt-1 text-xs text-neutral-500">
-                      Fill out the form below or text us directly at{" "}
+                      Fast custom quote with 24-hr digital art proof. Or text us directly at{" "}
                       {COMPANY.contacts.phone.display}.
                     </p>
                   </div>
 
                   {/* Service Toggle */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                      Service Interested In
+                      Service Needed
                     </label>
-                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                    <div className="grid grid-cols-3 gap-2">
                       <button
                         type="button"
                         onClick={() => setSelectedService("apparel")}
-                        className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
+                        className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-bold tracking-wider uppercase transition-all ${
                           selectedService === "apparel"
-                            ? "border-[#141210] bg-[#141210] text-white shadow"
+                            ? "border-[#141210] bg-[#141210] text-white shadow-sm"
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        <Shirt className="h-4 w-4" />
-                        <span>{COMPANY.divisions.apparelShort}</span>
+                        <Shirt className="h-3.5 w-3.5 shrink-0" />
+                        <span className="truncate">{COMPANY.divisions.apparelShort}</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setSelectedService("catering")}
-                        className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
+                        className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-bold tracking-wider uppercase transition-all ${
                           selectedService === "catering"
-                            ? "border-[#141210] bg-[#141210] text-white shadow"
+                            ? "border-[#141210] bg-[#141210] text-white shadow-sm"
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        <ChefHat className="h-4 w-4" />
-                        <span>{COMPANY.divisions.cateringShort}</span>
+                        <ChefHat className="h-3.5 w-3.5 shrink-0" />
+                        <span className="truncate">{COMPANY.divisions.cateringShort}</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setSelectedService("both")}
-                        className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
+                        className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-bold tracking-wider uppercase transition-all ${
                           selectedService === "both"
-                            ? "border-[#141210] bg-[#141210] text-white shadow"
+                            ? "border-[#141210] bg-[#141210] text-white shadow-sm"
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        <Sparkles className="h-4 w-4" />
-                        <span>Both (Event Package)</span>
+                        <Sparkles className="h-3.5 w-3.5 shrink-0" />
+                        <span className="truncate">Both (Package)</span>
                       </button>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                         placeholder="e.g. John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-3 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
+                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
                       />
                     </div>
 
@@ -184,96 +184,78 @@ export default function ContactPage() {
                         placeholder="e.g. (773) 555-0123"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-3 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
+                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
                       />
                     </div>
                   </div>
 
-                  {/* Email & Quantity */}
+                  {/* Email & Quantity/Event Timeline */}
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-1.5">
                       <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                        Email Address
+                        Email Address{" "}
+                        <span className="font-normal text-neutral-400">(Optional)</span>
                       </label>
                       <input
                         type="email"
-                        placeholder="e.g. name@example.com"
+                        placeholder="name@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-3 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
+                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
                       />
                     </div>
 
                     <div className="space-y-1.5">
                       <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                        Estimated Pieces / Headcount
+                        Qty / Needed Date{" "}
+                        <span className="font-normal text-neutral-400">(Optional)</span>
                       </label>
-                      <select
+                      <input
+                        type="text"
+                        placeholder="e.g. 24 shirts by Oct 15th"
                         value={formData.quantity}
                         onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-3 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                      >
-                        <option value="1-5">1 – 5 pieces (Sample / Single)</option>
-                        <option value="6-12">6 – 12 pieces</option>
-                        <option value="13-24">13 – 24 pieces</option>
-                        <option value="25-50">25 – 50 pieces</option>
-                        <option value="50+">50+ pieces (Bulk event)</option>
-                      </select>
+                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
+                      />
                     </div>
                   </div>
 
-                  {/* Event Date */}
+                  {/* Project Notes & Requirements */}
                   <div className="space-y-1.5">
                     <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                      Needed By Date / Event Date
-                    </label>
-                    <input
-                      type="date"
-                      value={formData.eventDate}
-                      onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })}
-                      className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-3 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                    />
-                  </div>
-
-                  {/* Artwork Upload Visual Note */}
-                  <div className="cursor-pointer space-y-1.5 rounded-xl border-2 border-dashed border-[#e7ddd0] bg-[#faf6ef] p-5 text-center transition-colors hover:border-[#ff5c1a]">
-                    <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#ff5c1a]/10 text-[#ff5c1a]">
-                      <UploadCloud className="h-5 w-5" />
-                    </div>
-                    <span className="block text-xs font-bold text-neutral-800">
-                      Send Pictures / Artwork File
-                    </span>
-                    <p className="text-[11px] text-neutral-500">
-                      All pictures must be clear and high-resolution. You can also text files
-                      directly to {COMPANY.contacts.phone.display}.
-                    </p>
-                  </div>
-
-                  {/* Notes / Message */}
-                  <div className="space-y-1.5">
-                    <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                      Project Details / Special Requests
+                      Project Details
                     </label>
                     <textarea
-                      rows={4}
-                      placeholder="Tell us what you want printed (colors, sizes, front/back placement) or catering dishes/cakes requested..."
+                      rows={3}
+                      placeholder="Describe what you need printed (colors, placement, garment styles) or food trays & cakes requested..."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-3 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
+                      className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
                     />
+                  </div>
+
+                  {/* Helpful artwork hint */}
+                  <div className="flex items-center gap-2.5 rounded-xl border border-[#ff5c1a]/25 bg-[#ff5c1a]/5 px-3.5 py-2.5 text-xs text-neutral-700">
+                    <UploadCloud className="h-4 w-4 shrink-0 text-[#ff5c1a]" />
+                    <span>
+                      Have pictures or artwork? You can text files directly to{" "}
+                      <strong className="text-black">{COMPANY.contacts.phone.display}</strong> for a
+                      24-hr proof.
+                    </span>
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <button
                       type="submit"
-                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40"
+                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] py-3.5 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.01] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.99]"
                     >
                       <span>Submit Quote Request</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </button>
                     <p className="mt-2 text-center text-[11px] text-neutral-500">
-                      {COMPANY.operations.salesPolicyNotice} {COMPANY.operations.proofTurnaround}.
+                      {COMPANY.operations.salesPolicyNotice} • Free{" "}
+                      {COMPANY.operations.proofTurnaround.toLowerCase()}.
                     </p>
                   </div>
                 </form>
