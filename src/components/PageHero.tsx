@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { QuickViewButton } from "@/components/QuickView";
+import { COMPANY } from "@/constants/company";
 import type { Product } from "@/types";
 
 interface HeroStat {
@@ -18,7 +18,6 @@ interface PageHeroProps {
   intro: string;
   note: { label: string; text: string };
   primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
   stats: [HeroStat, HeroStat, HeroStat, HeroStat];
   showcase: {
     image: string;
@@ -39,7 +38,6 @@ export default function PageHero({
   intro,
   note,
   primaryCta,
-  secondaryCta,
   stats,
   showcase,
 }: PageHeroProps) {
@@ -81,12 +79,13 @@ export default function PageHero({
                 <span>{primaryCta.label}</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <Link
-                href={secondaryCta.href}
-                className="rounded-lg border border-white/15 px-6 py-3.5 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:border-white/40"
+              <a
+                href={COMPANY.contacts.phone.tel}
+                className="flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3.5 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:border-white/40"
               >
-                {secondaryCta.label}
-              </Link>
+                <Phone className="h-4 w-4 text-[#ff5c1a]" />
+                <span>Call to Order</span>
+              </a>
             </div>
 
             <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-white/10 pt-6 sm:grid-cols-4">

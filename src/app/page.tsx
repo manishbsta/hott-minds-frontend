@@ -48,7 +48,6 @@ export default function Home() {
             text: "No color setup fees, ultra-crisp detail, and a 60+ wash guarantee.",
           }}
           primaryCta={{ label: "Text to Order", href: COMPANY.contacts.phone.sms }}
-          secondaryCta={{ label: "Request Bulk Quote", href: "/contact" }}
           stats={[
             { label: "Art proof", value: "24 hr" },
             { label: "Turnaround", value: "3-5 days" },

@@ -15,7 +15,7 @@ export default function Header() {
   const navLinks: NavLink[] = [
     { name: "Apparel", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Contact & Quote", href: "/contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -80,12 +80,12 @@ export default function Header() {
               <Phone className="h-4 w-4 text-[#ff5c1a]" />
               <span>{COMPANY.contacts.phone.display}</span>
             </a>
-            <Link
-              href="/contact"
+            <a
+              href={COMPANY.contacts.phone.sms}
               className="rounded-lg bg-[#faf6ef] px-4 py-2.5 text-xs font-bold tracking-wider text-[#141210] uppercase transition-colors duration-200 hover:bg-[#ff5c1a] hover:text-white"
             >
-              Get Custom Quote
-            </Link>
+              Text to Order
+            </a>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -134,13 +134,13 @@ export default function Header() {
               <MessageSquare className="h-4 w-4" />
               <span>Text Orders: {COMPANY.contacts.phone.display}</span>
             </a>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full rounded-lg bg-white py-3 text-center text-sm font-bold tracking-wider text-[#141210] uppercase"
+            <a
+              href={COMPANY.contacts.phone.tel}
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-white py-3 text-center text-sm font-bold tracking-wider text-[#141210] uppercase"
             >
-              Start Order / Request Quote
-            </Link>
+              <Phone className="h-4 w-4" />
+              <span>Call to Order</span>
+            </a>
           </div>
         </div>
       )}

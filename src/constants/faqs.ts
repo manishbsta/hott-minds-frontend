@@ -41,7 +41,7 @@ export const FAQS: FaqItem[] = [
   {
     question: "Can I get custom shirts and catering for the same event?",
     answer:
-      "Yes. We bundle matching custom front-and-back shirts with hot buffet catering for family reunions, birthdays, graduations, and corporate gatherings — just request a quote for both.",
+      "Yes. We bundle matching custom front-and-back shirts with hot buffet catering for family reunions, birthdays, graduations, and corporate gatherings — just text or call us about both.",
   },
   {
     question: "Do you accept returns or exchanges?",

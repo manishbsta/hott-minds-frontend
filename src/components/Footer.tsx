@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MessageSquare, Check, Info } from "lucide-react";
+import { MessageSquare, Phone, Check, Info } from "lucide-react";
 import SectionLink from "@/components/SectionLink";
 import { COMPANY } from "@/constants/company";
 
@@ -30,12 +30,13 @@ export default function Footer() {
               <MessageSquare className="h-4 w-4" />
               <span>Text Order {COMPANY.contacts.phone.display}</span>
             </a>
-            <Link
-              href="/contact"
-              className="rounded-lg border border-white/15 px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-white/10"
+            <a
+              href={COMPANY.contacts.phone.tel}
+              className="flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-white/10"
             >
-              Request Quote
-            </Link>
+              <Phone className="h-4 w-4" />
+              <span>Call to Order</span>
+            </a>
           </div>
         </div>
       </div>
@@ -181,8 +182,16 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#2e2a27] pt-6 text-xs text-[#faf6ef]/60 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {COMPANY.divisions.apparel} / {COMPANY.legalName}. All
-            rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <a
+              href="https://www.mangoconsultingllc.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              Mango Consulting LLC
+            </a>
+            . All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/" className="transition-colors hover:text-white">

@@ -84,7 +84,6 @@ function buildLlmsTxt(): string {
     "## Optional",
     "",
     `- [Sitemap](${absoluteUrl("/sitemap.xml")})`,
-    `- [Request a quote](${absoluteUrl(PAGES.contact.path)})`,
     "",
   ].join("\n");
 }

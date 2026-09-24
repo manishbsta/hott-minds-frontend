@@ -11,6 +11,7 @@ import {
   Layers,
   Flame,
   Shirt,
+  MessageSquare,
 } from "lucide-react";
 import CakeMenu from "@/components/CakeMenu";
 import JsonLd from "@/components/JsonLd";
@@ -46,7 +47,6 @@ export default function ServicesPage() {
             `Hi ${COMPANY.owners.combined}, I would like to inquire about ${COMPANY.divisions.catering} services`
           ),
         }}
-        secondaryCta={{ label: "Book Event Catering", href: "/contact?service=catering" }}
         stats={[
           { label: "Made to order", value: "Fresh" },
           { label: "Pure butter", value: "100%" },
@@ -266,13 +266,15 @@ export default function ServicesPage() {
               <Phone className="h-4 w-4" />
               <span>Call {COMPANY.contacts.phone.display} for Menu Customization</span>
             </a>
-            <Link
-              href="/contact?service=catering"
+            <a
+              href={getSmsLink(
+                `Hi ${COMPANY.owners.combined}, I would like to order catering for an event`
+              )}
               className="flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-white/10"
             >
-              <FileText className="h-4 w-4 text-white/70" />
-              <span>Request Catering Quote</span>
-            </Link>
+              <MessageSquare className="h-4 w-4 text-white/70" />
+              <span>Text to Order Catering</span>
+            </a>
           </div>
         </div>
       </section>
@@ -299,13 +301,15 @@ export default function ServicesPage() {
               <Shirt className="h-4 w-4" />
               <span>Browse Shirts Catalog</span>
             </Link>
-            <Link
-              href="/contact?service=both"
+            <a
+              href={getSmsLink(
+                `Hi ${COMPANY.owners.combined}, I would like custom shirts and catering for an event`
+              )}
               className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow-md shadow-[#ff5c1a]/20 transition-colors hover:bg-[#ff7538]"
             >
-              <Sparkles className="h-4 w-4" />
-              <span>Get Custom Event Package Quote</span>
-            </Link>
+              <MessageSquare className="h-4 w-4" />
+              <span>Text to Order a Package</span>
+            </a>
           </div>
         </div>
       </section>

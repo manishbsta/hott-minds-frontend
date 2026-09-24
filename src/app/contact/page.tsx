@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Mail, Phone, MapPin, ShieldCheck, HelpCircle, ChevronDown } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
-import QuoteForm, { QuoteFormFromUrl } from "@/components/QuoteForm";
+import ContactForm from "@/components/ContactForm";
 import { COMPANY } from "@/constants/company";
 import { FAQS } from "@/constants/faqs";
 import { PAGES } from "@/constants/site";
@@ -24,20 +23,20 @@ export default function ContactPage() {
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center space-y-4 px-4 text-center sm:px-6 lg:px-8">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase shadow-sm backdrop-blur-sm">
             <Mail className="h-3.5 w-3.5 text-[#ff5c1a]" />
-            <span>Direct Contact &amp; Custom Quotes</span>
+            <span>Get In Touch</span>
           </span>
 
           <h1 className="font-display text-4xl text-white uppercase sm:text-6xl">
             START YOUR ORDER OR <br />
             <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff7538] to-[#ffa043] bg-clip-text text-transparent">
-              REQUEST A CUSTOM QUOTE
+              SEND US A MESSAGE
             </span>
           </h1>
 
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#faf6ef]/75">
             Need custom shirts, hoodies, or caps printed with your art? Or looking to book Hott
-            Meals Instantly catering &amp; cakes for an upcoming event? We are ready to make it
-            happen.
+            Meals Instantly catering &amp; cakes for an upcoming event? Send us a message with your
+            order, question, or feedback — we reply within 24 hours.
           </p>
         </div>
       </section>
@@ -47,9 +46,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Left Column: Contact Form */}
           <div className="lg:col-span-7">
-            <Suspense fallback={<QuoteForm />}>
-              <QuoteFormFromUrl />
-            </Suspense>
+            <ContactForm />
           </div>
 
           {/* Right Column: Direct Info Cards & FAQ */}

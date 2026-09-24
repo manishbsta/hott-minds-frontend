@@ -54,9 +54,9 @@ export const PAGES = {
   },
   contact: {
     path: "/contact",
-    name: "Contact & Quote",
-    title: `Get a Quote: Custom Shirts & Event Catering | ${COMPANY.name}`,
-    description: `Request a quote for custom DTF apparel or event catering in ${COMPANY.contacts.location.city}. Text or call ${COMPANY.contacts.phone.display} or send your artwork online. We reply within 24 hours.`,
+    name: "Contact",
+    title: `Text or Call to Order: Custom Shirts & Event Catering | ${COMPANY.name}`,
+    description: `Order custom DTF apparel or event catering in ${COMPANY.contacts.location.city} by text or phone. Text or call ${COMPANY.contacts.phone.display} — we reply within 24 hours.`,
   },
 } as const satisfies Record<string, PageSeo>;
 

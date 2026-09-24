@@ -2,12 +2,12 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { X, ZoomIn, Check } from "lucide-react";
+import { X, ZoomIn, Check, MessageSquare } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
+import { getSmsLink } from "@/constants/company";
 import type { Product } from "@/types";
 
 interface ProductModalProps {
@@ -152,13 +152,13 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
 
                   {/* Action CTA */}
                   <div className="pt-3">
-                    <Link
-                      href="/contact"
-                      onClick={() => onOpenChange(false)}
-                      className="flex w-full items-center justify-center rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7538]"
+                    <a
+                      href={getSmsLink(`Hi, I'm interested in the ${product.name}`)}
+                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7538]"
                     >
-                      Request Custom Bulk Quote
-                    </Link>
+                      <MessageSquare className="h-4 w-4" />
+                      <span>Text to Order</span>
+                    </a>
                   </div>
                 </div>
               </div>
