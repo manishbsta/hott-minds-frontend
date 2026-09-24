@@ -133,11 +133,9 @@ export default function Home() {
                 <span>{COMPANY.divisions.apparel.toUpperCase()} • DTF STUDIO</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-anton)] text-4xl leading-[0.95] font-black tracking-tight text-white uppercase sm:text-6xl xl:text-7xl">
+              <h1 className="font-display text-4xl leading-[0.92] text-white uppercase sm:text-6xl xl:text-7xl">
                 YOUR ART, <br />
-                <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff884d] to-[#ffa31a] bg-clip-text text-transparent">
-                  PRESSED PERFECT.
-                </span>
+                PRESSED <span className="text-[#ff5c1a]">PERFECT.</span>
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/80 sm:text-lg">
@@ -153,7 +151,7 @@ export default function Home() {
                   <span className="block text-xs tracking-wider text-[#faf6ef]/60 uppercase">
                     Adult Tees
                   </span>
-                  <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
+                  <span className="font-display text-2xl text-[#ff5c1a]">
                     {COMPANY.pricing.adultTee}
                   </span>
                 </div>
@@ -161,7 +159,7 @@ export default function Home() {
                   <span className="block text-xs tracking-wider text-[#faf6ef]/60 uppercase">
                     Youth Tees
                   </span>
-                  <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
+                  <span className="font-display text-2xl text-[#ff5c1a]">
                     {COMPANY.pricing.youthTee}
                   </span>
                 </div>
@@ -169,7 +167,7 @@ export default function Home() {
                   <span className="block text-xs tracking-wider text-[#faf6ef]/60 uppercase">
                     Full-Back Print
                   </span>
-                  <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-white">
+                  <span className="font-display text-2xl text-white">
                     {COMPANY.pricing.fullBackAddon}
                   </span>
                 </div>
@@ -233,7 +231,7 @@ export default function Home() {
                 </div>
                 <div className="mt-5 flex items-center justify-between">
                   <div>
-                    <h3 className="font-[family-name:var(--font-anton)] text-xl font-bold text-white uppercase">
+                    <h3 className="font-display text-xl text-white uppercase">
                       Signature Flame T-Shirt
                     </h3>
                     <p className="text-xs text-[#faf6ef]/70">
@@ -256,7 +254,7 @@ export default function Home() {
 
       {/* CONTINUOUS MARQUEE TICKER */}
       <div className="overflow-hidden border-y border-[#ff5c1a] bg-[#ff5c1a] py-3 text-white select-none">
-        <div className="animate-marquee flex items-center gap-8 font-[family-name:var(--font-anton)] text-sm font-black tracking-widest whitespace-nowrap uppercase">
+        <div className="animate-marquee font-display flex items-center gap-8 text-sm tracking-widest whitespace-nowrap uppercase">
           <span>★ NO MINIMUMS ON APPAREL</span>
           <span>★ ADULT TEES {COMPANY.pricing.adultTee}</span>
           <span>★ YOUTH TEES {COMPANY.pricing.youthTee}</span>
@@ -290,7 +288,7 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 rounded bg-[#ff5c1a]/20 px-3 py-1 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
                   Official Standard Price Sheet
                 </div>
-                <h2 className="font-[family-name:var(--font-anton)] text-3xl font-black text-white uppercase sm:text-5xl">
+                <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
                   CLEAR PRICING. <br />
                   <span className="text-[#ff5c1a]">ZERO HIDDEN SETUP FEES.</span>
                 </h2>
@@ -304,49 +302,49 @@ export default function Home() {
                 <div className="divide-y divide-[#2e2a27] rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-5">
                   <div className="flex items-center justify-between py-3">
                     <div>
-                      <span className="font-[family-name:var(--font-anton)] text-base font-bold text-white uppercase sm:text-lg">
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
                         Adult T-Shirt
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
                         Heavyweight cotton, front print included
                       </p>
                     </div>
-                    <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
+                    <span className="font-display text-2xl text-[#ff5c1a]">
                       {COMPANY.pricing.adultTee}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between py-3">
                     <div>
-                      <span className="font-[family-name:var(--font-anton)] text-base font-bold text-white uppercase sm:text-lg">
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
                         Youth T-Shirt
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
                         Comfort-fit cotton for kids & youth sizes
                       </p>
                     </div>
-                    <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff5c1a]">
+                    <span className="font-display text-2xl text-[#ff5c1a]">
                       {COMPANY.pricing.youthTee}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between py-3">
                     <div>
-                      <span className="font-[family-name:var(--font-anton)] text-base font-bold text-white uppercase sm:text-lg">
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
                         Full-Back Printing
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
                         Large rear graphic (price varies with image size)
                       </p>
                     </div>
-                    <span className="font-[family-name:var(--font-anton)] text-2xl font-black text-[#ff884d]">
+                    <span className="font-display text-2xl text-[#ff884d]">
                       {COMPANY.pricing.fullBackAddon}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between py-3">
                     <div>
-                      <span className="font-[family-name:var(--font-anton)] text-base font-bold text-white uppercase sm:text-lg">
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
                         Hoodies, Caps & Drinkware
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
@@ -393,7 +391,7 @@ export default function Home() {
             <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
               Catalog & Apparel Showcase
             </span>
-            <h2 className="text-ink font-[family-name:var(--font-anton)] text-3xl leading-none font-black uppercase sm:text-5xl">
+            <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
               FEATURED APPAREL & GOODS
             </h2>
             <p className="mt-2 max-w-xl text-sm text-neutral-600">
@@ -459,7 +457,7 @@ export default function Home() {
                   <span className="text-[11px] font-bold tracking-widest text-[#ff5c1a] uppercase">
                     {product.categoryLabel}
                   </span>
-                  <h3 className="text-ink mt-1 font-[family-name:var(--font-anton)] text-xl font-bold uppercase transition-colors group-hover:text-[#ff5c1a]">
+                  <h3 className="text-ink font-display mt-1 text-xl uppercase transition-colors group-hover:text-[#ff5c1a]">
                     {product.name}
                   </h3>
                   <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-neutral-600">
@@ -484,9 +482,7 @@ export default function Home() {
                       Price
                     </span>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-ink font-[family-name:var(--font-anton)] text-2xl font-black">
-                        {product.price}
-                      </span>
+                      <span className="text-ink font-display text-2xl">{product.price}</span>
                       {product.youthPrice && (
                         <span className="text-xs font-semibold text-neutral-500">
                           (Youth: {product.youthPrice})
@@ -515,7 +511,7 @@ export default function Home() {
             <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
               Next-Generation Print Technology
             </span>
-            <h2 className="font-[family-name:var(--font-anton)] text-3xl font-black text-white uppercase sm:text-5xl">
+            <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
               WHY DIRECT-TO-FILM (DTF) WINS
             </h2>
             <p className="mt-3 text-sm text-[#faf6ef]/70 sm:text-base">
@@ -529,7 +525,7 @@ export default function Home() {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
                 🎨
               </div>
-              <h3 className="font-[family-name:var(--font-anton)] text-lg font-bold text-white uppercase">
+              <h3 className="font-display text-lg text-white uppercase">
                 Unlimited Colors & Gradients
               </h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
@@ -542,9 +538,7 @@ export default function Home() {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
                 🛡️
               </div>
-              <h3 className="font-[family-name:var(--font-anton)] text-lg font-bold text-white uppercase">
-                60+ Wash Guarantee
-              </h3>
+              <h3 className="font-display text-lg text-white uppercase">60+ Wash Guarantee</h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
                 Industrial adhesive powder binds deep into fabric fibers. Does not crack, peel, or
                 fade through heavy weekly laundry.
@@ -555,9 +549,7 @@ export default function Home() {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
                 ✨
               </div>
-              <h3 className="font-[family-name:var(--font-anton)] text-lg font-bold text-white uppercase">
-                Soft-Hand Stretch Feel
-              </h3>
+              <h3 className="font-display text-lg text-white uppercase">Soft-Hand Stretch Feel</h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
                 No stiff plastic bulletproof shields on your chest. Our transfers stretch with the
                 fabric for breathable comfort.
@@ -568,9 +560,7 @@ export default function Home() {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
                 ⚡
               </div>
-              <h3 className="font-[family-name:var(--font-anton)] text-lg font-bold text-white uppercase">
-                No Minimums Required
-              </h3>
+              <h3 className="font-display text-lg text-white uppercase">No Minimums Required</h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
                 Need just 1 birthday shirt or 100 reunion hoodies? You get the exact same premium
                 attention and rapid turnaround.
@@ -587,7 +577,7 @@ export default function Home() {
             <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
               Simple & Straightforward
             </span>
-            <h2 className="text-ink font-[family-name:var(--font-anton)] text-3xl font-black uppercase sm:text-5xl">
+            <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
               HOW TO ORDER IN 4 STEPS
             </h2>
             <p className="mt-2 text-sm text-neutral-600">
@@ -597,12 +587,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="mb-2 block font-[family-name:var(--font-anton)] text-4xl font-black text-[#ff5c1a]/30">
-                01
-              </span>
-              <h3 className="text-ink mb-2 font-[family-name:var(--font-anton)] text-lg font-bold uppercase">
-                Send Your Picture
-              </h3>
+              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">01</span>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Send Your Picture</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
                 Text your high-resolution picture, artwork, or sketch to{" "}
                 <strong className="text-ink">{COMPANY.contacts.phone.plain}</strong> or email us.
@@ -611,12 +597,8 @@ export default function Home() {
             </div>
 
             <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="mb-2 block font-[family-name:var(--font-anton)] text-4xl font-black text-[#ff5c1a]/30">
-                02
-              </span>
-              <h3 className="text-ink mb-2 font-[family-name:var(--font-anton)] text-lg font-bold uppercase">
-                Review Free Proof
-              </h3>
+              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">02</span>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Review Free Proof</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
                 We prepare a digital visual mockup showing exact sizing, print placement, and colors
                 for your approval.
@@ -624,12 +606,8 @@ export default function Home() {
             </div>
 
             <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="mb-2 block font-[family-name:var(--font-anton)] text-4xl font-black text-[#ff5c1a]/30">
-                03
-              </span>
-              <h3 className="text-ink mb-2 font-[family-name:var(--font-anton)] text-lg font-bold uppercase">
-                Precision Heat-Press
-              </h3>
+              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">03</span>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Precision Heat-Press</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
                 Your garments are printed using high-density DTF inks and fused under commercial
                 pneumatic heat-presses.
@@ -637,12 +615,8 @@ export default function Home() {
             </div>
 
             <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="mb-2 block font-[family-name:var(--font-anton)] text-4xl font-black text-[#ff5c1a]/30">
-                04
-              </span>
-              <h3 className="text-ink mb-2 font-[family-name:var(--font-anton)] text-lg font-bold uppercase">
-                Pickup or Delivery
-              </h3>
+              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">04</span>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Pickup or Delivery</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
                 Fast local Chicago pickup or doorstep shipment nationwide in time for your big event
                 or reunion.
@@ -660,7 +634,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 rounded bg-white/10 px-3 py-1 text-xs font-bold tracking-wider text-[#ffa31a] uppercase">
                 🍰 {COMPANY.divisions.catering.toUpperCase()}
               </div>
-              <h2 className="font-[family-name:var(--font-anton)] text-3xl font-black text-white uppercase sm:text-4xl">
+              <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-4xl">
                 PLANNING A PARTY OR CELEBRATION? <br />
                 <span className="text-[#ff9900]">WE COOK, YOU CELEBRATE.</span>
               </h2>

@@ -120,11 +120,9 @@ export default function ServicesPage() {
                 <span>{COMPANY.divisions.catering.toUpperCase()}</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-anton)] text-4xl leading-[0.95] font-black tracking-tight text-white uppercase sm:text-6xl xl:text-7xl">
+              <h1 className="font-display text-4xl leading-[0.92] text-white uppercase sm:text-6xl xl:text-7xl">
                 WE COOK, <br />
-                <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff9900] to-[#ffd24d] bg-clip-text text-transparent">
-                  YOU CELEBRATE.
-                </span>
+                YOU <span className="text-[#ff5c1a]">CELEBRATE.</span>
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/85 sm:text-lg">
@@ -137,7 +135,7 @@ export default function ServicesPage() {
               <div className="space-y-2 rounded-2xl border-2 border-[#ff5c1a]/50 bg-gradient-to-r from-[#ff5c1a]/20 via-[#8c2f1b]/30 to-[#1e1c1a] p-5 shadow-lg backdrop-blur-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">🎉</span>
-                  <span className="font-[family-name:var(--font-anton)] text-base font-bold tracking-wide text-white uppercase sm:text-lg">
+                  <span className="font-display text-base tracking-wide text-white uppercase sm:text-lg">
                     SPECIAL OFFER: ORDERS OVER {COMPANY.pricing.cateringCakePromoThreshold} GET A
                     FREE CAKE!
                   </span>
@@ -188,7 +186,7 @@ export default function ServicesPage() {
                     <span className="block text-[10px] font-bold tracking-wider text-[#ff5c1a] uppercase">
                       Signature Dessert
                     </span>
-                    <span className="font-[family-name:var(--font-anton)] text-sm font-bold uppercase">
+                    <span className="font-display text-sm uppercase">
                       Gourmet Hennessy & Rum Infusion Cakes
                     </span>
                   </div>
@@ -225,7 +223,7 @@ export default function ServicesPage() {
                 Homemade From Scratch With Love
               </div>
 
-              <h2 className="text-ink font-[family-name:var(--font-anton)] text-3xl leading-none font-black uppercase sm:text-5xl">
+              <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
                 POUND CAKES & INFUSION CAKES
               </h2>
 
@@ -239,9 +237,7 @@ export default function ServicesPage() {
                 {/* Pound Cakes Box */}
                 <div className="space-y-3 rounded-2xl border border-[#e7ddd0] bg-white p-5 shadow-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-ink font-[family-name:var(--font-anton)] text-lg font-bold uppercase">
-                      Pound Cakes
-                    </span>
+                    <span className="text-ink font-display text-lg uppercase">Pound Cakes</span>
                     <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
                       Eligible for {COMPANY.pricing.cateringCakePromoThreshold}+ Deal
                     </span>
@@ -265,7 +261,7 @@ export default function ServicesPage() {
                 {/* Infusion Cakes Box */}
                 <div className="space-y-3 rounded-2xl border border-[#e7ddd0] bg-white p-5 shadow-sm">
                   <div className="flex items-center justify-between">
-                    <span className="font-[family-name:var(--font-anton)] text-lg font-bold text-[#8c2f1b] uppercase">
+                    <span className="font-display text-lg text-[#8c2f1b] uppercase">
                       Infusion Cakes
                     </span>
                     <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-900">
@@ -312,7 +308,7 @@ export default function ServicesPage() {
             <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
               Baked Fresh to Order
             </span>
-            <h2 className="text-ink font-[family-name:var(--font-anton)] text-3xl leading-none font-black uppercase sm:text-5xl">
+            <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
               DESSERT & CAKE MENU
             </h2>
             <p className="mt-2 max-w-xl text-sm text-neutral-600">
@@ -371,9 +367,7 @@ export default function ServicesPage() {
                   )}
                 </div>
 
-                <h3 className="text-ink mt-2 font-[family-name:var(--font-anton)] text-xl font-bold uppercase">
-                  {cake.name}
-                </h3>
+                <h3 className="text-ink font-display mt-2 text-xl uppercase">{cake.name}</h3>
                 <p className="mt-2 text-xs leading-relaxed text-neutral-600">{cake.description}</p>
               </div>
 
@@ -411,7 +405,7 @@ export default function ServicesPage() {
                   <span className="mb-1 block text-xs font-bold text-[#ff5c1a] uppercase">
                     Hot Party Pans
                   </span>
-                  <h4 className="font-[family-name:var(--font-anton)] text-2xl font-bold text-white uppercase">
+                  <h4 className="font-display text-2xl text-white uppercase">
                     SAVORY CELEBRATION MEALS
                   </h4>
                   <p className="mt-1 text-xs text-[#faf6ef]/80">
@@ -427,7 +421,7 @@ export default function ServicesPage() {
                 Full-Service Event Catering
               </div>
 
-              <h2 className="font-[family-name:var(--font-anton)] text-3xl leading-none font-black text-white uppercase sm:text-5xl">
+              <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
                 HOT MEALS FOR REUNIONS & PARTIES
               </h2>
 
@@ -444,9 +438,7 @@ export default function ServicesPage() {
                     className="flex flex-col justify-between gap-3 rounded-xl border border-[#2e2a27] bg-[#1e1c1a] p-4 sm:flex-row sm:items-center"
                   >
                     <div>
-                      <h4 className="font-[family-name:var(--font-anton)] text-base font-bold text-white uppercase">
-                        {item.title}
-                      </h4>
+                      <h4 className="font-display text-base text-white uppercase">{item.title}</h4>
                       <p className="mt-0.5 text-xs text-[#faf6ef]/70">{item.desc}</p>
                     </div>
                     <span className="shrink-0 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[#ff5c1a]">
@@ -481,7 +473,7 @@ export default function ServicesPage() {
           <span className="block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
             The Ultimate Event Solution
           </span>
-          <h2 className="text-ink font-[family-name:var(--font-anton)] text-3xl font-black uppercase sm:text-5xl">
+          <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
             CUSTOM SHIRTS + CATERING FEAST BUNDLE
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-neutral-600 sm:text-base">

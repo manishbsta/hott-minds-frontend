@@ -11,7 +11,7 @@ export default function Footer() {
             <span className="mb-1 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
               Have An Event, Reunion or Project?
             </span>
-            <h3 className="font-[family-name:var(--font-anton)] text-2xl font-black text-white uppercase sm:text-3xl">
+            <h3 className="font-display text-2xl text-white uppercase sm:text-3xl">
               READY TO PRESS YOUR CUSTOM DESIGNS?
             </h3>
             <p className="mt-1 max-w-xl text-sm text-[#faf6ef]/70">
@@ -46,7 +46,7 @@ export default function Footer() {
                 <span className="text-xl font-extrabold text-white">H</span>
               </div>
               <div>
-                <span className="block font-[family-name:var(--font-anton)] text-xl leading-none font-black tracking-wider text-white uppercase">
+                <span className="font-display block text-xl leading-none tracking-wider text-white uppercase">
                   {COMPANY.name.toUpperCase()}
                 </span>
                 <span className="text-[10px] font-bold tracking-widest text-[#ff5c1a] uppercase">
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="font-[family-name:var(--font-anton)] text-sm font-bold tracking-wider text-white uppercase">
+            <h4 className="font-display text-sm tracking-wider text-white uppercase">
               Explore Services
             </h4>
             <ul className="space-y-2 text-xs text-[#faf6ef]/80">
@@ -102,7 +102,7 @@ export default function Footer() {
 
           {/* Direct Contacts */}
           <div className="space-y-3">
-            <h4 className="font-[family-name:var(--font-anton)] text-sm font-bold tracking-wider text-white uppercase">
+            <h4 className="font-display text-sm tracking-wider text-white uppercase">
               Direct Contact
             </h4>
             <div className="space-y-2 text-xs text-[#faf6ef]/80">
@@ -132,7 +132,7 @@ export default function Footer() {
 
           {/* Studio Policies */}
           <div className="space-y-3">
-            <h4 className="font-[family-name:var(--font-anton)] text-sm font-bold tracking-wider text-white uppercase">
+            <h4 className="font-display text-sm tracking-wider text-white uppercase">
               Ordering Guidelines
             </h4>
             <div className="space-y-2 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] p-3 text-xs">

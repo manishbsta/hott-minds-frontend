@@ -31,11 +31,9 @@ export default function ContactPage() {
             <span>GET IN TOUCH WITH {COMPANY.owners.combined.toUpperCase()}</span>
           </div>
 
-          <h1 className="font-[family-name:var(--font-anton)] text-4xl font-black tracking-tight text-white uppercase sm:text-6xl">
+          <h1 className="font-display text-4xl text-white uppercase sm:text-6xl">
             START YOUR ORDER OR <br />
-            <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff884d] to-[#ffa31a] bg-clip-text text-transparent">
-              REQUEST A CUSTOM QUOTE
-            </span>
+            <span className="text-[#ff5c1a]">REQUEST A CUSTOM QUOTE</span>
           </h1>
 
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#faf6ef]/75">
@@ -81,7 +79,7 @@ export default function ContactPage() {
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-600">
                     ✓
                   </div>
-                  <h3 className="text-ink font-[family-name:var(--font-anton)] text-3xl font-black uppercase">
+                  <h3 className="text-ink font-display text-3xl uppercase">
                     THANK YOU FOR REACHING OUT!
                   </h3>
                   <p className="mx-auto max-w-md text-sm leading-relaxed text-neutral-600">
@@ -109,7 +107,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <h2 className="text-ink font-[family-name:var(--font-anton)] text-2xl font-black uppercase sm:text-3xl">
+                    <h2 className="text-ink font-display text-2xl uppercase sm:text-3xl">
                       TELL US ABOUT YOUR PROJECT
                     </h2>
                     <p className="mt-1 text-xs text-neutral-500">
@@ -288,7 +286,7 @@ export default function ContactPage() {
                 <span className="text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
                   Direct Contacts
                 </span>
-                <h3 className="mt-1 font-[family-name:var(--font-anton)] text-2xl font-black text-white uppercase">
+                <h3 className="font-display mt-1 text-2xl text-white uppercase">
                   {COMPANY.owners.combined.toUpperCase()}
                 </h3>
                 <p className="mt-1 text-xs text-[#faf6ef]/70">
@@ -349,7 +347,7 @@ export default function ContactPage() {
 
             {/* Quick FAQ Accordion */}
             <div className="space-y-4 rounded-3xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <h4 className="text-ink font-[family-name:var(--font-anton)] text-base font-bold uppercase">
+              <h4 className="text-ink font-display text-base uppercase">
                 FREQUENTLY ASKED QUESTIONS
               </h4>
 

@@ -41,7 +41,7 @@ export default function Header() {
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="font-[family-name:var(--font-anton)] text-xl leading-none font-black tracking-wider text-white uppercase sm:text-2xl">
+              <span className="font-display text-xl leading-none tracking-wider text-white uppercase sm:text-2xl">
                 {COMPANY.name.toUpperCase()}
               </span>
               <span className="text-[10px] font-bold tracking-widest text-[#ff5c1a] uppercase sm:text-xs">

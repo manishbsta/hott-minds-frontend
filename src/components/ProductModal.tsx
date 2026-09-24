@@ -125,14 +125,12 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                     {product.categoryLabel}
                   </span>
 
-                  <Dialog.Title className="font-[family-name:var(--font-anton)] text-2xl leading-tight font-black text-white uppercase sm:text-3xl">
+                  <Dialog.Title className="font-display text-2xl leading-tight text-white uppercase sm:text-3xl">
                     {product.name}
                   </Dialog.Title>
 
                   <div className="flex items-baseline gap-3">
-                    <span className="font-[family-name:var(--font-anton)] text-3xl font-black text-[#ff5c1a]">
-                      {product.price}
-                    </span>
+                    <span className="font-display text-3xl text-[#ff5c1a]">{product.price}</span>
                     {product.youthPrice && (
                       <span className="text-xs text-[#faf6ef]/70">
                         Youth Size: {product.youthPrice}
