@@ -349,17 +349,17 @@ export default function Home() {
 
               {/* Right Column: Visual Mockup Card */}
               <div className="space-y-4 lg:col-span-5">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#2e2a27] bg-black/60 shadow-2xl">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] shadow-2xl">
                   <Image
-                    src="/images/tshirt-price-list.jpg"
-                    alt="Designs by Hott Minds Original T-Shirt Price List"
+                    src="/images/official-price-sheet.jpg"
+                    alt="Designs by Hott Minds Official Standard Price Sheet"
                     fill
                     sizes="(max-width: 1024px) 100vw, 450px"
-                    className="object-contain p-4"
+                    className="object-cover"
                   />
                 </div>
                 <p className="text-center text-xs text-[#faf6ef]/60">
-                  Direct from our workshop flyer: DTF your shirts, bags, mugs & more.
+                  Official Hott Minds studio pricing & terms guide.
                 </p>
               </div>
             </div>
