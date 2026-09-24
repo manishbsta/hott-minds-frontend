@@ -8,19 +8,9 @@ import { X, ZoomIn } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
+import type { Product } from "@/types";
 
-export type Product = {
-  id: string;
-  name: string;
-  category: "tees" | "hoodies" | "caps" | "other";
-  categoryLabel: string;
-  price: string;
-  youthPrice?: string;
-  image: string;
-  badge?: string;
-  description: string;
-  specs: string[];
-};
+export type { Product };
 
 interface ProductModalProps {
   product: Product | null;

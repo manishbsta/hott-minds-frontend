@@ -4,15 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { COMPANY, getSmsLink } from "@/constants/company";
-
-type CakeItem = {
-  name: string;
-  type: "pound" | "infusion";
-  flavor: string;
-  description: string;
-  notes?: string;
-  tag?: string;
-};
+import type { CakeFilterCategory, CakeItem, SavoryFeastItem } from "@/types";
 
 const CAKES: CakeItem[] = [
   // Pound Cakes
@@ -77,7 +69,7 @@ const CAKES: CakeItem[] = [
   },
 ];
 
-const SAVORY_FEASTS = [
+const SAVORY_FEASTS: SavoryFeastItem[] = [
   {
     title: "Savory Grilled & BBQ Chicken",
     desc: "Slow-marinated chicken quarters or wings fire-grilled and brushed with house sweet & tangy barbecue glaze.",
@@ -106,9 +98,7 @@ const SAVORY_FEASTS = [
 ];
 
 export default function ServicesPage() {
-  const [selectedCakeCategory, setSelectedCakeCategory] = useState<"all" | "pound" | "infusion">(
-    "all"
-  );
+  const [selectedCakeCategory, setSelectedCakeCategory] = useState<CakeFilterCategory>("all");
 
   const filteredCakes =
     selectedCakeCategory === "all" ? CAKES : CAKES.filter((c) => c.type === selectedCakeCategory);
@@ -338,7 +328,7 @@ export default function ServicesPage() {
                 { key: "all", label: "All Cakes" },
                 { key: "pound", label: "Pound Cakes" },
                 { key: "infusion", label: "Infusion Cakes" },
-              ] as const
+              ] as const satisfies readonly { key: CakeFilterCategory; label: string }[]
             ).map((tab) => (
               <button
                 key={tab.key}

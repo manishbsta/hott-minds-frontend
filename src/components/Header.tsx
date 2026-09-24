@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { COMPANY } from "@/constants/company";
+import type { NavLink } from "@/types";
 
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Apparel & Printing", href: "/" },
     { name: "Catering & Deserts", href: "/services" },
     { name: "Contact & Quote", href: "/contact" },

@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import ProductModal, { type Product } from "@/components/ProductModal";
+import ProductModal from "@/components/ProductModal";
 import { COMPANY } from "@/constants/company";
+import type { Product, ProductFilterCategory } from "@/types";
 
 const PRODUCTS: Product[] = [
   {
@@ -109,9 +110,7 @@ const PRODUCTS: Product[] = [
 ];
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<
-    "all" | "tees" | "hoodies" | "caps" | "other"
-  >("all");
+  const [activeCategory, setActiveCategory] = useState<ProductFilterCategory>("all");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const filteredProducts =
@@ -412,7 +411,7 @@ export default function Home() {
                 { key: "hoodies", label: "Hoodies" },
                 { key: "caps", label: "Caps & Hats" },
                 { key: "other", label: "Mugs & Transfers" },
-              ] as const
+              ] as const satisfies readonly { key: ProductFilterCategory; label: string }[]
             ).map((tab) => (
               <button
                 key={tab.key}

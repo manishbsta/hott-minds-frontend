@@ -1,0 +1,16 @@
+export type ProductCategory = "tees" | "hoodies" | "caps" | "other";
+
+export type ProductFilterCategory = "all" | ProductCategory;
+
+export interface Product {
+  id: string;
+  name: string;
+  category: ProductCategory;
+  categoryLabel: string;
+  price: string;
+  youthPrice?: string;
+  image: string;
+  badge?: string;
+  description: string;
+  specs: string[];
+}

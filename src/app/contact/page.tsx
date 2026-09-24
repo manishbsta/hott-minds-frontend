@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { COMPANY, getSmsLink } from "@/constants/company";
+import type { ContactFormData, ServiceType } from "@/types";
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedService, setSelectedService] = useState<"apparel" | "catering" | "both">(
-    "apparel"
-  );
-  const [formData, setFormData] = useState({
+  const [selectedService, setSelectedService] = useState<ServiceType>("apparel");
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     phone: "",
     email: "",
