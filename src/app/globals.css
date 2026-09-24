@@ -27,7 +27,13 @@
   --ring: var(--blaze-orange);
   --card: #ffffff;
   --card-foreground: var(--ink-black);
+
+  /* Sticky <Header> height: 28px top banner + 80px nav row + 1px border */
+  --header-height: 109px;
 }
+
+/* Viewports tall enough for the larger hero headline */
+@custom-variant tall (@media (min-height: 56.25rem));
 
 @theme inline {
   /* Tailwind v4 — exposes as bg-*, text-*, border-* */

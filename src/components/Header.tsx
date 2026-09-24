@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Phone, Menu, X, MessageSquare } from "lucide-react";
 import { COMPANY } from "@/constants/company";
 import type { NavLink } from "@/types";
 
@@ -70,9 +71,7 @@ export default function Header() {
               href={COMPANY.contacts.phone.tel}
               className="flex items-center gap-2 text-xs font-bold text-[#faf6ef]/90 transition-colors hover:text-[#ff5c1a]"
             >
-              <svg className="h-4 w-4 text-[#ff5c1a]" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
-              </svg>
+              <Phone className="h-4 w-4 text-[#ff5c1a]" />
               <span>{COMPANY.contacts.phone.display}</span>
             </a>
             <Link
@@ -90,34 +89,14 @@ export default function Header() {
               className="rounded-lg bg-[#ff5c1a] p-2 text-white"
               aria-label={`Call ${COMPANY.name}`}
             >
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
-              </svg>
+              <Phone className="h-5 w-5" />
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="rounded-lg p-2 text-white hover:bg-white/10 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? (
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -144,9 +123,10 @@ export default function Header() {
           <div className="flex flex-col gap-2 border-t border-white/10 pt-4">
             <a
               href={COMPANY.contacts.phone.sms}
-              className="w-full rounded-lg bg-[#ff5c1a] py-3 text-center text-sm font-bold tracking-wider text-white uppercase"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#ff5c1a] py-3 text-center text-sm font-bold tracking-wider text-white uppercase"
             >
-              💬 Text Orders: {COMPANY.contacts.phone.display}
+              <MessageSquare className="h-4 w-4" />
+              <span>Text Orders: {COMPANY.contacts.phone.display}</span>
             </a>
             <Link
               href="/contact"

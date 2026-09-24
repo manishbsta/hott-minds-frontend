@@ -121,26 +121,19 @@ export default function Home() {
   return (
     <div className="bg-bone text-ink">
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:pt-20 lg:pb-28">
-        {/* Subtle Ambient Lighting Flares */}
-        <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#ff5c1a]/12 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-orange-600/10 blur-3xl" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:flex lg:min-h-[calc(100svh-var(--header-height))] lg:items-center lg:py-6">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             {/* Left Column: Headlines, Trust Chips & Value Props */}
-            <div className="space-y-6 lg:col-span-7">
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase shadow-sm backdrop-blur-sm">
+            <div className="space-y-6 lg:col-span-7 lg:space-y-4">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#2e2a27] bg-[#1e1c1a] px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
                 <Flame className="h-3.5 w-3.5 text-[#ff5c1a]" />
                 <span>{COMPANY.divisions.apparel} • DTF Print Studio</span>
               </span>
 
-              <h1 className="font-display text-4xl leading-[0.92] text-white uppercase sm:text-6xl xl:text-7xl">
+              <h1 className="font-display tall:xl:text-7xl text-4xl leading-[0.92] text-white uppercase sm:text-6xl">
                 YOUR ART, <br />
-                PRESSED{" "}
-                <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff7538] to-[#ffa043] bg-clip-text text-transparent">
-                  PERFECT.
-                </span>
+                PRESSED <span className="text-[#ff5c1a]">PERFECT.</span>
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/85 sm:text-lg">
@@ -152,22 +145,22 @@ export default function Home() {
 
               {/* Value Proposition Chips Row */}
               <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 font-semibold text-[#faf6ef]/90 backdrop-blur-sm">
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] px-3 py-1.5 font-semibold text-[#faf6ef]/90">
                   <CheckCircle2 className="h-3.5 w-3.5 text-[#ff5c1a]" /> No Color Setup Fees
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 font-semibold text-[#faf6ef]/90 backdrop-blur-sm">
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] px-3 py-1.5 font-semibold text-[#faf6ef]/90">
                   <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" /> Ultra-Crisp Detail
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 font-semibold text-[#faf6ef]/90 backdrop-blur-sm">
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] px-3 py-1.5 font-semibold text-[#faf6ef]/90">
                   <ShieldCheck className="h-3.5 w-3.5 text-[#ff5c1a]" /> 60+ Wash Guarantee
                 </span>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-2 lg:pt-0">
                 <a
                   href={COMPANY.contacts.phone.sms}
-                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.02] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.98]"
+                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7538] lg:py-3.5"
                 >
                   <MessageSquare className="h-4 w-4" />
                   <span>Text Your Art to Order</span>
@@ -175,7 +168,7 @@ export default function Home() {
                 </a>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white/10"
+                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-[#1e1c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:border-white/40 hover:bg-white/10 lg:py-3.5"
                 >
                   <FileText className="h-4 w-4 text-white/70" />
                   <span>Request Bulk Quote</span>
@@ -183,52 +176,56 @@ export default function Home() {
               </div>
 
               {/* Numerical Stats Row - Modern sleek glass stat cards with Lucide Icons */}
-              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4">
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4 lg:pt-5">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <Clock className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Digital
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">24 hr</span>
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
+                    24 hr
+                  </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Art Proof</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <Truck className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Fast
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
                     3-5 days
                   </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Turnaround</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <ShoppingBag className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Flexible
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
                     No min.
                   </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Order Qty</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <ShieldCheck className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Tested
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">60+</span>
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
+                    60+
+                  </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Wash Tested</span>
                 </div>
               </div>

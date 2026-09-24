@@ -125,21 +125,21 @@ export default function ServicesPage() {
   return (
     <div className="bg-bone text-ink">
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:pt-20 lg:pb-28">
+      <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:flex lg:min-h-[calc(100svh-var(--header-height))] lg:items-center lg:py-6">
         {/* Subtle Ambient Lighting Flares */}
         <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#ff5c1a]/10 blur-3xl" />
         <div className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-[#8c2f1b]/15 blur-3xl" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             {/* Left Column */}
-            <div className="space-y-6 lg:col-span-7">
+            <div className="space-y-6 lg:col-span-7 lg:space-y-4">
               <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase shadow-sm backdrop-blur-sm">
                 <ChefHat className="h-3.5 w-3.5 text-[#ff5c1a]" />
                 <span>{COMPANY.divisions.catering} • Celebration Catering</span>
               </span>
 
-              <h1 className="font-display text-4xl leading-[0.92] text-white uppercase sm:text-6xl xl:text-7xl">
+              <h1 className="font-display tall:xl:text-7xl text-4xl leading-[0.92] text-white uppercase sm:text-6xl">
                 WE COOK, <br />
                 YOU{" "}
                 <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff7538] to-[#ffa043] bg-clip-text text-transparent">
@@ -154,28 +154,33 @@ export default function ServicesPage() {
               </p>
 
               {/* SPECIAL PROMO BANNER - Eye-catching, premium, high-converting offer card */}
-              <div className="relative overflow-hidden rounded-2xl border-2 border-[#ff5c1a]/60 bg-gradient-to-br from-[#241712] via-[#1a1310] to-[#120f0d] p-5 shadow-2xl shadow-[#ff5c1a]/15 backdrop-blur-md transition-all duration-300 hover:border-[#ff5c1a] sm:p-6">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-[#ff5c1a]/60 bg-gradient-to-br from-[#241712] via-[#1a1310] to-[#120f0d] p-5 shadow-2xl shadow-[#ff5c1a]/15 backdrop-blur-md transition-all duration-300 hover:border-[#ff5c1a] sm:p-6 lg:p-4">
                 {/* Glow ambient flare */}
                 <div className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[#ff5c1a]/20 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-16 -left-16 h-36 w-36 rounded-full bg-amber-500/10 blur-2xl" />
 
-                {/* Top Badge & Tag Row */}
+                {/* Top Badge & Terms Row */}
                 <div className="relative z-10 flex flex-wrap items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#ff5c1a] to-[#ff7538] px-3 py-1 text-[10px] font-black tracking-widest text-white uppercase shadow-md shadow-[#ff5c1a]/30">
                     <PartyPopper className="h-3.5 w-3.5" /> SPECIAL OFFER
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-[11px] font-bold text-amber-300">
-                    <Sparkles className="h-3 w-3 text-amber-400" /> Free Whole Cake ($25+ Value)
-                  </span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-[11px] font-bold text-amber-300">
+                      <Sparkles className="h-3 w-3 text-amber-400" /> Free Whole Cake ($25+ Value)
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-[11px] font-bold tracking-wider text-amber-300 uppercase">
+                      <Info className="h-3 w-3 shrink-0 text-amber-400" /> Excludes Infusion Cakes
+                    </span>
+                  </div>
                 </div>
 
                 {/* Main Offer Lockup with Icon */}
-                <div className="relative z-10 mt-3.5 flex items-start gap-4">
+                <div className="relative z-10 mt-3.5 flex items-start gap-4 lg:mt-3">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#ff5c1a]/50 bg-gradient-to-br from-[#ff5c1a]/25 to-[#ff5c1a]/10 text-[#ff5c1a] shadow-lg shadow-[#ff5c1a]/20 sm:h-14 sm:w-14">
                     <Cake className="h-6 w-6 sm:h-7 sm:w-7" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-display text-xl leading-tight tracking-wide text-white uppercase sm:text-2xl lg:text-3xl">
+                    <h3 className="font-display tall:lg:text-3xl text-xl leading-tight tracking-wide text-white uppercase sm:text-2xl">
                       ORDERS OVER{" "}
                       <span className="text-[#ff5c1a]">
                         {COMPANY.pricing.cateringCakePromoThreshold}
@@ -189,29 +194,21 @@ export default function ServicesPage() {
                       Qualifying catering orders receive a free whole homemade Pound Cake of your
                       choice — freshly scratch-baked with 100% pure sweet cream butter.
                     </p>
+                    <span className="mt-1.5 inline-flex items-center gap-1.5 text-[11px] text-[#faf6ef]/75">
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" /> Choice of
+                      Lemon, Vanilla, Butter, or Sweet Potato
+                    </span>
                   </div>
-                </div>
-
-                {/* Exclusions & Terms Note */}
-                <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-3 text-xs">
-                  <span className="inline-flex items-center gap-1.5 rounded-lg border border-amber-500/40 bg-amber-500/15 px-2.5 py-1 text-[11px] font-bold tracking-wider text-amber-300 uppercase">
-                    <Info className="h-3.5 w-3.5 shrink-0 text-amber-400" /> (EXCLUDES INFUSION
-                    CAKES)
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] text-[#faf6ef]/75">
-                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" /> Choice of
-                    Lemon, Vanilla, Butter, or Sweet Potato
-                  </span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-2 lg:pt-0">
                 <a
                   href={getSmsLink(
                     `Hi ${COMPANY.owners.combined}, I would like to inquire about ${COMPANY.divisions.catering} services`
                   )}
-                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.02] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.98]"
+                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.02] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.98] lg:py-3.5"
                 >
                   <MessageSquare className="h-4 w-4" />
                   <span>Text to Order: {COMPANY.contacts.phone.display}</span>
@@ -219,7 +216,7 @@ export default function ServicesPage() {
                 </a>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white/10"
+                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white/10 lg:py-3.5"
                 >
                   <FileText className="h-4 w-4 text-white/70" />
                   <span>Book Event Catering</span>
@@ -227,48 +224,56 @@ export default function ServicesPage() {
               </div>
 
               {/* Numerical Stats Row - Modern sleek glass stat cards with Lucide Icons */}
-              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4">
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4 lg:pt-5">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <Utensils className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Preparation
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">Fresh</span>
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
+                    Fresh
+                  </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Made to Order</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <Award className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Quality
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">100%</span>
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
+                    100%
+                  </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Pure Butter</span>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
-                  <div className="mb-2 flex items-center gap-2">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <Layers className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
                       Portions
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">Party</span>
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
+                    Party
+                  </span>
                   <span className="block text-[11px] text-[#faf6ef]/70">Half &amp; Full Pans</span>
                 </div>
 
-                <div className="rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/60 hover:bg-[#ff5c1a]/15">
-                  <div className="mb-2 flex items-center gap-2">
+                <div className="rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/60 hover:bg-[#ff5c1a]/15 lg:p-3">
+                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
                     <Gift className="h-4 w-4 text-[#ff5c1a]" />
                     <span className="text-[11px] font-semibold tracking-wider text-amber-300 uppercase">
                       Bonus
                     </span>
                   </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl">Free</span>
+                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
+                    Free
+                  </span>
                   <span className="block text-[11px] text-amber-200/90">Cake on $200+</span>
                 </div>
               </div>

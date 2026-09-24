@@ -330,11 +330,11 @@ export default function ContactPage() {
                   <ShieldCheck className="h-4 w-4 text-[#ff5c1a]" />
                   <span>Studio Terms</span>
                 </span>
-                <p className="leading-relaxed text-[#faf6ef]/80">
-                  • Text orders and all artwork pictures must be clear and sharp.
-                  <br />• Free {COMPANY.operations.proofTurnaround.toLowerCase()}.
-                  <br />• {COMPANY.operations.salesPolicyNotice}
-                </p>
+                <ul className="list-inside list-disc space-y-1.5 leading-relaxed text-[#faf6ef]/80">
+                  <li>Text orders and all artwork pictures must be clear and sharp.</li>
+                  <li>Free {COMPANY.operations.proofTurnaround.toLowerCase()}.</li>
+                  <li>{COMPANY.operations.salesPolicyNotice}</li>
+                </ul>
               </div>
             </div>
 

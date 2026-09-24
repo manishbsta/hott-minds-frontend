@@ -4,7 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { X, ZoomIn } from "lucide-react";
+import { X, ZoomIn, Check } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
@@ -146,7 +146,7 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                   <div className="space-y-1.5 border-t border-white/10 pt-2 text-xs">
                     {product.specs.map((spec, i) => (
                       <div key={i} className="flex items-center gap-2 text-[#faf6ef]/85">
-                        <span className="font-bold text-[#ff5c1a]">✓</span>
+                        <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
                         <span>{spec}</span>
                       </div>
                     ))}
