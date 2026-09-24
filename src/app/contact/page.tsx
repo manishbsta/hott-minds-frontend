@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin, ShieldCheck, HelpCircle, ChevronDown } from "lucide-react";
+import { Mail, Phone, MapPin, ShieldCheck } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import ContactForm from "@/components/ContactForm";
+import FaqSection from "@/components/FaqSection";
 import { COMPANY } from "@/constants/company";
 import { FAQS } from "@/constants/faqs";
 import { PAGES } from "@/constants/site";
@@ -49,7 +50,7 @@ export default function ContactPage() {
             <ContactForm />
           </div>
 
-          {/* Right Column: Direct Info Cards & FAQ */}
+          {/* Right Column: Direct Info Card */}
           <div className="space-y-6 lg:col-span-5">
             {/* Direct Contact Card */}
             <div className="space-y-6 rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef]">
@@ -123,39 +124,11 @@ export default function ContactPage() {
                 </ul>
               </div>
             </div>
-
-            {/* Quick FAQ Accordion — answers are in the HTML (native <details>), so crawlers read them all */}
-            <div
-              id="faq"
-              className="scroll-mt-(--header-height) space-y-4 rounded-3xl border border-[#e7ddd0] bg-white p-6 shadow-sm"
-            >
-              <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
-                <HelpCircle className="h-3.5 w-3.5 text-[#ff5c1a]" />
-                <span>FAQ</span>
-              </span>
-              <h2 className="text-ink font-display text-base uppercase">
-                FREQUENTLY ASKED QUESTIONS
-              </h2>
-
-              <div className="space-y-3 text-xs text-neutral-600">
-                {FAQS.map((faq, index) => (
-                  <details
-                    key={faq.question}
-                    open={index === 0}
-                    className="group rounded-xl bg-[#faf6ef] p-3"
-                  >
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
-                      <h3 className="text-ink font-bold">{faq.question}</h3>
-                      <ChevronDown className="h-4 w-4 shrink-0 text-[#ff5c1a] transition-transform group-open:rotate-180" />
-                    </summary>
-                    <p className="mt-1">{faq.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={FAQS} />
     </div>
   );
 }
