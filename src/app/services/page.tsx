@@ -27,61 +27,45 @@ const CAKES: CakeItem[] = [
   {
     name: "Classic Lemon Pound Cake",
     type: "pound",
-    flavor: "Lemon",
     description:
       "Tender, moist crumb bursting with fresh lemon zest and coated in our signature sweet citrus glaze.",
-    tag: "Customer Favorite",
   },
   {
     name: "Rich Vanilla Bean Pound Cake",
     type: "pound",
-    flavor: "Vanilla",
     description:
       "Old-fashioned golden crust with a fragrant, velvety vanilla crumb that melts in your mouth.",
-    tag: "Traditional Classic",
   },
   {
     name: "Southern Golden Butter Pound Cake",
     type: "pound",
-    flavor: "Butter",
     description:
       "Rich, dense, and baked with pure sweet cream butter. Perfectly crisp outer crust and buttery interior.",
   },
   {
     name: "Sweet Potato Pound Cake",
     type: "pound",
-    flavor: "Sweet Potato",
     description:
       "Infused with roasted sweet potatoes, warm cinnamon, nutmeg, and drizzled with a light spiced glaze.",
-    tag: "Soul Food Specialty",
   },
   // Infusion Cakes
   {
     name: "Hennessy Rum Infusion Cake",
     type: "infusion",
-    flavor: "Hennessy & Aged Rum",
     description:
       "Slow-baked bundt soaked with a premium Hennessy reduction, aged rum syrup, and caramelized pecan crumb.",
-    tag: "Adult Signature",
-    notes: "Infusion Cake",
   },
   {
     name: "Caribbean Coffee Rum Cake",
     type: "infusion",
-    flavor: "Caribbean Coffee Rum",
     description:
       "Deep espresso and Jamaican dark rum fusion, glazed with dark sugar and coffee liqueur drizzle.",
-    tag: "Deep & Bold",
-    notes: "Infusion Cake",
   },
   {
     name: "Midnight Mocha Rum Cake",
     type: "infusion",
-    flavor: "Midnight Mocha Rum",
     description:
       "Dutch cocoa fudge crumb soaked in dark mocha rum syrup, finished with chocolate ganache drops.",
-    tag: "Decadent Chocolate",
-    notes: "Infusion Cake",
   },
 ];
 
@@ -184,7 +168,10 @@ export default function ServicesPage() {
       </div>
 
       {/* CATERING MENU & FLYER HIGHLIGHT SECTION - exact parity with Home Page Price Sheet */}
-      <section className="border-b border-[#e7ddd0] bg-[#f0e9dd] py-16 sm:py-20">
+      <section
+        id="catering-menu"
+        className="scroll-mt-(--header-height) border-b border-[#e7ddd0] bg-[#f0e9dd] py-16 sm:py-20"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef] sm:p-12">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
@@ -293,7 +280,10 @@ export default function ServicesPage() {
       </section>
 
       {/* DESSERT & CAKE MENU - exact parity with Home Page Catalog */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section
+        id="cakes"
+        className="mx-auto max-w-7xl scroll-mt-(--header-height) px-4 py-20 sm:px-6 lg:px-8"
+      >
         <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">

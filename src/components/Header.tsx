@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -29,11 +30,16 @@ export default function Header() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo Lockup - solid brand mark per PDF Page 2 */}
+          {/* Logo Lockup */}
           <Link href="/" className="group flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff5c1a] transition-transform duration-200 group-hover:scale-105">
-              <span className="font-display text-2xl text-white">H</span>
-            </div>
+            <Image
+              src="/images/logo-mark.png"
+              alt=""
+              width={247}
+              height={256}
+              priority
+              className="h-12 w-auto transition-transform duration-200 group-hover:scale-105"
+            />
             <div className="flex flex-col">
               <span className="font-display text-xl leading-none tracking-wider text-white uppercase sm:text-2xl">
                 {COMPANY.name.toUpperCase()}

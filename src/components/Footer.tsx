@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MessageSquare, Check, Info } from "lucide-react";
+import SectionLink from "@/components/SectionLink";
 import { COMPANY } from "@/constants/company";
 
 export default function Footer() {
@@ -44,9 +46,13 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-4 lg:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff5c1a]">
-                <span className="font-display text-xl text-white">H</span>
-              </div>
+              <Image
+                src="/images/logo-mark.png"
+                alt=""
+                width={247}
+                height={256}
+                className="h-10 w-auto"
+              />
               <div>
                 <span className="font-display block text-xl leading-none tracking-wider text-white uppercase">
                   {COMPANY.name.toUpperCase()}
@@ -74,29 +80,44 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-[#faf6ef]/80">
               <li>
-                <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
+                <SectionLink
+                  href="/?category=shirts#catalog"
+                  className="transition-colors hover:text-[#ff5c1a]"
+                >
                   Custom Shirts
-                </Link>
+                </SectionLink>
               </li>
               <li>
-                <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
+                <SectionLink
+                  href="/?category=hoodies#catalog"
+                  className="transition-colors hover:text-[#ff5c1a]"
+                >
                   Custom Hoodies & Sweatshirts
-                </Link>
+                </SectionLink>
               </li>
               <li>
-                <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
+                <SectionLink
+                  href="/?category=caps#catalog"
+                  className="transition-colors hover:text-[#ff5c1a]"
+                >
                   Snapback Caps
-                </Link>
+                </SectionLink>
               </li>
               <li>
-                <Link href="/services" className="transition-colors hover:text-[#ff5c1a]">
+                <SectionLink
+                  href="/services#catering-menu"
+                  className="transition-colors hover:text-[#ff5c1a]"
+                >
                   {COMPANY.divisions.catering}
-                </Link>
+                </SectionLink>
               </li>
               <li>
-                <Link href="/services" className="transition-colors hover:text-[#ff5c1a]">
+                <SectionLink
+                  href="/services#cakes"
+                  className="transition-colors hover:text-[#ff5c1a]"
+                >
                   Pound Cakes & Rum Infusion Cakes
-                </Link>
+                </SectionLink>
               </li>
             </ul>
           </div>
@@ -108,7 +129,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 text-xs text-[#faf6ef]/80">
               <p className="font-semibold text-white">
-                Contact: <span className="text-[#ff5c1a]">{COMPANY.contacts.owners}</span>
+                Contact: <span className="text-[#ff5c1a]">{COMPANY.owners.combined}</span>
               </p>
               <p>
                 <span className="block text-[#faf6ef]/50">Phone / Text:</span>

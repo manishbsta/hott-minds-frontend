@@ -10,8 +10,6 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import type { Product } from "@/types";
 
-export type { Product };
-
 interface ProductModalProps {
   product: Product | null;
   open: boolean;
