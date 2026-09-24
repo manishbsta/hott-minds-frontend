@@ -14,7 +14,6 @@ import {
   Clock,
   Truck,
   ShoppingBag,
-  Eye,
   Palette,
   Zap,
   Info,
@@ -22,6 +21,7 @@ import {
   Gift,
   ChefHat,
 } from "lucide-react";
+import PageHero from "@/components/PageHero";
 import ProductModal from "@/components/ProductModal";
 import { COMPANY } from "@/constants/company";
 import type { Product, ProductFilterCategory } from "@/types";
@@ -121,172 +121,32 @@ export default function Home() {
   return (
     <div className="bg-bone text-ink">
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:flex lg:min-h-[calc(100svh-var(--header-height))] lg:items-center lg:py-6">
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            {/* Left Column: Headlines, Trust Chips & Value Props */}
-            <div className="space-y-6 lg:col-span-7 lg:space-y-4">
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#2e2a27] bg-[#1e1c1a] px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
-                <Flame className="h-3.5 w-3.5 text-[#ff5c1a]" />
-                <span>{COMPANY.divisions.apparel} • DTF Print Studio</span>
-              </span>
-
-              <h1 className="font-display tall:xl:text-7xl text-4xl leading-[0.92] text-white uppercase sm:text-6xl">
-                YOUR ART, <br />
-                PRESSED <span className="text-[#ff5c1a]">PERFECT.</span>
-              </h1>
-
-              <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/85 sm:text-lg">
-                Full-color custom DTF apparel printing on premium tees, hoodies, caps, bags, and
-                drinkware. Local hand-pressed quality in Chicago with nationwide shipping. Soft-hand
-                transfers that stretch, survive <strong className="text-white">60+ washes</strong>{" "}
-                and never crack.
-              </p>
-
-              {/* Value Proposition Chips Row */}
-              <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] px-3 py-1.5 font-semibold text-[#faf6ef]/90">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#ff5c1a]" /> No Color Setup Fees
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] px-3 py-1.5 font-semibold text-[#faf6ef]/90">
-                  <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" /> Ultra-Crisp Detail
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] px-3 py-1.5 font-semibold text-[#faf6ef]/90">
-                  <ShieldCheck className="h-3.5 w-3.5 text-[#ff5c1a]" /> 60+ Wash Guarantee
-                </span>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-2 lg:pt-0">
-                <a
-                  href={COMPANY.contacts.phone.sms}
-                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7538] lg:py-3.5"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Text Your Art to Order</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-                <Link
-                  href="/contact"
-                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-[#1e1c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:border-white/40 hover:bg-white/10 lg:py-3.5"
-                >
-                  <FileText className="h-4 w-4 text-white/70" />
-                  <span>Request Bulk Quote</span>
-                </Link>
-              </div>
-
-              {/* Numerical Stats Row - Modern sleek glass stat cards with Lucide Icons */}
-              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4 lg:pt-5">
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
-                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
-                    <Clock className="h-4 w-4 text-[#ff5c1a]" />
-                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
-                      Digital
-                    </span>
-                  </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
-                    24 hr
-                  </span>
-                  <span className="block text-[11px] text-[#faf6ef]/70">Art Proof</span>
-                </div>
-
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
-                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
-                    <Truck className="h-4 w-4 text-[#ff5c1a]" />
-                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
-                      Fast
-                    </span>
-                  </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
-                    3-5 days
-                  </span>
-                  <span className="block text-[11px] text-[#faf6ef]/70">Turnaround</span>
-                </div>
-
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
-                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
-                    <ShoppingBag className="h-4 w-4 text-[#ff5c1a]" />
-                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
-                      Flexible
-                    </span>
-                  </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
-                    No min.
-                  </span>
-                  <span className="block text-[11px] text-[#faf6ef]/70">Order Qty</span>
-                </div>
-
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07] lg:p-3">
-                  <div className="mb-2 flex items-center gap-2 lg:mb-1">
-                    <ShieldCheck className="h-4 w-4 text-[#ff5c1a]" />
-                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
-                      Tested
-                    </span>
-                  </div>
-                  <span className="font-display block text-2xl text-white sm:text-3xl lg:text-2xl">
-                    60+
-                  </span>
-                  <span className="block text-[11px] text-[#faf6ef]/70">Wash Tested</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Hero Showcase Card with Glowing Backdrop */}
-            <div className="lg:col-span-5">
-              <div className="group relative">
-                {/* Glow ring */}
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#ff5c1a]/30 via-orange-600/20 to-[#ff5c1a]/30 opacity-70 blur-xl transition duration-500 group-hover:opacity-100" />
-
-                <div className="relative overflow-hidden rounded-2xl border border-[#2e2a27] bg-[#1e1c1a]">
-                  <div className="relative aspect-square w-full overflow-hidden bg-[#1e1c1a]">
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="flex items-center gap-1.5 rounded-md bg-[#ff5c1a] px-3 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md">
-                        <Flame className="h-3 w-3 text-white" />
-                        Signature Drop
-                      </span>
-                    </div>
-
-                    <div className="absolute bottom-3 left-3 z-10">
-                      <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
-                        <Sparkles className="h-3 w-3 text-[#ff5c1a]" />
-                        100% Heavy Cotton • Vivid DTF
-                      </span>
-                    </div>
-
-                    <Image
-                      src="/images/tshirt-flame.jpg"
-                      alt="Designs by Hott Minds Signature Flame T-Shirt"
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 450px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="bg-[#1e1c1a] p-5">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-display text-xl text-white uppercase">
-                          Signature Flame T-Shirt
-                        </h3>
-                        <p className="text-xs text-[#faf6ef]/70">
-                          {COMPANY.pricing.adultTee} Adult • {COMPANY.pricing.youthTee} Youth
-                        </p>
-                      </div>
-                      <button
-                        onClick={() => setSelectedProduct(PRODUCTS[0])}
-                        className="flex items-center gap-1.5 rounded-lg bg-[#ff5c1a] px-4 py-2 text-xs font-bold tracking-wider text-white uppercase shadow transition-all hover:bg-[#ff7538] hover:shadow-md hover:shadow-[#ff5c1a]/30"
-                      >
-                        <Eye className="h-3.5 w-3.5" />
-                        <span>Quick View</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={`${COMPANY.divisions.apparel} · DTF Print Studio`}
+        titleLine1="Your art,"
+        titleLine2="Pressed"
+        titleAccent="Perfect."
+        intro="Full-color custom DTF apparel printing on premium tees, hoodies, caps, bags, and drinkware. Local hand-pressed quality in Chicago with nationwide shipping. Soft-hand transfers that stretch, survive 60+ washes and never crack."
+        note={{
+          label: "Every order",
+          text: "No color setup fees, ultra-crisp detail, and a 60+ wash guarantee.",
+        }}
+        primaryCta={{ label: "Text to Order", href: COMPANY.contacts.phone.sms }}
+        secondaryCta={{ label: "Request Bulk Quote", href: "/contact" }}
+        stats={[
+          { label: "Art proof", value: "24 hr" },
+          { label: "Turnaround", value: "3-5 days" },
+          { label: "Order minimum", value: "None" },
+          { label: "Wash tested", value: "60+" },
+        ]}
+        showcase={{
+          image: "/images/tshirt-flame.jpg",
+          alt: "Designs by Hott Minds Signature Flame T-Shirt",
+          title: "Signature Flame T-Shirt",
+          subtitle: `${COMPANY.pricing.adultTee} Adult · ${COMPANY.pricing.youthTee} Youth`,
+          action: { label: "Quick view", onClick: () => setSelectedProduct(PRODUCTS[0]) },
+        }}
+      />
 
       {/* MARQUEE - validated against PDF Page 3 */}
       <div className="overflow-hidden border-y border-[#ff5c1a] bg-[#ff5c1a] py-3 text-white select-none">
