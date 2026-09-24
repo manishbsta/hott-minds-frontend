@@ -17,7 +17,9 @@ import {
   Shirt,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import Testimonials from "@/components/Testimonials";
 import { COMPANY, getSmsLink } from "@/constants/company";
+import { CATERING_TESTIMONIALS } from "@/constants/testimonials";
 import type { CakeFilterCategory, CakeItem, SavoryFeastItem } from "@/types";
 
 const CAKES: CakeItem[] = [
@@ -136,7 +138,7 @@ export default function ServicesPage() {
             `Hi ${COMPANY.owners.combined}, I would like to inquire about ${COMPANY.divisions.catering} services`
           ),
         }}
-        secondaryCta={{ label: "Book Event Catering", href: "/contact" }}
+        secondaryCta={{ label: "Book Event Catering", href: "/contact?service=catering" }}
         stats={[
           { label: "Made to order", value: "Fresh" },
           { label: "Pure butter", value: "100%" },
@@ -457,7 +459,7 @@ export default function ServicesPage() {
               <span>Call {COMPANY.contacts.phone.display} for Menu Customization</span>
             </a>
             <Link
-              href="/contact"
+              href="/contact?service=catering"
               className="flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-white/10"
             >
               <FileText className="h-4 w-4 text-white/70" />
@@ -490,7 +492,7 @@ export default function ServicesPage() {
               <span>Browse Shirts Catalog</span>
             </Link>
             <Link
-              href="/contact"
+              href="/contact?service=both"
               className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow-md shadow-[#ff5c1a]/20 transition-colors hover:bg-[#ff7538]"
             >
               <Sparkles className="h-4 w-4" />
@@ -499,6 +501,14 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* CUSTOMER TESTIMONIALS */}
+      <Testimonials
+        eyebrow="Customer reviews"
+        titleLine1="Straight from"
+        titleLine2="our customers."
+        testimonials={CATERING_TESTIMONIALS}
+      />
     </div>
   );
 }

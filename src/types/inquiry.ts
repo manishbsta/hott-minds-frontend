@@ -4,7 +4,7 @@ export interface ContactFormData {
   name: string;
   phone: string;
   email: string;
-  quantity: string;
-  eventDate: string;
+  /** Apparel: date the order is needed by. Catering: event date. */
+  neededBy: string;
   notes: string;
 }

@@ -1,39 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Shirt,
-  ChefHat,
-  Sparkles,
-  MessageSquare,
-  CheckCircle2,
-  ArrowRight,
-  UploadCloud,
-  ShieldCheck,
-  HelpCircle,
-} from "lucide-react";
-import { COMPANY, getSmsLink } from "@/constants/company";
-import type { ContactFormData, ServiceType } from "@/types";
+import { use } from "react";
+import { Mail, Phone, MapPin, ShieldCheck, HelpCircle } from "lucide-react";
+import { COMPANY } from "@/constants/company";
+import QuoteForm from "@/components/QuoteForm";
+import type { ServiceType } from "@/types";
 
-export default function ContactPage() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedService, setSelectedService] = useState<ServiceType>("apparel");
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    phone: "",
-    email: "",
-    quantity: "1-10",
-    eventDate: "",
-    notes: "",
-  });
+const SERVICE_TYPES: ServiceType[] = ["apparel", "catering", "both"];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-  };
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { service } = use(searchParams);
+  const initialService = SERVICE_TYPES.find((type) => type === service) ?? "apparel";
 
   return (
     <div className="bg-bone text-ink">
@@ -69,198 +50,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Left Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-[#e7ddd0] bg-white p-8 sm:p-10">
-              {formSubmitted ? (
-                <div className="space-y-4 py-12 text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-600">
-                    <CheckCircle2 className="h-10 w-10 text-emerald-600" />
-                  </div>
-                  <h3 className="text-ink font-display text-3xl uppercase">
-                    THANK YOU FOR REACHING OUT!
-                  </h3>
-                  <p className="mx-auto max-w-md text-sm leading-relaxed text-neutral-600">
-                    We received your project details. {COMPANY.owners.tash} or {COMPANY.owners.bill}{" "}
-                    will review your request and get back to you with pricing and digital proofs
-                    within 24 hours.
-                  </p>
-                  <div className="flex flex-col justify-center gap-3 pt-4 sm:flex-row">
-                    <a
-                      href={getSmsLink(
-                        `Hi ${COMPANY.owners.combined}, I just submitted an inquiry on the website from ${formData.name || "Customer"}.`
-                      )}
-                      className="flex items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow-md shadow-[#ff5c1a]/25 transition-all hover:bg-[#ff7538]"
-                    >
-                      <MessageSquare className="h-4 w-4" />
-                      <span>Text Us Directly For Faster Reply</span>
-                    </a>
-                    <button
-                      onClick={() => setFormSubmitted(false)}
-                      className="rounded-xl bg-neutral-100 px-6 py-3 text-xs font-bold tracking-wider text-neutral-800 uppercase hover:bg-neutral-200"
-                    >
-                      Submit Another Request
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <h2 className="text-ink font-display text-2xl uppercase sm:text-3xl">
-                      TELL US ABOUT YOUR PROJECT
-                    </h2>
-                    <p className="mt-1 text-xs text-neutral-500">
-                      Fast custom quote with 24-hr digital art proof. Or text us directly at{" "}
-                      {COMPANY.contacts.phone.display}.
-                    </p>
-                  </div>
-
-                  {/* Service Toggle */}
-                  <div className="space-y-1.5">
-                    <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                      Service Needed
-                    </label>
-                    <div className="grid grid-cols-3 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setSelectedService("apparel")}
-                        className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-bold tracking-wider uppercase transition-all ${
-                          selectedService === "apparel"
-                            ? "border-[#141210] bg-[#141210] text-white shadow-sm"
-                            : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
-                        }`}
-                      >
-                        <Shirt className="h-3.5 w-3.5 shrink-0" />
-                        <span className="truncate">{COMPANY.divisions.apparelShort}</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setSelectedService("catering")}
-                        className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-bold tracking-wider uppercase transition-all ${
-                          selectedService === "catering"
-                            ? "border-[#141210] bg-[#141210] text-white shadow-sm"
-                            : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
-                        }`}
-                      >
-                        <ChefHat className="h-3.5 w-3.5 shrink-0" />
-                        <span className="truncate">{COMPANY.divisions.cateringShort}</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setSelectedService("both")}
-                        className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-xs font-bold tracking-wider uppercase transition-all ${
-                          selectedService === "both"
-                            ? "border-[#141210] bg-[#141210] text-white shadow-sm"
-                            : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
-                        }`}
-                      >
-                        <Sparkles className="h-3.5 w-3.5 shrink-0" />
-                        <span className="truncate">Both (Package)</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Name & Phone */}
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div className="space-y-1.5">
-                      <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                        Your Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                      />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="e.g. (773) 555-0123"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Email & Quantity/Event Timeline */}
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div className="space-y-1.5">
-                      <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                        Email Address{" "}
-                        <span className="font-normal text-neutral-400">(Optional)</span>
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="name@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                      />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                        Qty / Needed Date{" "}
-                        <span className="font-normal text-neutral-400">(Optional)</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. 24 shirts by Oct 15th"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                        className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Project Notes & Requirements */}
-                  <div className="space-y-1.5">
-                    <label className="block text-xs font-bold tracking-wider text-neutral-700 uppercase">
-                      Project Details
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Describe what you need printed (colors, placement, garment styles) or food trays & cakes requested..."
-                      value={formData.notes}
-                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="text-ink w-full rounded-xl border border-[#e7ddd0] bg-[#faf6ef] px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#ff5c1a] focus:outline-none"
-                    />
-                  </div>
-
-                  {/* Helpful artwork hint */}
-                  <div className="flex items-center gap-2.5 rounded-xl border border-[#ff5c1a]/25 bg-[#ff5c1a]/5 px-3.5 py-2.5 text-xs text-neutral-700">
-                    <UploadCloud className="h-4 w-4 shrink-0 text-[#ff5c1a]" />
-                    <span>
-                      Have pictures or artwork? You can text files directly to{" "}
-                      <strong className="text-black">{COMPANY.contacts.phone.display}</strong> for a
-                      24-hr proof.
-                    </span>
-                  </div>
-
-                  {/* Submit Button */}
-                  <div className="pt-1">
-                    <button
-                      type="submit"
-                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] py-3.5 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.01] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.99]"
-                    >
-                      <span>Submit Quote Request</span>
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </button>
-                    <p className="mt-2 text-center text-[11px] text-neutral-500">
-                      {COMPANY.operations.salesPolicyNotice} • Free{" "}
-                      {COMPANY.operations.proofTurnaround.toLowerCase()}.
-                    </p>
-                  </div>
-                </form>
-              )}
-            </div>
+            <QuoteForm key={initialService} initialService={initialService} />
           </div>
 
           {/* Right Column: Direct Info Cards & FAQ */}

@@ -23,7 +23,9 @@ import {
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ProductModal from "@/components/ProductModal";
+import Testimonials from "@/components/Testimonials";
 import { COMPANY } from "@/constants/company";
+import { APPAREL_TESTIMONIALS } from "@/constants/testimonials";
 import type { Product, ProductFilterCategory } from "@/types";
 
 const PRODUCTS: Product[] = [
@@ -547,6 +549,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* CUSTOMER TESTIMONIALS */}
+      <Testimonials
+        eyebrow="Customer reviews"
+        titleLine1="Straight from"
+        titleLine2="our customers."
+        testimonials={APPAREL_TESTIMONIALS}
+      />
 
       {/* CATERING CROSS-PROMO BANNER */}
       <section className="border-t border-[#2e2a27] bg-[#141210] py-14 text-white">
