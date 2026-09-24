@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { MessageSquare, Check, Info } from "lucide-react";
 import { COMPANY } from "@/constants/company";
 
 export default function Footer() {
   return (
     <footer className="border-t border-[#2e2a27] bg-[#141210] text-[#faf6ef]">
       {/* Top CTA Strip */}
-      <div className="border-b border-[#2e2a27]/60 bg-gradient-to-r from-[#8c2f1b]/40 via-[#ff5c1a]/20 to-transparent px-4 py-10 sm:px-6 lg:px-8">
+      <div className="border-b border-[#2e2a27] bg-[#1e1c1a] px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
           <div>
             <span className="mb-1 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
@@ -22,13 +23,14 @@ export default function Footer() {
           <div className="flex shrink-0 flex-wrap items-center gap-3">
             <a
               href={COMPANY.contacts.phone.sms}
-              className="rounded-lg bg-[#ff5c1a] px-6 py-3 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7a40]"
+              className="flex items-center gap-2 rounded-lg bg-[#ff5c1a] px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7a40]"
             >
-              💬 Text Order {COMPANY.contacts.phone.display}
+              <MessageSquare className="h-4 w-4" />
+              <span>Text Order {COMPANY.contacts.phone.display}</span>
             </a>
             <Link
               href="/contact"
-              className="rounded-lg border border-white/15 bg-white/10 px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-all duration-200 hover:bg-white/20"
+              className="rounded-lg border border-white/15 px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-white/10"
             >
               Request Quote
             </Link>
@@ -42,15 +44,15 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-4 lg:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-[#8c2f1b] via-[#ff5c1a] to-[#ff9900] shadow-md">
-                <span className="text-xl font-extrabold text-white">H</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff5c1a]">
+                <span className="font-display text-xl text-white">H</span>
               </div>
               <div>
                 <span className="font-display block text-xl leading-none tracking-wider text-white uppercase">
                   {COMPANY.name.toUpperCase()}
                 </span>
                 <span className="text-[10px] font-bold tracking-widest text-[#ff5c1a] uppercase">
-                  Designs & Studio
+                  Designs &amp; Studio
                 </span>
               </div>
             </div>
@@ -59,7 +61,7 @@ export default function Footer() {
               Local hand-pressed quality with 60+ wash durability.
             </p>
             <div className="pt-2">
-              <span className="inline-block rounded border border-[#ff5c1a]/30 bg-[#2e2a27] px-2.5 py-1 text-[11px] font-bold tracking-wider text-[#ff5c1a] uppercase">
+              <span className="inline-flex w-fit items-center rounded-md border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 px-2.5 py-1 text-[11px] font-bold tracking-wider text-[#ff5c1a] uppercase">
                 {COMPANY.contacts.location.coverage}
               </span>
             </div>
@@ -73,8 +75,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#faf6ef]/80">
               <li>
                 <Link href="/" className="transition-colors hover:text-[#ff5c1a]">
-                  Custom Shirts (Adult {COMPANY.pricing.adultTee} / Youth {COMPANY.pricing.youthTee}
-                  )
+                  Custom Shirts
                 </Link>
               </li>
               <li>
@@ -137,17 +138,17 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 rounded-lg border border-[#2e2a27] bg-[#1e1c1a] p-3 text-xs">
               <div className="flex items-start gap-2">
-                <span className="font-bold text-[#ff5c1a]">✓</span>
+                <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
                 <span className="text-[#faf6ef]/80">
                   Text orders and all artwork/pictures must be clear.
                 </span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="font-bold text-[#ff5c1a]">✓</span>
+                <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
                 <span className="text-[#faf6ef]/80">{COMPANY.operations.proofTurnaround}.</span>
               </div>
               <div className="flex items-start gap-2">
-                <span className="font-bold text-[#ff5c1a]">!</span>
+                <Info className="h-3.5 w-3.5 shrink-0 text-amber-400" />
                 <span className="font-medium text-amber-400/90">
                   {COMPANY.operations.salesPolicyNotice}
                 </span>

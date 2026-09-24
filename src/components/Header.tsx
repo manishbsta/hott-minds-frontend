@@ -11,60 +11,54 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks: NavLink[] = [
-    { name: "Apparel & Printing", href: "/" },
-    { name: "Catering & Deserts", href: "/services" },
+    { name: "Apparel", href: "/" },
+    { name: "Services", href: "/services" },
     { name: "Contact & Quote", href: "/contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#2e2a27]/20 bg-[#141210]/95 text-[#faf6ef] backdrop-blur-md">
-      {/* Top Banner Notice */}
+    <header className="sticky top-0 z-50 w-full border-b border-[#2e2a27] bg-[#141210] text-[#faf6ef]">
+      {/* Top Banner Notice - validated against PDF Page 3 */}
       <div className="bg-[#ff5c1a] px-4 py-1.5 text-center text-xs font-semibold tracking-wider text-white uppercase">
-        <span className="inline-flex items-center gap-2">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
-          <span>
-            {COMPANY.contacts.location.city} & Nationwide Custom DTF Printing • Adult{" "}
-            {COMPANY.pricing.adultTee} | Youth {COMPANY.pricing.youthTee} • Text Orders:{" "}
-            {COMPANY.contacts.phone.display}
-          </span>
+        <span>
+          NO MINIMUMS — ORDER 1 OR 1,000 • 24-HOUR ART PROOFS •{" "}
+          {COMPANY.contacts.location.city.toUpperCase()} &amp; NATIONWIDE SHIPPING
         </span>
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo Lockup */}
+          {/* Logo Lockup - solid brand mark per PDF Page 2 */}
           <Link href="/" className="group flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-tr from-[#8c2f1b] via-[#ff5c1a] to-[#ff9900] shadow-lg shadow-[#ff5c1a]/25 transition-transform duration-200 group-hover:scale-105">
-              {/* Fiery H Symbol */}
-              <span className="text-2xl font-extrabold tracking-tighter text-white drop-shadow">
-                H
-              </span>
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff5c1a] transition-transform duration-200 group-hover:scale-105">
+              <span className="font-display text-2xl text-white">H</span>
             </div>
             <div className="flex flex-col">
               <span className="font-display text-xl leading-none tracking-wider text-white uppercase sm:text-2xl">
                 {COMPANY.name.toUpperCase()}
               </span>
               <span className="text-[10px] font-bold tracking-widest text-[#ff5c1a] uppercase sm:text-xs">
-                DTF Print Studio & Goods
+                DTF Print Studio &amp; Goods
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-1 md:flex lg:gap-2">
+          {/* Desktop Navigation - leveled text links without glowing pill buttons */}
+          <nav className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`rounded-lg px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-150 ${
-                    isActive
-                      ? "bg-[#ff5c1a] text-white shadow-md shadow-[#ff5c1a]/30"
-                      : "text-[#faf6ef]/85 hover:bg-white/10 hover:text-white"
+                  className={`relative py-2 text-sm font-semibold tracking-wide transition-colors duration-150 focus:outline-none ${
+                    isActive ? "text-[#ff5c1a]" : "text-[#faf6ef]/75 hover:text-white"
                   }`}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {isActive && (
+                    <span className="absolute right-0 bottom-0 left-0 h-0.5 bg-[#ff5c1a]" />
+                  )}
                 </Link>
               );
             })}
@@ -83,7 +77,7 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              className="rounded-lg bg-[#faf6ef] px-4 py-2.5 text-xs font-bold tracking-wider text-[#141210] uppercase shadow transition-all duration-200 hover:bg-[#ff5c1a] hover:text-white hover:shadow-lg hover:shadow-[#ff5c1a]/20"
+              className="rounded-lg bg-[#faf6ef] px-4 py-2.5 text-xs font-bold tracking-wider text-[#141210] uppercase transition-colors duration-200 hover:bg-[#ff5c1a] hover:text-white"
             >
               Get Custom Quote
             </Link>
@@ -139,8 +133,8 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block rounded-lg px-4 py-3 text-base font-semibold tracking-wide ${
-                  isActive ? "bg-[#ff5c1a] text-white" : "text-[#faf6ef]/90 hover:bg-white/10"
+                className={`block px-4 py-2.5 text-base font-semibold tracking-wide ${
+                  isActive ? "font-bold text-[#ff5c1a]" : "text-[#faf6ef]/80 hover:text-white"
                 }`}
               >
                 {link.name}

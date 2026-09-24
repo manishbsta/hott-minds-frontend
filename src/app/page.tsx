@@ -3,6 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  Flame,
+  Sparkles,
+  CheckCircle2,
+  ShieldCheck,
+  MessageSquare,
+  ArrowRight,
+  FileText,
+  Clock,
+  Truck,
+  ShoppingBag,
+  Eye,
+  Palette,
+  Zap,
+  Info,
+  Check,
+  Gift,
+  ChefHat,
+} from "lucide-react";
 import ProductModal from "@/components/ProductModal";
 import { COMPANY } from "@/constants/company";
 import type { Product, ProductFilterCategory } from "@/types";
@@ -16,7 +35,7 @@ const PRODUCTS: Product[] = [
     price: COMPANY.pricing.adultTee,
     youthPrice: COMPANY.pricing.youthTee,
     image: "/images/tshirt-flame.jpg",
-    badge: "Most Popular",
+    badge: "Best Seller",
     description:
       "Heavyweight 100% ring-spun cotton with ultra-crisp DTF flame graphics. Breathable, vibrant, and soft to the touch.",
     specs: [
@@ -33,7 +52,7 @@ const PRODUCTS: Product[] = [
     categoryLabel: "Hoodies",
     price: "$42.00",
     image: "/images/hoodie-urban.jpg",
-    badge: "Streetwear Essential",
+    badge: "Streetwear",
     description:
       "Ultra-thick 450 GSM fleece hoodie with double-needle stitching, metal eyelets, and premium full-color chest transfer.",
     specs: [
@@ -103,131 +122,168 @@ export default function Home() {
     <div className="bg-bone text-ink">
       {/* HERO SECTION */}
       <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:pt-20 lg:pb-28">
-        {/* Ambient Glow Effects */}
-        <div className="pointer-events-none absolute top-0 right-0 -mt-20 -mr-40 h-[500px] w-[500px] rounded-full bg-[#ff5c1a]/15 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 left-0 -mb-20 -ml-32 h-[450px] w-[450px] rounded-full bg-[#8c2f1b]/20 blur-3xl" />
+        {/* Subtle Ambient Lighting Flares */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#ff5c1a]/12 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-orange-600/10 blur-3xl" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            {/* Left Column: Headlines & Value Props */}
+            {/* Left Column: Headlines, Trust Chips & Value Props */}
             <div className="space-y-6 lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-                <span className="h-2 w-2 animate-ping rounded-full bg-[#ff5c1a]" />
-                <span>{COMPANY.divisions.apparel.toUpperCase()} • DTF STUDIO</span>
-              </div>
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase shadow-sm backdrop-blur-sm">
+                <Flame className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                <span>{COMPANY.divisions.apparel} • DTF Print Studio</span>
+              </span>
 
               <h1 className="font-display text-4xl leading-[0.92] text-white uppercase sm:text-6xl xl:text-7xl">
                 YOUR ART, <br />
-                PRESSED <span className="text-[#ff5c1a]">PERFECT.</span>
+                PRESSED{" "}
+                <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff7538] to-[#ffa043] bg-clip-text text-transparent">
+                  PERFECT.
+                </span>
               </h1>
 
-              <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/80 sm:text-lg">
+              <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/85 sm:text-lg">
                 Full-color custom DTF apparel printing on premium tees, hoodies, caps, bags, and
                 drinkware. Local hand-pressed quality in Chicago with nationwide shipping. Soft-hand
                 transfers that stretch, survive <strong className="text-white">60+ washes</strong>{" "}
                 and never crack.
               </p>
 
-              {/* Price Badges Pill */}
-              <div className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-3">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
-                  <span className="block text-xs tracking-wider text-[#faf6ef]/60 uppercase">
-                    Adult Tees
-                  </span>
-                  <span className="font-display text-2xl text-[#ff5c1a]">
-                    {COMPANY.pricing.adultTee}
-                  </span>
-                </div>
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
-                  <span className="block text-xs tracking-wider text-[#faf6ef]/60 uppercase">
-                    Youth Tees
-                  </span>
-                  <span className="font-display text-2xl text-[#ff5c1a]">
-                    {COMPANY.pricing.youthTee}
-                  </span>
-                </div>
-                <div className="col-span-2 rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm sm:col-span-1">
-                  <span className="block text-xs tracking-wider text-[#faf6ef]/60 uppercase">
-                    Full-Back Print
-                  </span>
-                  <span className="font-display text-2xl text-white">
-                    {COMPANY.pricing.fullBackAddon}
-                  </span>
-                </div>
+              {/* Value Proposition Chips Row */}
+              <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 font-semibold text-[#faf6ef]/90 backdrop-blur-sm">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#ff5c1a]" /> No Color Setup Fees
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 font-semibold text-[#faf6ef]/90 backdrop-blur-sm">
+                  <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" /> Ultra-Crisp Detail
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 font-semibold text-[#faf6ef]/90 backdrop-blur-sm">
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#ff5c1a]" /> 60+ Wash Guarantee
+                </span>
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 pt-3">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href={COMPANY.contacts.phone.sms}
-                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-xl shadow-[#ff5c1a]/30 transition-all duration-200 hover:bg-[#ff7538]"
+                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.02] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.98]"
                 >
-                  <span>💬 Text Your Art to Order</span>
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Text Your Art to Order</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
                 <Link
                   href="/contact"
-                  className="rounded-xl border border-white/20 bg-white/10 px-7 py-4 text-sm font-bold tracking-wider text-white uppercase transition-all duration-200 hover:bg-white/15"
+                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white/10"
                 >
-                  Request Bulk Quote
+                  <FileText className="h-4 w-4 text-white/70" />
+                  <span>Request Bulk Quote</span>
                 </Link>
               </div>
 
-              {/* 4 Guarantees */}
-              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 text-xs text-[#faf6ef]/70 sm:grid-cols-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-black text-[#ff5c1a]">✦</span>
-                  <span>No Minimums</span>
+              {/* Numerical Stats Row - Modern sleek glass stat cards with Lucide Icons */}
+              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Digital
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">24 hr</span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Art Proof</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-black text-[#ff5c1a]">✦</span>
-                  <span>24-Hour Proofs</span>
+
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Truck className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Fast
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">
+                    3-5 days
+                  </span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Turnaround</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-black text-[#ff5c1a]">✦</span>
-                  <span>60+ Wash Guarantee</span>
+
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <ShoppingBag className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Flexible
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">
+                    No min.
+                  </span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Order Qty</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-black text-[#ff5c1a]">✦</span>
-                  <span>Direct-To-Film (DTF)</span>
+
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Tested
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">60+</span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Wash Tested</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Hero Visual Card */}
+            {/* Right Column: Hero Showcase Card with Glowing Backdrop */}
             <div className="lg:col-span-5">
-              <div className="group relative rounded-3xl border border-[#2e2a27] bg-[#1e1c1a] p-5 shadow-2xl shadow-black/60">
-                <div className="absolute top-8 left-8 z-10">
-                  <span className="rounded-full bg-[#ff5c1a] px-3 py-1 text-xs font-bold tracking-wider text-white uppercase shadow">
-                    Fresh Heat-Press Drop
-                  </span>
-                </div>
-                <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-black/40">
-                  <Image
-                    src="/images/tshirt-flame.jpg"
-                    alt="Designs by Hott Minds Signature Flame T-Shirt"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 450px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="mt-5 flex items-center justify-between">
-                  <div>
-                    <h3 className="font-display text-xl text-white uppercase">
-                      Signature Flame T-Shirt
-                    </h3>
-                    <p className="text-xs text-[#faf6ef]/70">
-                      Adult {COMPANY.pricing.adultTee} • Youth {COMPANY.pricing.youthTee} • 100%
-                      Heavy Cotton
-                    </p>
+              <div className="group relative">
+                {/* Glow ring */}
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#ff5c1a]/30 via-orange-600/20 to-[#ff5c1a]/30 opacity-70 blur-xl transition duration-500 group-hover:opacity-100" />
+
+                <div className="relative overflow-hidden rounded-2xl border border-[#2e2a27] bg-[#1e1c1a]">
+                  <div className="relative aspect-square w-full overflow-hidden bg-[#1e1c1a]">
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="flex items-center gap-1.5 rounded-md bg-[#ff5c1a] px-3 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md">
+                        <Flame className="h-3 w-3 text-white" />
+                        Signature Drop
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 z-10">
+                      <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+                        <Sparkles className="h-3 w-3 text-[#ff5c1a]" />
+                        100% Heavy Cotton • Vivid DTF
+                      </span>
+                    </div>
+
+                    <Image
+                      src="/images/tshirt-flame.jpg"
+                      alt="Designs by Hott Minds Signature Flame T-Shirt"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 450px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
-                  <button
-                    onClick={() => setSelectedProduct(PRODUCTS[0])}
-                    className="rounded-lg bg-white/10 px-4 py-2 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-[#ff5c1a]"
-                  >
-                    Quick View
-                  </button>
+                  <div className="bg-[#1e1c1a] p-5">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="font-display text-xl text-white uppercase">
+                          Signature Flame T-Shirt
+                        </h3>
+                        <p className="text-xs text-[#faf6ef]/70">
+                          {COMPANY.pricing.adultTee} Adult • {COMPANY.pricing.youthTee} Youth
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => setSelectedProduct(PRODUCTS[0])}
+                        className="flex items-center gap-1.5 rounded-lg bg-[#ff5c1a] px-4 py-2 text-xs font-bold tracking-wider text-white uppercase shadow transition-all hover:bg-[#ff7538] hover:shadow-md hover:shadow-[#ff5c1a]/30"
+                      >
+                        <Eye className="h-3.5 w-3.5" />
+                        <span>Quick View</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,42 +291,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTINUOUS MARQUEE TICKER */}
+      {/* MARQUEE - validated against PDF Page 3 */}
       <div className="overflow-hidden border-y border-[#ff5c1a] bg-[#ff5c1a] py-3 text-white select-none">
         <div className="animate-marquee font-display flex items-center gap-8 text-sm tracking-widest whitespace-nowrap uppercase">
-          <span>★ NO MINIMUMS ON APPAREL</span>
-          <span>★ ADULT TEES {COMPANY.pricing.adultTee}</span>
-          <span>★ YOUTH TEES {COMPANY.pricing.youthTee}</span>
-          <span>★ FULL-BACK PRINTING {COMPANY.pricing.fullBackAddon}</span>
-          <span>★ 24-HOUR ART PROOF</span>
-          <span>★ 60+ WASH DURABILITY</span>
-          <span>★ FAMILY REUNIONS & PARTIES</span>
-          <span>★ HOODIES & CAPS</span>
-          <span>★ TEXT {COMPANY.contacts.phone.display}</span>
-          <span>★ {COMPANY.divisions.apparel.toUpperCase()}</span>
-          <span>★ NO MINIMUMS ON APPAREL</span>
-          <span>★ ADULT TEES {COMPANY.pricing.adultTee}</span>
-          <span>★ YOUTH TEES {COMPANY.pricing.youthTee}</span>
-          <span>★ FULL-BACK PRINTING {COMPANY.pricing.fullBackAddon}</span>
-          <span>★ 24-HOUR ART PROOF</span>
-          <span>★ 60+ WASH DURABILITY</span>
-          <span>★ FAMILY REUNIONS & PARTIES</span>
-          <span>★ HOODIES & CAPS</span>
-          <span>★ TEXT {COMPANY.contacts.phone.display}</span>
-          <span>★ {COMPANY.divisions.apparel.toUpperCase()}</span>
+          <span>NO MINIMUMS</span>
+          <span>/</span>
+          <span>FULL-COLOR DTF</span>
+          <span>/</span>
+          <span>24-HOUR PROOFS</span>
+          <span>/</span>
+          <span>SHIRTS, HOODIES, CAPS &amp; MUGS</span>
+          <span>/</span>
+          <span>LOCAL HAND-PRESSED</span>
+          <span>/</span>
+          <span>60+ WASH DURABILITY</span>
+          <span>/</span>
+          <span>NO MINIMUMS</span>
+          <span>/</span>
+          <span>FULL-COLOR DTF</span>
+          <span>/</span>
+          <span>24-HOUR PROOFS</span>
+          <span>/</span>
+          <span>SHIRTS, HOODIES, CAPS &amp; MUGS</span>
+          <span>/</span>
+          <span>LOCAL HAND-PRESSED</span>
+          <span>/</span>
+          <span>60+ WASH DURABILITY</span>
+          <span>/</span>
         </div>
       </div>
 
       {/* OFFICIAL PRICE LIST & FLYER HIGHLIGHT SECTION */}
       <section className="border-b border-[#e7ddd0] bg-[#f0e9dd] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef] shadow-xl sm:p-12">
+          <div className="rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef] sm:p-12">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
               {/* Left Column: Official Price Sheet Copy */}
               <div className="space-y-6 lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded bg-[#ff5c1a]/20 px-3 py-1 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
-                  Official Standard Price Sheet
-                </div>
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 px-3.5 py-1 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
+                  <FileText className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                  <span>Official Standard Price Sheet</span>
+                </span>
                 <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
                   CLEAR PRICING. <br />
                   <span className="text-[#ff5c1a]">ZERO HIDDEN SETUP FEES.</span>
@@ -286,7 +347,7 @@ export default function Home() {
                   <div className="flex items-center justify-between py-3">
                     <div>
                       <span className="font-display text-base text-white uppercase sm:text-lg">
-                        Adult T-Shirt
+                        Adult Shirt
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
                         Heavyweight cotton, front print included
@@ -300,10 +361,10 @@ export default function Home() {
                   <div className="flex items-center justify-between py-3">
                     <div>
                       <span className="font-display text-base text-white uppercase sm:text-lg">
-                        Youth T-Shirt
+                        Youth Shirt
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
-                        Comfort-fit cotton for kids & youth sizes
+                        Comfort-fit cotton for kids &amp; youth sizes
                       </p>
                     </div>
                     <span className="font-display text-2xl text-[#ff5c1a]">
@@ -328,10 +389,10 @@ export default function Home() {
                   <div className="flex items-center justify-between py-3">
                     <div>
                       <span className="font-display text-base text-white uppercase sm:text-lg">
-                        Hoodies, Caps & Drinkware
+                        Hoodies, Caps &amp; Mugs
                       </span>
                       <p className="text-xs text-[#faf6ef]/60">
-                        Custom apparel & UV-DTF hard goods
+                        Custom apparel &amp; UV-DTF hard goods
                       </p>
                     </div>
                     <span className="text-sm font-bold text-white/80">Available by order</span>
@@ -339,9 +400,12 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs text-amber-300">
-                  <span>
-                    📌 <strong>Important:</strong> Text orders and all pictures must be clear.{" "}
-                    {COMPANY.operations.salesPolicyNotice}
+                  <span className="flex items-center gap-2">
+                    <Info className="h-4 w-4 shrink-0 text-amber-400" />
+                    <span>
+                      <strong>Important:</strong> Text orders and all pictures must be clear.{" "}
+                      {COMPANY.operations.salesPolicyNotice}
+                    </span>
                   </span>
                   <span className="font-bold text-white">{COMPANY.owners.combined}</span>
                 </div>
@@ -371,11 +435,12 @@ export default function Home() {
       <section id="catalog" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-              Catalog & Apparel Showcase
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
+              <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" />
+              <span>Custom Apparel &amp; Goods</span>
             </span>
-            <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
-              FEATURED APPAREL & GOODS
+            <h2 className="text-ink font-display mt-2 text-3xl leading-none uppercase sm:text-5xl">
+              FEATURED APPAREL &amp; GOODS
             </h2>
             <p className="mt-2 max-w-xl text-sm text-neutral-600">
               Order individual pieces with your custom artwork, or choose from our signature drops.
@@ -414,13 +479,13 @@ export default function Home() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-[#e7ddd0] bg-white shadow-sm transition-all duration-300 hover:border-[#ff5c1a]/50 hover:shadow-xl"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-[#e7ddd0] bg-white transition-colors duration-200 hover:border-neutral-400"
             >
               {/* Product Image */}
               <div className="relative aspect-square w-full overflow-hidden bg-[#f6f2ea]">
                 {product.badge && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="rounded-full bg-[#141210] px-3 py-1 text-[11px] font-bold tracking-wider text-[#faf6ef] uppercase">
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="rounded-md bg-[#141210]/90 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white uppercase">
                       {product.badge}
                     </span>
                   </div>
@@ -437,22 +502,17 @@ export default function Home() {
               {/* Product Content */}
               <div className="flex flex-1 flex-col justify-between space-y-4 p-6">
                 <div>
-                  <span className="text-[11px] font-bold tracking-widest text-[#ff5c1a] uppercase">
-                    {product.categoryLabel}
-                  </span>
-                  <h3 className="text-ink font-display mt-1 text-xl uppercase transition-colors group-hover:text-[#ff5c1a]">
-                    {product.name}
-                  </h3>
+                  <h3 className="text-ink font-display text-xl uppercase">{product.name}</h3>
                   <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-neutral-600">
                     {product.description}
                   </p>
                 </div>
 
                 {/* Specs List */}
-                <div className="space-y-1 border-t border-neutral-100 pt-2">
+                <div className="space-y-1.5 border-t border-neutral-100 pt-2">
                   {product.specs.slice(0, 2).map((spec, i) => (
                     <div key={i} className="flex items-center gap-1.5 text-[11px] text-neutral-500">
-                      <span className="text-[#ff5c1a]">✓</span>
+                      <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
                       <span>{spec}</span>
                     </div>
                   ))}
@@ -476,9 +536,10 @@ export default function Home() {
 
                   <button
                     onClick={() => setSelectedProduct(product)}
-                    className="rounded-lg bg-[#141210] px-4 py-2.5 text-xs font-bold tracking-wider text-white uppercase shadow-sm transition-colors group-hover:bg-[#ff5c1a]"
+                    className="flex items-center gap-1.5 rounded-lg bg-[#141210] px-4 py-2.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-[#ff5c1a]"
                   >
-                    Quick Order
+                    <ShoppingBag className="h-3.5 w-3.5" />
+                    <span>Quick Order</span>
                   </button>
                 </div>
               </div>
@@ -487,15 +548,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY DTF PRINTING SECTION */}
+      {/* WHY DTF PRINTING SECTION - validated against PDF Page 4 */}
       <section className="border-t border-[#2e2a27] bg-[#141210] py-20 text-[#faf6ef]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
-            <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-              Next-Generation Print Technology
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-bold tracking-wider text-[#ff5c1a] uppercase">
+              <Zap className="h-3.5 w-3.5 text-[#ff5c1a]" />
+              <span>Direct-To-Film Technology</span>
             </span>
-            <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
-              WHY DIRECT-TO-FILM (DTF) WINS
+            <h2 className="font-display mt-3 text-3xl leading-none text-white uppercase sm:text-5xl">
+              SCREEN PRINT COLOR. <span className="text-[#ff5c1a]">ZERO SETUP FEES.</span>
             </h2>
             <p className="mt-3 text-sm text-[#faf6ef]/70 sm:text-base">
               Traditional screen printing charges for every single color screen. Vinyl peels after
@@ -505,21 +567,21 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-3 rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
-                🎨
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                <Palette className="h-5 w-5" />
               </div>
               <h3 className="font-display text-lg text-white uppercase">
-                Unlimited Colors & Gradients
+                Unlimited Colors &amp; Gradients
               </h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
-                Print photographs, neon highlights, complex flame gradients and detailed artwork
-                without extra screen fees.
+                Print photographs, neon highlights, complex gradients and detailed artwork without
+                extra screen fees.
               </p>
             </div>
 
             <div className="space-y-3 rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
-                🛡️
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                <ShieldCheck className="h-5 w-5" />
               </div>
               <h3 className="font-display text-lg text-white uppercase">60+ Wash Guarantee</h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
@@ -529,23 +591,23 @@ export default function Home() {
             </div>
 
             <div className="space-y-3 rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
-                ✨
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                <Sparkles className="h-5 w-5" />
               </div>
               <h3 className="font-display text-lg text-white uppercase">Soft-Hand Stretch Feel</h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
-                No stiff plastic bulletproof shields on your chest. Our transfers stretch with the
-                fabric for breathable comfort.
+                No stiff plastic shields on your chest. Our transfers stretch with the fabric for
+                breathable comfort.
               </p>
             </div>
 
             <div className="space-y-3 rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff5c1a]/20 text-xl font-black text-[#ff5c1a]">
-                ⚡
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                <Zap className="h-5 w-5" />
               </div>
               <h3 className="font-display text-lg text-white uppercase">No Minimums Required</h3>
               <p className="text-xs leading-relaxed text-[#faf6ef]/70">
-                Need just 1 birthday shirt or 100 reunion hoodies? You get the exact same premium
+                Need just 1 custom shirt or 100 reunion hoodies? You get the exact same premium
                 attention and rapid turnaround.
               </p>
             </div>
@@ -553,15 +615,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4-STEP HOW IT WORKS */}
+      {/* 4-STEP HOW IT WORKS - validated against PDF Page 4 */}
       <section className="bg-bone border-t border-[#e7ddd0] py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
-            <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-              Simple & Straightforward
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
+              <Clock className="h-3.5 w-3.5 text-[#ff5c1a]" />
+              <span>Simple 4-Step Process</span>
             </span>
-            <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
-              HOW TO ORDER IN 4 STEPS
+            <h2 className="text-ink font-display mt-3 text-3xl leading-none uppercase sm:text-5xl">
+              ART TO DOORSTEP IN FOUR STEPS
             </h2>
             <p className="mt-2 text-sm text-neutral-600">
               We make custom printing fast, accurate, and completely stress-free.
@@ -569,72 +632,94 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">01</span>
-              <h3 className="text-ink font-display mb-2 text-lg uppercase">Send Your Picture</h3>
+            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="font-display block text-4xl text-[#ff5c1a]/40">01</span>
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#ff5c1a]/10 text-[#ff5c1a]">
+                  <MessageSquare className="h-4 w-4" />
+                </div>
+              </div>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Send Your Art</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
-                Text your high-resolution picture, artwork, or sketch to{" "}
-                <strong className="text-ink">{COMPANY.contacts.phone.plain}</strong> or email us.
-                All pictures must be clear!
+                Text or email your high-resolution artwork or sketch. Vector or 300 dpi PNG
+                preferred. All pictures must be clear!
               </p>
             </div>
 
-            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">02</span>
-              <h3 className="text-ink font-display mb-2 text-lg uppercase">Review Free Proof</h3>
+            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="font-display block text-4xl text-[#ff5c1a]/40">02</span>
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#ff5c1a]/10 text-[#ff5c1a]">
+                  <CheckCircle2 className="h-4 w-4" />
+                </div>
+              </div>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Approve the Proof</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
-                We prepare a digital visual mockup showing exact sizing, print placement, and colors
-                for your approval.
+                24-hour digital art proof delivered to your phone or inbox showing exact sizing,
+                placement, and colors.
               </p>
             </div>
 
-            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">03</span>
-              <h3 className="text-ink font-display mb-2 text-lg uppercase">Precision Heat-Press</h3>
+            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="font-display block text-4xl text-[#ff5c1a]/40">03</span>
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#ff5c1a]/10 text-[#ff5c1a]">
+                  <Flame className="h-4 w-4" />
+                </div>
+              </div>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">We Print &amp; Press</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
-                Your garments are printed using high-density DTF inks and fused under commercial
-                pneumatic heat-presses.
+                Hand-pressed on commercial equipment with high-density DTF inks for 60+ wash
+                durability.
               </p>
             </div>
 
-            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
-              <span className="font-display mb-2 block text-4xl text-[#ff5c1a]/30">04</span>
-              <h3 className="text-ink font-display mb-2 text-lg uppercase">Pickup or Delivery</h3>
+            <div className="relative rounded-2xl border border-[#e7ddd0] bg-white p-6">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="font-display block text-4xl text-[#ff5c1a]/40">04</span>
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#ff5c1a]/10 text-[#ff5c1a]">
+                  <Truck className="h-4 w-4" />
+                </div>
+              </div>
+              <h3 className="text-ink font-display mb-2 text-lg uppercase">Ships in 3-5 Days</h3>
               <p className="text-xs leading-relaxed text-neutral-600">
-                Fast local Chicago pickup or doorstep shipment nationwide in time for your big event
-                or reunion.
+                Fast local Chicago pickup or doorstep tracked shipping nationwide in time for your
+                event.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CATERING CROSS-PROMO TEASER BANNER */}
-      <section className="border-t border-[#2e2a27] bg-gradient-to-r from-[#1c4e4c] via-[#141210] to-[#8c2f1b] py-14 text-white">
+      {/* CATERING CROSS-PROMO BANNER */}
+      <section className="border-t border-[#2e2a27] bg-[#141210] py-14 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 rounded bg-white/10 px-3 py-1 text-xs font-bold tracking-wider text-[#ffa31a] uppercase">
-                🍰 {COMPANY.divisions.catering.toUpperCase()}
-              </div>
+              <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 px-3.5 py-1 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
+                <ChefHat className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                <span>{COMPANY.divisions.catering}</span>
+              </span>
               <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-4xl">
                 PLANNING A PARTY OR CELEBRATION? <br />
-                <span className="text-[#ff9900]">WE COOK, YOU CELEBRATE.</span>
+                <span className="text-[#ff5c1a]">WE COOK, YOU CELEBRATE.</span>
               </h2>
               <p className="text-sm leading-relaxed text-white/80">
                 Pair your custom shirts with hot savory celebration food trays and our famous
                 homemade Pound Cakes or gourmet Rum Infusion Cakes.{" "}
-                <strong>
+                <span className="inline-flex items-center gap-1 font-bold text-amber-300">
+                  <Gift className="h-4 w-4 text-[#ff5c1a]" />
                   Orders over {COMPANY.pricing.cateringCakePromoThreshold} get a FREE cake!
-                </strong>
+                </span>
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-4">
               <Link
                 href="/services"
-                className="rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-xl shadow-[#ff5c1a]/30 transition-all duration-200 hover:bg-[#ff7538]"
+                className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40"
               >
-                Explore Catering & Cake Menu →
+                <span>Explore Catering &amp; Cake Menu</span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>

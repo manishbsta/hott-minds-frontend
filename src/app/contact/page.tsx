@@ -1,6 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Shirt,
+  ChefHat,
+  Sparkles,
+  MessageSquare,
+  CheckCircle2,
+  ArrowRight,
+  UploadCloud,
+  ShieldCheck,
+  HelpCircle,
+} from "lucide-react";
 import { COMPANY, getSmsLink } from "@/constants/company";
 import type { ContactFormData, ServiceType } from "@/types";
 
@@ -25,46 +39,28 @@ export default function ContactPage() {
     <div className="bg-bone text-ink">
       {/* HERO SECTION */}
       <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] py-16 text-[#faf6ef] lg:py-24">
-        <div className="pointer-events-none absolute top-0 right-0 -mt-20 -mr-32 h-[500px] w-[500px] rounded-full bg-[#ff5c1a]/15 blur-3xl" />
-        <div className="relative z-10 mx-auto max-w-7xl space-y-4 px-4 text-center sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-            <span>GET IN TOUCH WITH {COMPANY.owners.combined.toUpperCase()}</span>
-          </div>
+        {/* Ambient flare */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#ff5c1a]/10 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-[#8c2f1b]/10 blur-3xl" />
+
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center space-y-4 px-4 text-center sm:px-6 lg:px-8">
+          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase shadow-sm backdrop-blur-sm">
+            <Mail className="h-3.5 w-3.5 text-[#ff5c1a]" />
+            <span>Direct Contact &amp; Custom Quotes</span>
+          </span>
 
           <h1 className="font-display text-4xl text-white uppercase sm:text-6xl">
             START YOUR ORDER OR <br />
-            <span className="text-[#ff5c1a]">REQUEST A CUSTOM QUOTE</span>
+            <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff7538] to-[#ffa043] bg-clip-text text-transparent">
+              REQUEST A CUSTOM QUOTE
+            </span>
           </h1>
 
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#faf6ef]/75">
-            Need custom tees, hoodies, or caps printed with your art? Or looking to book Hott Meals
-            Instantly catering & cakes for an upcoming event? We are ready to make it happen.
+            Need custom shirts, hoodies, or caps printed with your art? Or looking to book Hott
+            Meals Instantly catering &amp; cakes for an upcoming event? We are ready to make it
+            happen.
           </p>
-
-          {/* Quick Direct Action Strip */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4 text-xs">
-            <a
-              href={COMPANY.contacts.phone.tel}
-              className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-2.5 font-bold text-white hover:bg-white/20"
-            >
-              <span className="text-[#ff5c1a]">📞</span>
-              <span>Call: {COMPANY.contacts.phone.display}</span>
-            </a>
-            <a
-              href={COMPANY.contacts.phone.sms}
-              className="flex items-center gap-2 rounded-full bg-[#ff5c1a] px-5 py-2.5 font-bold text-white shadow-lg shadow-[#ff5c1a]/25 hover:bg-[#ff7538]"
-            >
-              <span>💬</span>
-              <span>Text Orders: {COMPANY.contacts.phone.display}</span>
-            </a>
-            <a
-              href={COMPANY.contacts.email.mailto}
-              className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-2.5 font-bold text-white hover:bg-white/20"
-            >
-              <span className="text-[#ff5c1a]">✉️</span>
-              <span>{COMPANY.contacts.email.display}</span>
-            </a>
-          </div>
         </div>
       </section>
 
@@ -73,11 +69,11 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Left Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-[#e7ddd0] bg-white p-8 shadow-xl sm:p-10">
+            <div className="rounded-3xl border border-[#e7ddd0] bg-white p-8 sm:p-10">
               {formSubmitted ? (
                 <div className="space-y-4 py-12 text-center">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-600">
-                    ✓
+                    <CheckCircle2 className="h-10 w-10 text-emerald-600" />
                   </div>
                   <h3 className="text-ink font-display text-3xl uppercase">
                     THANK YOU FOR REACHING OUT!
@@ -92,9 +88,10 @@ export default function ContactPage() {
                       href={getSmsLink(
                         `Hi ${COMPANY.owners.combined}, I just submitted an inquiry on the website from ${formData.name || "Customer"}.`
                       )}
-                      className="rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow"
+                      className="flex items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow-md shadow-[#ff5c1a]/25 transition-all hover:bg-[#ff7538]"
                     >
-                      💬 Text Us Directly For Faster Reply
+                      <MessageSquare className="h-4 w-4" />
+                      <span>Text Us Directly For Faster Reply</span>
                     </a>
                     <button
                       onClick={() => setFormSubmitted(false)}
@@ -125,35 +122,38 @@ export default function ContactPage() {
                       <button
                         type="button"
                         onClick={() => setSelectedService("apparel")}
-                        className={`rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
+                        className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
                           selectedService === "apparel"
                             ? "border-[#141210] bg-[#141210] text-white shadow"
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        👕 {COMPANY.divisions.apparelShort}
+                        <Shirt className="h-4 w-4" />
+                        <span>{COMPANY.divisions.apparelShort}</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setSelectedService("catering")}
-                        className={`rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
+                        className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
                           selectedService === "catering"
                             ? "border-[#141210] bg-[#141210] text-white shadow"
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        🍰 {COMPANY.divisions.cateringShort}
+                        <ChefHat className="h-4 w-4" />
+                        <span>{COMPANY.divisions.cateringShort}</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setSelectedService("both")}
-                        className={`rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
+                        className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold tracking-wider uppercase transition-all ${
                           selectedService === "both"
                             ? "border-[#141210] bg-[#141210] text-white shadow"
                             : "border-[#e7ddd0] bg-[#faf6ef] text-neutral-700 hover:bg-neutral-100"
                         }`}
                       >
-                        🎉 Both (Event Package)
+                        <Sparkles className="h-4 w-4" />
+                        <span>Both (Event Package)</span>
                       </button>
                     </div>
                   </div>
@@ -236,8 +236,10 @@ export default function ContactPage() {
                   </div>
 
                   {/* Artwork Upload Visual Note */}
-                  <div className="cursor-pointer space-y-1 rounded-xl border-2 border-dashed border-[#e7ddd0] bg-[#faf6ef] p-4 text-center transition-colors hover:border-[#ff5c1a]">
-                    <span className="text-2xl">📁</span>
+                  <div className="cursor-pointer space-y-1.5 rounded-xl border-2 border-dashed border-[#e7ddd0] bg-[#faf6ef] p-5 text-center transition-colors hover:border-[#ff5c1a]">
+                    <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#ff5c1a]/10 text-[#ff5c1a]">
+                      <UploadCloud className="h-5 w-5" />
+                    </div>
                     <span className="block text-xs font-bold text-neutral-800">
                       Send Pictures / Artwork File
                     </span>
@@ -265,9 +267,10 @@ export default function ContactPage() {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full rounded-xl bg-[#ff5c1a] py-4 text-sm font-bold tracking-wider text-white uppercase shadow-xl shadow-[#ff5c1a]/30 transition-all duration-200 hover:bg-[#ff7538]"
+                      className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff5c1a] py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40"
                     >
-                      Submit Quote Request →
+                      <span>Submit Quote Request</span>
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </button>
                     <p className="mt-2 text-center text-[11px] text-neutral-500">
                       {COMPANY.operations.salesPolicyNotice} {COMPANY.operations.proofTurnaround}.
@@ -281,12 +284,13 @@ export default function ContactPage() {
           {/* Right Column: Direct Info Cards & FAQ */}
           <div className="space-y-6 lg:col-span-5">
             {/* Direct Contact Card */}
-            <div className="space-y-6 rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef] shadow-xl">
+            <div className="space-y-6 rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef]">
               <div>
-                <span className="text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-                  Direct Contacts
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 px-3 py-1 text-[11px] font-bold tracking-wider text-[#ff5c1a] uppercase">
+                  <Phone className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                  <span>Direct Contacts</span>
                 </span>
-                <h3 className="font-display mt-1 text-2xl text-white uppercase">
+                <h3 className="font-display mt-2 text-2xl text-white uppercase">
                   {COMPANY.owners.combined.toUpperCase()}
                 </h3>
                 <p className="mt-1 text-xs text-[#faf6ef]/70">
@@ -296,7 +300,9 @@ export default function ContactPage() {
 
               <div className="space-y-4 border-t border-[#2e2a27] pt-2 text-xs">
                 <div className="flex items-start gap-3">
-                  <span className="text-xl text-[#ff5c1a]">📞</span>
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                    <Phone className="h-4 w-4" />
+                  </div>
                   <div>
                     <span className="block text-[#faf6ef]/50">Phone / Text Hotline:</span>
                     <a
@@ -309,7 +315,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="text-xl text-[#ff5c1a]">✉️</span>
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                    <Mail className="h-4 w-4" />
+                  </div>
                   <div>
                     <span className="block text-[#faf6ef]/50">Official Email:</span>
                     <a
@@ -322,9 +330,11 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="text-xl text-[#ff5c1a]">📍</span>
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                    <MapPin className="h-4 w-4" />
+                  </div>
                   <div>
-                    <span className="block text-[#faf6ef]/50">Studio & Workshop:</span>
+                    <span className="block text-[#faf6ef]/50">Studio &amp; Workshop:</span>
                     <span className="text-sm font-medium text-white">
                       {COMPANY.contacts.location.serviceArea}
                     </span>
@@ -334,8 +344,9 @@ export default function ContactPage() {
 
               {/* Policy Reminder */}
               <div className="space-y-2 rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-4 text-xs">
-                <span className="block font-bold tracking-wider text-[#ff5c1a] uppercase">
-                  ⚠️ Studio Terms
+                <span className="flex items-center gap-1.5 font-bold tracking-wider text-[#ff5c1a] uppercase">
+                  <ShieldCheck className="h-4 w-4 text-[#ff5c1a]" />
+                  <span>Studio Terms</span>
                 </span>
                 <p className="leading-relaxed text-[#faf6ef]/80">
                   • Text orders and all artwork pictures must be clear and sharp.
@@ -347,19 +358,20 @@ export default function ContactPage() {
 
             {/* Quick FAQ Accordion */}
             <div className="space-y-4 rounded-3xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
+              <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
+                <HelpCircle className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                <span>FAQ</span>
+              </span>
               <h4 className="text-ink font-display text-base uppercase">
                 FREQUENTLY ASKED QUESTIONS
               </h4>
 
               <div className="space-y-3 text-xs text-neutral-600">
                 <div className="rounded-xl bg-[#faf6ef] p-3">
-                  <p className="text-ink font-bold">
-                    What is the standard price for custom shirts?
-                  </p>
+                  <p className="text-ink font-bold">How should I prepare my artwork files?</p>
                   <p className="mt-1">
-                    Adult tees are {COMPANY.pricing.adultTee}, Youth tees are{" "}
-                    {COMPANY.pricing.youthTee}, and full-back printing starts at{" "}
-                    {COMPANY.pricing.fullBackAddon}.
+                    High-resolution files work best (300 DPI transparent PNG or vector formats). All
+                    pictures and artwork must be clear and sharp.
                   </p>
                 </div>
 

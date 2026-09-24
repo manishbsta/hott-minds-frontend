@@ -33,9 +33,9 @@ export const COMPANY = {
       sms: "sms:7734179901",
     },
     email: {
-      display: "HMINDUSTRIESLLC@YAHOO.COM",
+      display: "hmindustriesllc@yahoo.com",
       raw: "hmindustriesllc@yahoo.com",
-      mailto: "mailto:HMINDUSTRIESLLC@YAHOO.COM",
+      mailto: "mailto:hmindustriesllc@yahoo.com",
     },
     location: {
       city: "Chicago",

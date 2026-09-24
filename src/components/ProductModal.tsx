@@ -87,7 +87,7 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
             >
               {/* Close Button */}
               <Dialog.Close
-                className="absolute top-4 right-4 z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-[#2e2a27] text-white shadow-xl transition-all hover:scale-105 hover:bg-[#ff5c1a] focus:outline-none"
+                className="absolute top-4 right-4 z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-[#2e2a27] text-white transition-colors hover:bg-[#ff5c1a] focus:outline-none"
                 aria-label="Close product preview"
               >
                 <X className="h-5 w-5" />
@@ -97,7 +97,7 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                 {/* Product Media - Click to Open Lightbox */}
                 <div
                   onClick={() => setIsLightboxOpen(true)}
-                  className="group relative aspect-square cursor-zoom-in overflow-hidden rounded-2xl border border-[#2e2a27] bg-black/40 shadow-lg transition-all hover:border-[#ff5c1a]/60"
+                  className="group relative aspect-square cursor-zoom-in overflow-hidden rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] transition-colors hover:border-[#ff5c1a]/60"
                   title="Click to inspect image in lightbox"
                 >
                   <Image
@@ -108,20 +108,17 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                     sizes="(max-width: 640px) 100vw, 350px"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
-                    <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-[#141210]/90 px-3.5 py-1.5 text-xs font-bold text-white shadow-lg">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-[#141210] px-3.5 py-1.5 text-xs font-bold text-white">
                       <ZoomIn className="h-4 w-4 text-[#ff5c1a]" />
                       <span>Click to Zoom</span>
                     </span>
-                  </div>
-                  <div className="pointer-events-none absolute bottom-3 left-3 z-10 rounded-full border border-white/10 bg-black/70 px-2.5 py-1 text-[10px] font-semibold text-white/90 backdrop-blur-sm">
-                    🔍 Click to zoom
                   </div>
                 </div>
 
                 {/* Product Information */}
                 <div className="space-y-4">
-                  <span className="text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
+                  <span className="inline-flex w-fit items-center rounded-md border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-[#ff5c1a] uppercase">
                     {product.categoryLabel}
                   </span>
 
@@ -160,7 +157,7 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                     <Link
                       href="/contact"
                       onClick={() => onOpenChange(false)}
-                      className="flex w-full items-center justify-center rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40"
+                      className="flex w-full items-center justify-center rounded-xl bg-[#ff5c1a] py-3.5 text-center text-xs font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7538]"
                     >
                       Request Custom Bulk Quote
                     </Link>

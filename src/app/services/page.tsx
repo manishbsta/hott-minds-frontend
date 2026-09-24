@@ -3,6 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  Cake,
+  Gift,
+  PartyPopper,
+  Sparkles,
+  Utensils,
+  ChefHat,
+  Phone,
+  MessageSquare,
+  ArrowRight,
+  FileText,
+  Check,
+  CheckCircle2,
+  Info,
+  Award,
+  Layers,
+  Flame,
+  Shirt,
+} from "lucide-react";
 import { COMPANY, getSmsLink } from "@/constants/company";
 import type { CakeFilterCategory, CakeItem, SavoryFeastItem } from "@/types";
 
@@ -107,22 +126,25 @@ export default function ServicesPage() {
     <div className="bg-bone text-ink">
       {/* HERO SECTION */}
       <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] pt-12 pb-20 text-[#faf6ef] lg:pt-20 lg:pb-28">
-        {/* Ambient Glows */}
-        <div className="pointer-events-none absolute top-0 right-0 -mt-20 -mr-32 h-[550px] w-[550px] rounded-full bg-[#8c2f1b]/20 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 left-0 -mb-20 -ml-32 h-[450px] w-[450px] rounded-full bg-[#ff5c1a]/15 blur-3xl" />
+        {/* Subtle Ambient Lighting Flares */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#ff5c1a]/10 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-[#8c2f1b]/15 blur-3xl" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             {/* Left Column */}
             <div className="space-y-6 lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-[#ff5c1a]" />
-                <span>{COMPANY.divisions.catering.toUpperCase()}</span>
-              </div>
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#ff5c1a]/40 bg-[#ff5c1a]/10 px-4 py-1.5 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase shadow-sm backdrop-blur-sm">
+                <ChefHat className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                <span>{COMPANY.divisions.catering} • Celebration Catering</span>
+              </span>
 
               <h1 className="font-display text-4xl leading-[0.92] text-white uppercase sm:text-6xl xl:text-7xl">
                 WE COOK, <br />
-                YOU <span className="text-[#ff5c1a]">CELEBRATE.</span>
+                YOU{" "}
+                <span className="bg-gradient-to-r from-[#ff5c1a] via-[#ff7538] to-[#ffa043] bg-clip-text text-transparent">
+                  CELEBRATE.
+                </span>
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-[#faf6ef]/85 sm:text-lg">
@@ -131,23 +153,56 @@ export default function ServicesPage() {
                 repasts, and celebrations.
               </p>
 
-              {/* Special Promotion Highlight Callout */}
-              <div className="space-y-2 rounded-2xl border-2 border-[#ff5c1a]/50 bg-gradient-to-r from-[#ff5c1a]/20 via-[#8c2f1b]/30 to-[#1e1c1a] p-5 shadow-lg backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🎉</span>
-                  <span className="font-display text-base tracking-wide text-white uppercase sm:text-lg">
-                    SPECIAL OFFER: ORDERS OVER {COMPANY.pricing.cateringCakePromoThreshold} GET A
-                    FREE CAKE!
+              {/* SPECIAL PROMO BANNER - Eye-catching, premium, high-converting offer card */}
+              <div className="relative overflow-hidden rounded-2xl border-2 border-[#ff5c1a]/60 bg-gradient-to-br from-[#241712] via-[#1a1310] to-[#120f0d] p-5 shadow-2xl shadow-[#ff5c1a]/15 backdrop-blur-md transition-all duration-300 hover:border-[#ff5c1a] sm:p-6">
+                {/* Glow ambient flare */}
+                <div className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[#ff5c1a]/20 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-16 -left-16 h-36 w-36 rounded-full bg-amber-500/10 blur-2xl" />
+
+                {/* Top Badge & Tag Row */}
+                <div className="relative z-10 flex flex-wrap items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#ff5c1a] to-[#ff7538] px-3 py-1 text-[10px] font-black tracking-widest text-white uppercase shadow-md shadow-[#ff5c1a]/30">
+                    <PartyPopper className="h-3.5 w-3.5" /> SPECIAL OFFER
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-[11px] font-bold text-amber-300">
+                    <Sparkles className="h-3 w-3 text-amber-400" /> Free Whole Cake ($25+ Value)
                   </span>
                 </div>
-                <p className="text-xs text-[#faf6ef]/80">
-                  Qualifying catering orders receive a free whole homemade Pound Cake of your
-                  choice!{" "}
-                  <strong className="font-bold text-[#ff5c1a] uppercase">
-                    (Excludes Infusion Cakes)
-                  </strong>
-                  .
-                </p>
+
+                {/* Main Offer Lockup with Icon */}
+                <div className="relative z-10 mt-3.5 flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#ff5c1a]/50 bg-gradient-to-br from-[#ff5c1a]/25 to-[#ff5c1a]/10 text-[#ff5c1a] shadow-lg shadow-[#ff5c1a]/20 sm:h-14 sm:w-14">
+                    <Cake className="h-6 w-6 sm:h-7 sm:w-7" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-display text-xl leading-tight tracking-wide text-white uppercase sm:text-2xl lg:text-3xl">
+                      ORDERS OVER{" "}
+                      <span className="text-[#ff5c1a]">
+                        {COMPANY.pricing.cateringCakePromoThreshold}
+                      </span>{" "}
+                      GET A{" "}
+                      <span className="bg-gradient-to-r from-[#ff7538] via-[#ffa043] to-[#ffc83b] bg-clip-text text-transparent">
+                        FREE CAKE!
+                      </span>
+                    </h3>
+                    <p className="mt-1 text-xs leading-relaxed text-[#faf6ef]/90 sm:text-sm">
+                      Qualifying catering orders receive a free whole homemade Pound Cake of your
+                      choice — freshly scratch-baked with 100% pure sweet cream butter.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Exclusions & Terms Note */}
+                <div className="relative z-10 mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-3 text-xs">
+                  <span className="inline-flex items-center gap-1.5 rounded-lg border border-amber-500/40 bg-amber-500/15 px-2.5 py-1 text-[11px] font-bold tracking-wider text-amber-300 uppercase">
+                    <Info className="h-3.5 w-3.5 shrink-0 text-amber-400" /> (EXCLUDES INFUSION
+                    CAKES)
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[11px] text-[#faf6ef]/75">
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" /> Choice of
+                    Lemon, Vanilla, Butter, or Sweet Potato
+                  </span>
+                </div>
               </div>
 
               {/* Action Buttons */}
@@ -156,39 +211,118 @@ export default function ServicesPage() {
                   href={getSmsLink(
                     `Hi ${COMPANY.owners.combined}, I would like to inquire about ${COMPANY.divisions.catering} services`
                   )}
-                  className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-xl shadow-[#ff5c1a]/30 transition-all duration-200 hover:bg-[#ff7538]"
+                  className="group flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:scale-[1.02] hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/40 active:scale-[0.98]"
                 >
-                  <span>💬 Text to Order: {COMPANY.contacts.phone.display}</span>
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Text to Order: {COMPANY.contacts.phone.display}</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
                 <Link
                   href="/contact"
-                  className="rounded-xl border border-white/20 bg-white/10 px-7 py-4 text-sm font-bold tracking-wider text-white uppercase transition-all duration-200 hover:bg-white/15"
+                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-7 py-4 text-sm font-bold tracking-wider text-white uppercase backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white/10"
                 >
-                  Book Event Catering
+                  <FileText className="h-4 w-4 text-white/70" />
+                  <span>Book Event Catering</span>
                 </Link>
               </div>
+
+              {/* Numerical Stats Row - Modern sleek glass stat cards with Lucide Icons */}
+              <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-6 sm:grid-cols-4 sm:gap-4">
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Utensils className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Preparation
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">Fresh</span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Made to Order</span>
+                </div>
+
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Award className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Quality
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">100%</span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Pure Butter</span>
+                </div>
+
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/40 hover:bg-white/[0.07]">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Layers className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-[#faf6ef]/60 uppercase">
+                      Portions
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">Party</span>
+                  <span className="block text-[11px] text-[#faf6ef]/70">Half &amp; Full Pans</span>
+                </div>
+
+                <div className="rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-[#ff5c1a]/60 hover:bg-[#ff5c1a]/15">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Gift className="h-4 w-4 text-[#ff5c1a]" />
+                    <span className="text-[11px] font-semibold tracking-wider text-amber-300 uppercase">
+                      Bonus
+                    </span>
+                  </div>
+                  <span className="font-display block text-2xl text-white sm:text-3xl">Free</span>
+                  <span className="block text-[11px] text-amber-200/90">Cake on $200+</span>
+                </div>
+              </div>
             </div>
 
-            {/* Right Column: Hero Visual Card */}
+            {/* Right Column: Hero Visual Card with Radiant Glow Aura */}
             <div className="lg:col-span-5">
-              <div className="relative space-y-4 rounded-3xl border border-[#2e2a27] bg-[#1e1c1a] p-5 shadow-2xl">
-                <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-black/40">
-                  <Image
-                    src="/images/infusion-cake.jpg"
-                    alt="H.M.I Gourmet Caribbean Rum Infusion Cake"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 450px"
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
+              <div className="group relative">
+                {/* Glow ring */}
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#ff5c1a]/25 via-[#8c2f1b]/30 to-[#ff5c1a]/25 opacity-70 blur-xl transition duration-500 group-hover:opacity-100" />
 
-                  <div className="absolute right-4 bottom-4 left-4 rounded-xl border border-white/15 bg-[#141210]/85 p-3 text-white backdrop-blur-md">
-                    <span className="block text-[10px] font-bold tracking-wider text-[#ff5c1a] uppercase">
-                      Signature Dessert
-                    </span>
-                    <span className="font-display text-sm uppercase">
-                      Gourmet Hennessy & Rum Infusion Cakes
-                    </span>
+                <div className="relative overflow-hidden rounded-2xl border border-[#2e2a27] bg-[#1e1c1a]">
+                  <div className="relative aspect-square w-full overflow-hidden bg-[#1e1c1a]">
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="flex items-center gap-1.5 rounded-md bg-[#ff5c1a] px-3 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md">
+                        <Sparkles className="h-3 w-3" />
+                        Signature Dessert
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 z-10">
+                      <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+                        <Award className="h-3 w-3 text-amber-400" />
+                        Slow-Soaked Rum Infusion
+                      </span>
+                    </div>
+
+                    <Image
+                      src="/images/infusion-cake.jpg"
+                      alt="H.M.I Gourmet Caribbean Rum Infusion Cake"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 450px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="bg-[#1e1c1a] p-5">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="font-display text-xl text-white uppercase">
+                          Rum Infusion Cakes
+                        </h3>
+                        <p className="text-xs text-[#faf6ef]/70">
+                          Hennessy &amp; Aged Rum Reduction • Bundt Pans
+                        </p>
+                      </div>
+                      <a
+                        href={getSmsLink("Hi, I would like to order a Rum Infusion Cake")}
+                        className="flex items-center gap-1.5 rounded-lg bg-[#ff5c1a] px-4 py-2 text-xs font-bold tracking-wider text-white uppercase shadow transition-all hover:bg-[#ff7538] hover:shadow-md hover:shadow-[#ff5c1a]/30"
+                      >
+                        <MessageSquare className="h-3.5 w-3.5" />
+                        <span>Order</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -197,119 +331,151 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* FLYER MENU DISPLAY & DESSERT SHOWCASE */}
-      <section className="border-b border-[#e7ddd0] bg-[#f0e9dd] py-20">
+      {/* CONTINUOUS MARQUEE TICKER - exact parity with Home Page */}
+      <div className="overflow-hidden border-y border-[#ff5c1a] bg-[#ff5c1a] py-3 text-white select-none">
+        <div className="animate-marquee font-display flex items-center gap-8 text-sm tracking-widest whitespace-nowrap uppercase">
+          <span>HOMEMADE POUND CAKES</span>
+          <span>/</span>
+          <span>RUM INFUSION CAKES</span>
+          <span>/</span>
+          <span>HOT PARTY BUFFET PANS</span>
+          <span>/</span>
+          <span>FREE CAKE ON $200+ ORDERS</span>
+          <span>/</span>
+          <span>BBQ CHICKEN &amp; RIBS</span>
+          <span>/</span>
+          <span>HOMEMADE POUND CAKES</span>
+          <span>/</span>
+          <span>RUM INFUSION CAKES</span>
+          <span>/</span>
+          <span>HOT PARTY BUFFET PANS</span>
+          <span>/</span>
+          <span>FREE CAKE ON $200+ ORDERS</span>
+          <span>/</span>
+          <span>BBQ CHICKEN &amp; RIBS</span>
+          <span>/</span>
+        </div>
+      </div>
+
+      {/* CATERING MENU & FLYER HIGHLIGHT SECTION - exact parity with Home Page Price Sheet */}
+      <section className="border-b border-[#e7ddd0] bg-[#f0e9dd] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            {/* Authentic Flyer Plate Image */}
-            <div className="flex flex-col items-center lg:col-span-5">
-              <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-3xl border border-[#e7ddd0] bg-white p-4 shadow-2xl">
-                <Image
-                  src="/images/catering-flyer.jpg"
-                  alt="Hott Meals Instantly Catering Plate Flyer"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 450px"
-                  className="object-contain"
-                />
-              </div>
-              <p className="mt-3 text-center text-xs text-neutral-500">
-                Original Hott Meals Instantly (H.M.I) Plate Flyer
-              </p>
-            </div>
+          <div className="rounded-3xl border border-[#2e2a27] bg-[#141210] p-8 text-[#faf6ef] sm:p-12">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+              {/* Left Column: Menu Copy & Table */}
+              <div className="space-y-6 lg:col-span-7">
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#ff5c1a]/30 bg-[#ff5c1a]/10 px-3.5 py-1 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
+                  <FileText className="h-3.5 w-3.5 text-[#ff5c1a]" />
+                  <span>Official Catering Menu &amp; Terms</span>
+                </span>
+                <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
+                  HOMEMADE MEALS. <br />
+                  <span className="text-[#ff5c1a]">SCRATCH-BAKED CAKES.</span>
+                </h2>
+                <p className="text-sm leading-relaxed text-[#faf6ef]/75 sm:text-base">
+                  Authentic Southern recipes, pure sweet cream butter, and generous party portions
+                  prepared fresh to order for family dinners, reunions, birthdays, and celebrations.
+                </p>
 
-            {/* Flyer Details & Menu Breakdown */}
-            <div className="space-y-6 lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded bg-[#ff5c1a]/15 px-3 py-1 text-xs font-bold tracking-wider text-[#8c2f1b] uppercase">
-                Homemade From Scratch With Love
-              </div>
-
-              <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
-                POUND CAKES & INFUSION CAKES
-              </h2>
-
-              <p className="text-sm leading-relaxed text-neutral-700 sm:text-base">
-                Every cake is made fresh to order with pure butter, real eggs, and premium
-                ingredients. Perfect as centerpiece desserts for family dinners, birthdays,
-                holidays, or bundled with our party catering pans.
-              </p>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {/* Pound Cakes Box */}
-                <div className="space-y-3 rounded-2xl border border-[#e7ddd0] bg-white p-5 shadow-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="text-ink font-display text-lg uppercase">Pound Cakes</span>
-                    <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
-                      Eligible for {COMPANY.pricing.cateringCakePromoThreshold}+ Deal
+                {/* Menu Table Card - matches Home Page price table */}
+                <div className="divide-y divide-[#2e2a27] rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-5">
+                  <div className="flex items-center justify-between py-3">
+                    <div>
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
+                        Homemade Pound Cakes
+                      </span>
+                      <p className="text-xs text-[#faf6ef]/60">
+                        Lemon, Vanilla, Butter, or Sweet Potato bundt cakes
+                      </p>
+                    </div>
+                    <span className="text-xs font-bold text-white/80">
+                      Free on {COMPANY.pricing.cateringCakePromoThreshold}+ Orders
                     </span>
                   </div>
-                  <ul className="space-y-1.5 text-xs font-medium text-neutral-600">
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#ff5c1a]">●</span> Lemon Pound Cake
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#ff5c1a]">●</span> Rich Vanilla Pound Cake
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#ff5c1a]">●</span> Southern Butter Pound Cake
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#ff5c1a]">●</span> Spiced Sweet Potato Pound Cake
-                    </li>
-                  </ul>
+
+                  <div className="flex items-center justify-between py-3">
+                    <div>
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
+                        Gourmet Infusion Cakes
+                      </span>
+                      <p className="text-xs text-[#faf6ef]/60">
+                        Hennessy, Caribbean Coffee, or Midnight Mocha Rum bundt
+                      </p>
+                    </div>
+                    <span className="text-xs font-bold text-white/80">Available by order</span>
+                  </div>
+
+                  <div className="flex items-center justify-between py-3">
+                    <div>
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
+                        Savory BBQ Chicken &amp; Ribs
+                      </span>
+                      <p className="text-xs text-[#faf6ef]/60">
+                        Slow-smoked fire-grilled chicken quarters &amp; tender ribs
+                      </p>
+                    </div>
+                    <span className="text-xs font-bold text-white/80">Half &amp; Full Pans</span>
+                  </div>
+
+                  <div className="flex items-center justify-between py-3">
+                    <div>
+                      <span className="font-display text-base text-white uppercase sm:text-lg">
+                        Southern Sides &amp; Breads
+                      </span>
+                      <p className="text-xs text-[#faf6ef]/60">
+                        Baked Mac &amp; Cheese, Country Greens, Cornbread &amp; Potato Salad
+                      </p>
+                    </div>
+                    <span className="text-xs font-bold text-white/80">Half &amp; Full Pans</span>
+                  </div>
                 </div>
 
-                {/* Infusion Cakes Box */}
-                <div className="space-y-3 rounded-2xl border border-[#e7ddd0] bg-white p-5 shadow-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="font-display text-lg text-[#8c2f1b] uppercase">
-                      Infusion Cakes
-                    </span>
-                    <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-900">
-                      Adult Specialty
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#ff5c1a]/40 bg-gradient-to-r from-[#ff5c1a]/15 via-amber-500/10 to-transparent p-4 text-xs text-amber-200">
+                  <div className="flex items-center gap-2.5">
+                    <Gift className="h-5 w-5 shrink-0 text-[#ff5c1a]" />
+                    <span>
+                      <strong className="text-white">Catering Perk:</strong> Spend{" "}
+                      <span className="font-bold text-[#ff5c1a]">
+                        {COMPANY.pricing.cateringCakePromoThreshold}
+                      </span>{" "}
+                      or more on catering party pans and receive 1 FREE whole homemade Pound Cake!
+                      (Excludes infusion cakes).
                     </span>
                   </div>
-                  <ul className="space-y-1.5 text-xs font-medium text-neutral-600">
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#8c2f1b]">●</span> Hennessy Rum Infusion
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#8c2f1b]">●</span> Caribbean Coffee Rum Infusion
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#8c2f1b]">●</span> Midnight Mocha Rum Infusion
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-neutral-400">●</span> Plus Cookies & Fudge Brownies
-                    </li>
-                  </ul>
+                  <span className="font-bold text-white/90">{COMPANY.owners.combined}</span>
                 </div>
               </div>
 
-              <div className="pt-2">
-                <a
-                  href={getSmsLink(
-                    `Hi, I would like to order a cake from ${COMPANY.divisions.catering}`
-                  )}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-[#8c2f1b] transition-colors hover:text-[#ff5c1a]"
-                >
-                  <span>Text {COMPANY.contacts.phone.display} to order your cakes</span>
-                  <span>→</span>
-                </a>
+              {/* Right Column: Visual Flyer Card - matches Home Page official price sheet card */}
+              <div className="space-y-4 lg:col-span-5">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-[#2e2a27] bg-[#1e1c1a]">
+                  <Image
+                    src="/images/catering-flyer.jpg"
+                    alt="Hott Meals Instantly (H.M.I) Catering Plate Flyer"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 450px"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-center text-xs text-[#faf6ef]/60">
+                  Original Hott Meals Instantly (H.M.I) Plate Flyer.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DETAILED CAKE FLAVOR CARDS */}
+      {/* DESSERT & CAKE MENU - exact parity with Home Page Catalog */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <span className="mb-2 block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-              Baked Fresh to Order
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
+              <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" />
+              <span>Scratch Bakery &amp; Infusions</span>
             </span>
-            <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
-              DESSERT & CAKE MENU
+            <h2 className="text-ink font-display mt-2 text-3xl leading-none uppercase sm:text-5xl">
+              DESSERT &amp; CAKE MENU
             </h2>
             <p className="mt-2 max-w-xl text-sm text-neutral-600">
               Freshly baked in bundt molds and individually packaged. Order one for family dessert
@@ -317,7 +483,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          {/* Filter Tabs */}
+          {/* Filter Tabs - exact parity with Home Page filter tabs */}
           <div className="flex items-center gap-2 rounded-xl border border-[#e7ddd0] bg-[#e7ddd0]/60 p-1.5">
             {(
               [
@@ -341,157 +507,170 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cake Cards Grid - matches Home Page product card architecture */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCakes.map((cake, idx) => (
             <div
               key={idx}
-              className={`flex flex-col justify-between space-y-4 rounded-2xl border bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-lg ${
-                cake.type === "infusion" ? "border-amber-300/80 bg-amber-50/20" : "border-[#e7ddd0]"
-              }`}
+              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#e7ddd0] bg-white transition-colors duration-200 hover:border-neutral-400"
             >
-              <div>
-                <div className="mb-2 flex items-center justify-between gap-2">
-                  <span
-                    className={`rounded px-2.5 py-0.5 text-[11px] font-bold tracking-wider uppercase ${
-                      cake.type === "infusion"
-                        ? "bg-[#8c2f1b] text-white"
-                        : "bg-[#ff5c1a]/15 text-[#ff5c1a]"
-                    }`}
-                  >
-                    {cake.type === "infusion" ? "Gourmet Infusion" : "Classic Pound Cake"}
-                  </span>
-                  {cake.tag && (
-                    <span className="text-[10px] font-semibold text-neutral-500 uppercase">
-                      {cake.tag}
+              <div className="flex flex-1 flex-col justify-between space-y-4 p-6">
+                <div>
+                  <div className="mb-2.5 flex items-center justify-between">
+                    <span
+                      className={`inline-flex w-fit items-center rounded-md px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase ${
+                        cake.type === "infusion"
+                          ? "border border-amber-900/20 bg-amber-900/10 text-amber-900"
+                          : "border border-neutral-200 bg-neutral-100 text-neutral-700"
+                      }`}
+                    >
+                      {cake.type === "infusion" ? "Gourmet Rum Infusion" : "Classic Pound Cake"}
                     </span>
-                  )}
+                  </div>
+                  <h3 className="text-ink font-display text-xl uppercase">{cake.name}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-neutral-600">
+                    {cake.description}
+                  </p>
                 </div>
 
-                <h3 className="text-ink font-display mt-2 text-xl uppercase">{cake.name}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-neutral-600">{cake.description}</p>
-              </div>
+                {/* Specs List with checkmarks - matches Home Page */}
+                <div className="space-y-1.5 border-t border-neutral-100 pt-3">
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-500">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
+                    <span>100% pure sweet cream butter &amp; real eggs</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-500">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
+                    <span>
+                      {cake.type === "infusion"
+                        ? "Gourmet slow-soaked rum infusion"
+                        : "Eligible for free cake on $200+ catering"}
+                    </span>
+                  </div>
+                </div>
 
-              <div className="flex items-center justify-between border-t border-neutral-100 pt-4">
-                <span className="text-xs font-medium text-neutral-500">Whole Cake</span>
-                <a
-                  href={getSmsLink(`Hi, I would like to order the ${cake.name}`)}
-                  className="rounded-lg bg-[#141210] px-4 py-2 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-[#ff5c1a]"
-                >
-                  Text to Order
-                </a>
+                {/* Footer with Serving & Action Button - matches Home Page */}
+                <div className="flex items-center justify-between border-t border-neutral-100 pt-3">
+                  <div>
+                    <span className="block text-xs tracking-wider text-neutral-400 uppercase">
+                      Serving
+                    </span>
+                    <span className="text-ink font-display text-xl">Whole Cake</span>
+                  </div>
+
+                  <a
+                    href={getSmsLink(`Hi, I would like to order the ${cake.name}`)}
+                    className="flex items-center gap-1.5 rounded-lg bg-[#141210] px-4 py-2.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-[#ff5c1a]"
+                  >
+                    <MessageSquare className="h-3.5 w-3.5" />
+                    <span>Text to Order</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* SAVORY CELEBRATION FEAST CATERING */}
+      {/* SAVORY CELEBRATION FEAST CATERING - matches Why DTF dark cards on Home Page */}
       <section className="border-t border-[#2e2a27] bg-[#141210] py-20 text-[#faf6ef]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            {/* Visual Buffet Feast Photo */}
-            <div className="order-2 lg:order-1 lg:col-span-5">
-              <div className="relative aspect-square overflow-hidden rounded-3xl border border-[#2e2a27] bg-[#1e1c1a] shadow-2xl">
-                <Image
-                  src="/images/catering-buffet.jpg"
-                  alt="H.M.I Savory Event Catering Buffet Feast"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 450px"
-                  className="object-cover"
-                />
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-bold tracking-wider text-[#ff5c1a] uppercase">
+              <Utensils className="h-3.5 w-3.5 text-[#ff5c1a]" />
+              <span>Hot Party Buffet Pans</span>
+            </span>
+            <h2 className="font-display mt-3 text-3xl leading-none text-white uppercase sm:text-5xl">
+              HOT MEALS FOR <span className="text-[#ff5c1a]">REUNIONS &amp; PARTIES</span>
+            </h2>
+            <p className="mt-3 text-sm text-[#faf6ef]/70 sm:text-base">
+              Take the stress out of hosting. We prepare hearty, flavorful party pans seasoned to
+              perfection and delivered piping hot for your guests.
+            </p>
+          </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute right-6 bottom-6 left-6">
-                  <span className="mb-1 block text-xs font-bold text-[#ff5c1a] uppercase">
-                    Hot Party Pans
-                  </span>
-                  <h4 className="font-display text-2xl text-white uppercase">
-                    SAVORY CELEBRATION MEALS
-                  </h4>
-                  <p className="mt-1 text-xs text-[#faf6ef]/80">
-                    Delivered piping hot and ready to serve your guests.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Menu List */}
-            <div className="order-1 space-y-6 lg:order-2 lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded bg-[#ff5c1a]/20 px-3 py-1 text-xs font-bold tracking-wider text-[#ff5c1a] uppercase">
-                Full-Service Event Catering
-              </div>
-
-              <h2 className="font-display text-3xl leading-none text-white uppercase sm:text-5xl">
-                HOT MEALS FOR REUNIONS & PARTIES
-              </h2>
-
-              <p className="text-sm leading-relaxed text-[#faf6ef]/75 sm:text-base">
-                Take the stress out of hosting. We prepare hearty, flavorful party pans seasoned to
-                perfection. Combine your custom event t-shirts and meal catering in one seamless
-                package.
-              </p>
-
-              <div className="space-y-3">
-                {SAVORY_FEASTS.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col justify-between gap-3 rounded-xl border border-[#2e2a27] bg-[#1e1c1a] p-4 sm:flex-row sm:items-center"
-                  >
-                    <div>
-                      <h4 className="font-display text-base text-white uppercase">{item.title}</h4>
-                      <p className="mt-0.5 text-xs text-[#faf6ef]/70">{item.desc}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {SAVORY_FEASTS.map((item, i) => (
+              <div
+                key={i}
+                className="flex flex-col justify-between space-y-3 rounded-2xl border border-[#2e2a27] bg-[#1e1c1a] p-6"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#ff5c1a]/30 bg-[#ff5c1a]/15 text-[#ff5c1a]">
+                      {i === 0 ? (
+                        <Flame className="h-5 w-5" />
+                      ) : i === 1 ? (
+                        <Utensils className="h-5 w-5" />
+                      ) : i === 2 ? (
+                        <Award className="h-5 w-5" />
+                      ) : i === 3 ? (
+                        <Layers className="h-5 w-5" />
+                      ) : (
+                        <Sparkles className="h-5 w-5" />
+                      )}
                     </div>
-                    <span className="shrink-0 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[#ff5c1a]">
-                      {item.serves}
+                    <span className="inline-flex w-fit items-center rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-bold tracking-wider text-white/80 uppercase">
+                      Party Pan
                     </span>
                   </div>
-                ))}
+                  <h3 className="font-display mt-3 text-lg text-white uppercase">{item.title}</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-[#faf6ef]/70">{item.desc}</p>
+                </div>
+                <div className="border-t border-[#2e2a27] pt-2 text-xs font-semibold text-[#ff5c1a]">
+                  {item.serves}
+                </div>
               </div>
+            ))}
+          </div>
 
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <a
-                  href={COMPANY.contacts.phone.tel}
-                  className="rounded-xl bg-[#ff5c1a] px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/25 transition-all duration-200 hover:bg-[#ff7538]"
-                >
-                  Call {COMPANY.contacts.phone.display} for Menu Customization
-                </a>
-                <Link
-                  href="/contact"
-                  className="rounded-xl border border-white/15 bg-white/10 px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-white/20"
-                >
-                  Request Catering Quote
-                </Link>
-              </div>
-            </div>
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={COMPANY.contacts.phone.tel}
+              className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/20 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/35"
+            >
+              <Phone className="h-4 w-4" />
+              <span>Call {COMPANY.contacts.phone.display} for Menu Customization</span>
+            </a>
+            <Link
+              href="/contact"
+              className="flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-white/10"
+            >
+              <FileText className="h-4 w-4 text-white/70" />
+              <span>Request Catering Quote</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* COMBINED EVENT PACKAGES (SHIRTS + CATERING) */}
+      {/* COMBINED EVENT PACKAGES (SHIRTS + CATERING) - matches Home Page bottom CTA */}
       <section className="bg-bone border-t border-[#e7ddd0] py-20">
         <div className="mx-auto max-w-7xl space-y-6 px-4 text-center sm:px-6 lg:px-8">
-          <span className="block text-xs font-bold tracking-widest text-[#ff5c1a] uppercase">
-            The Ultimate Event Solution
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
+            <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" />
+            <span>Complete Event Solutions</span>
           </span>
           <h2 className="text-ink font-display text-3xl leading-none uppercase sm:text-5xl">
             CUSTOM SHIRTS + CATERING FEAST BUNDLE
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-neutral-600 sm:text-base">
             Hosting a family reunion, birthday milestone, graduation, or corporate gathering? Get
-            matching custom front-and-back t-shirts plus hot buffet catering all under one roof.
+            matching custom front-and-back shirts plus hot buffet catering all under one roof.
           </p>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link
               href="/"
-              className="rounded-xl bg-[#141210] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase hover:bg-black"
+              className="flex items-center gap-2 rounded-xl bg-[#141210] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-black"
             >
-              Browse T-Shirt Catalog ({COMPANY.pricing.adultTee} / {COMPANY.pricing.youthTee})
+              <Shirt className="h-4 w-4" />
+              <span>Browse Shirts Catalog</span>
             </Link>
             <Link
               href="/contact"
-              className="rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase hover:bg-[#ff7538]"
+              className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3 text-xs font-bold tracking-wider text-white uppercase shadow-md shadow-[#ff5c1a]/20 transition-colors hover:bg-[#ff7538]"
             >
-              Get Custom Event Package Quote
+              <Sparkles className="h-4 w-4" />
+              <span>Get Custom Event Package Quote</span>
             </Link>
           </div>
         </div>
