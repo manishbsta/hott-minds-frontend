@@ -1,23 +1,20 @@
-"use client";
-
-import { use } from "react";
-import { Mail, Phone, MapPin, ShieldCheck, HelpCircle } from "lucide-react";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { Mail, Phone, MapPin, ShieldCheck, HelpCircle, ChevronDown } from "lucide-react";
+import JsonLd from "@/components/JsonLd";
+import QuoteForm, { QuoteFormFromUrl } from "@/components/QuoteForm";
 import { COMPANY } from "@/constants/company";
-import QuoteForm from "@/components/QuoteForm";
-import type { ServiceType } from "@/types";
+import { FAQS } from "@/constants/faqs";
+import { PAGES } from "@/constants/site";
+import { pageMetadata } from "@/lib/metadata";
+import { contactJsonLd } from "@/lib/structured-data";
 
-const SERVICE_TYPES: ServiceType[] = ["apparel", "catering", "both"];
+export const metadata: Metadata = pageMetadata(PAGES.contact);
 
-export default function ContactPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const { service } = use(searchParams);
-  const initialService = SERVICE_TYPES.find((type) => type === service) ?? "apparel";
-
+export default function ContactPage() {
   return (
     <div className="bg-bone text-ink">
+      <JsonLd data={contactJsonLd()} />
       {/* HERO SECTION */}
       <section className="relative overflow-hidden border-b border-[#2e2a27] bg-[#141210] py-16 text-[#faf6ef] lg:py-24">
         {/* Ambient flare */}
@@ -50,7 +47,9 @@ export default function ContactPage({
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Left Column: Contact Form */}
           <div className="lg:col-span-7">
-            <QuoteForm key={initialService} initialService={initialService} />
+            <Suspense fallback={<QuoteForm />}>
+              <QuoteFormFromUrl />
+            </Suspense>
           </div>
 
           {/* Right Column: Direct Info Cards & FAQ */}
@@ -62,9 +61,9 @@ export default function ContactPage({
                   <Phone className="h-3.5 w-3.5 text-[#ff5c1a]" />
                   <span>Direct Contacts</span>
                 </span>
-                <h3 className="font-display mt-2 text-2xl text-white uppercase">
+                <h2 className="font-display mt-2 text-2xl text-white uppercase">
                   {COMPANY.owners.combined.toUpperCase()}
-                </h3>
+                </h2>
                 <p className="mt-1 text-xs text-[#faf6ef]/70">
                   We take pride in every custom shirt and every hot meal we deliver.
                 </p>
@@ -128,41 +127,33 @@ export default function ContactPage({
               </div>
             </div>
 
-            {/* Quick FAQ Accordion */}
-            <div className="space-y-4 rounded-3xl border border-[#e7ddd0] bg-white p-6 shadow-sm">
+            {/* Quick FAQ Accordion — answers are in the HTML (native <details>), so crawlers read them all */}
+            <div
+              id="faq"
+              className="scroll-mt-(--header-height) space-y-4 rounded-3xl border border-[#e7ddd0] bg-white p-6 shadow-sm"
+            >
               <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
                 <HelpCircle className="h-3.5 w-3.5 text-[#ff5c1a]" />
                 <span>FAQ</span>
               </span>
-              <h4 className="text-ink font-display text-base uppercase">
+              <h2 className="text-ink font-display text-base uppercase">
                 FREQUENTLY ASKED QUESTIONS
-              </h4>
+              </h2>
 
               <div className="space-y-3 text-xs text-neutral-600">
-                <div className="rounded-xl bg-[#faf6ef] p-3">
-                  <p className="text-ink font-bold">How should I prepare my artwork files?</p>
-                  <p className="mt-1">
-                    High-resolution files work best (300 DPI transparent PNG or vector formats). All
-                    pictures and artwork must be clear and sharp.
-                  </p>
-                </div>
-
-                <div className="rounded-xl bg-[#faf6ef] p-3">
-                  <p className="text-ink font-bold">Is there a minimum order quantity?</p>
-                  <p className="mt-1">
-                    No! We print single custom shirts as well as 100+ group orders for parties and
-                    family reunions.
-                  </p>
-                </div>
-
-                <div className="rounded-xl bg-[#faf6ef] p-3">
-                  <p className="text-ink font-bold">How does the free cake catering offer work?</p>
-                  <p className="mt-1">
-                    Any food catering order over {COMPANY.pricing.cateringCakePromoThreshold}{" "}
-                    receives a free homemade whole Pound Cake (Lemon, Vanilla, Butter, or Sweet
-                    Potato). Excludes infusion cakes.
-                  </p>
-                </div>
+                {FAQS.map((faq, index) => (
+                  <details
+                    key={faq.question}
+                    open={index === 0}
+                    className="group rounded-xl bg-[#faf6ef] p-3"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
+                      <h3 className="text-ink font-bold">{faq.question}</h3>
+                      <ChevronDown className="h-4 w-4 shrink-0 text-[#ff5c1a] transition-transform group-open:rotate-180" />
+                    </summary>
+                    <p className="mt-1">{faq.answer}</p>
+                  </details>
+                ))}
               </div>
             </div>
           </div>

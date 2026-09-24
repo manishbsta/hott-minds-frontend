@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { ArrowRight, Check, X } from "lucide-react";
 import { COMPANY, getSmsLink } from "@/constants/company";
@@ -257,4 +258,15 @@ export default function QuoteForm({ initialService = "apparel" }: QuoteFormProps
       </p>
     </form>
   );
+}
+
+/**
+ * Quote form preselected from ?service= (e.g. /contact?service=catering). Wrap in <Suspense> with a
+ * plain <QuoteForm /> fallback so the page itself can still be prerendered.
+ */
+export function QuoteFormFromUrl() {
+  const service = useSearchParams().get("service");
+  const initialService = SERVICE_OPTIONS.find((option) => option.value === service)?.value;
+
+  return <QuoteForm key={initialService} initialService={initialService} />;
 }

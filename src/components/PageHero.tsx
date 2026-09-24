@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { QuickViewButton } from "@/components/QuickView";
+import type { Product } from "@/types";
 
 interface HeroStat {
   label: string;
@@ -23,7 +25,8 @@ interface PageHeroProps {
     alt: string;
     title: string;
     subtitle: string;
-    action: { label: string; href?: string; onClick?: () => void };
+    /** Links to `href`, or opens the quick-view modal for `product` (needs a QuickViewProvider) */
+    action: { label: string; href: string } | { label: string; product: Product };
   };
 }
 
@@ -48,13 +51,15 @@ export default function PageHero({
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="text-xs font-semibold tracking-[0.2em] text-[#ff5c1a] uppercase">
-              {eyebrow}
-            </p>
-
-            <h1 className="font-display tall:xl:text-7xl mt-5 text-4xl leading-[0.92] text-white uppercase sm:text-6xl">
-              {titleLine1} <br />
-              {titleLine2} <span className="text-[#ff5c1a]">{titleAccent}</span>
+            {/* The eyebrow is part of the h1 so the heading names the brand and service, not just the slogan */}
+            <h1 className="font-display tall:xl:text-7xl text-4xl leading-[0.92] text-white uppercase sm:text-6xl">
+              <span className="block font-sans text-xs leading-4 font-semibold tracking-[0.2em] text-[#ff5c1a]">
+                {eyebrow}
+              </span>
+              <span className="mt-5 block">
+                {titleLine1} <br />
+                {titleLine2} <span className="text-[#ff5c1a]">{titleAccent}</span>
+              </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#faf6ef]/70 sm:text-lg">
@@ -101,24 +106,25 @@ export default function PageHero({
                   src={showcase.image}
                   alt={showcase.alt}
                   fill
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="(max-width: 1024px) 100vw, 450px"
                   className="object-cover"
                 />
               </div>
               <div className="flex items-center justify-between gap-4 p-5">
                 <div>
-                  <h3 className="font-display text-xl text-white uppercase">{showcase.title}</h3>
+                  <p className="font-display text-xl text-white uppercase">{showcase.title}</p>
                   <p className="text-xs text-[#faf6ef]/50">{showcase.subtitle}</p>
                 </div>
-                {showcase.action.href ? (
+                {"href" in showcase.action ? (
                   <a href={showcase.action.href} className={actionClass}>
                     {showcase.action.label} →
                   </a>
                 ) : (
-                  <button type="button" onClick={showcase.action.onClick} className={actionClass}>
+                  <QuickViewButton product={showcase.action.product} className={actionClass}>
                     {showcase.action.label} →
-                  </button>
+                  </QuickViewButton>
                 )}
               </div>
             </div>

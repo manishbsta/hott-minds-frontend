@@ -102,7 +102,7 @@ export default function ProductModal({ product, open, onOpenChange }: ProductMod
                     src={product.image}
                     alt={product.name}
                     fill
-                    priority
+                    loading="eager"
                     sizes="(max-width: 640px) 100vw, 350px"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />

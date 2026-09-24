@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## SEO
+
+Metadata, structured data, and crawler files are generated from the constants in `src/constants/`
+(`company.ts`, `site.ts`, `products.ts`, `catering.ts`, `faqs.ts`), so page content, JSON-LD, and
+`/llms.txt` stay in sync. Copy `.env.example` to `.env.local` and set:
+
+- `NEXT_PUBLIC_SITE_URL` — the canonical production origin (required before launch).
+- `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` — optional Search Console / Bing Webmaster tokens.
+
+Vercel preview deployments are automatically `noindex` and disallowed in `robots.txt`.
+
+| Route                   | Source                                     |
+| ----------------------- | ------------------------------------------ |
+| `/sitemap.xml`          | `src/app/sitemap.ts`                       |
+| `/robots.txt`           | `src/app/robots.ts`                        |
+| `/manifest.webmanifest` | `src/app/manifest.ts`                      |
+| `/llms.txt`             | `src/app/llms.txt/route.ts`                |
+| Social share images     | `opengraph-image.tsx` in each route folder |
+| JSON-LD                 | `src/lib/structured-data.ts`               |

@@ -24,6 +24,7 @@ export const COMPANY = {
     phone: {
       display: "(773) 417-9901",
       raw: "7734179901",
+      international: "+1-773-417-9901",
       tel: "tel:7734179901",
       sms: "sms:7734179901",
     },
@@ -33,9 +34,16 @@ export const COMPANY = {
     },
     location: {
       city: "Chicago",
+      region: "IL",
+      country: "US",
       coverage: "Chicago Local Pickup/Delivery & Nationwide Shipping",
       serviceArea: "Chicago, IL • Nationwide Apparel Shipping",
     },
+    /**
+     * Official profile URLs (Google Business Profile, Instagram, Facebook, TikTok, Yelp…).
+     * Emitted as schema.org `sameAs` so search engines and AI assistants can tie them to this site.
+     */
+    profiles: [] as string[],
   },
 
   // Operations & Turnaround

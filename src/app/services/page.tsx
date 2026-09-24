@@ -1,113 +1,37 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import {
   Gift,
   Sparkles,
   Utensils,
   Phone,
-  MessageSquare,
   FileText,
-  Check,
   Award,
   Layers,
   Flame,
   Shirt,
 } from "lucide-react";
+import CakeMenu from "@/components/CakeMenu";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
 import Testimonials from "@/components/Testimonials";
 import { COMPANY, getSmsLink } from "@/constants/company";
+import { SAVORY_FEASTS } from "@/constants/catering";
+import { PAGES } from "@/constants/site";
 import { CATERING_TESTIMONIALS } from "@/constants/testimonials";
-import type { CakeFilterCategory, CakeItem, SavoryFeastItem } from "@/types";
+import { pageMetadata } from "@/lib/metadata";
+import { servicesJsonLd } from "@/lib/structured-data";
 
-const CAKES: CakeItem[] = [
-  // Pound Cakes
-  {
-    name: "Classic Lemon Pound Cake",
-    type: "pound",
-    description:
-      "Tender, moist crumb bursting with fresh lemon zest and coated in our signature sweet citrus glaze.",
-  },
-  {
-    name: "Rich Vanilla Bean Pound Cake",
-    type: "pound",
-    description:
-      "Old-fashioned golden crust with a fragrant, velvety vanilla crumb that melts in your mouth.",
-  },
-  {
-    name: "Southern Golden Butter Pound Cake",
-    type: "pound",
-    description:
-      "Rich, dense, and baked with pure sweet cream butter. Perfectly crisp outer crust and buttery interior.",
-  },
-  {
-    name: "Sweet Potato Pound Cake",
-    type: "pound",
-    description:
-      "Infused with roasted sweet potatoes, warm cinnamon, nutmeg, and drizzled with a light spiced glaze.",
-  },
-  // Infusion Cakes
-  {
-    name: "Hennessy Rum Infusion Cake",
-    type: "infusion",
-    description:
-      "Slow-baked bundt soaked with a premium Hennessy reduction, aged rum syrup, and caramelized pecan crumb.",
-  },
-  {
-    name: "Caribbean Coffee Rum Cake",
-    type: "infusion",
-    description:
-      "Deep espresso and Jamaican dark rum fusion, glazed with dark sugar and coffee liqueur drizzle.",
-  },
-  {
-    name: "Midnight Mocha Rum Cake",
-    type: "infusion",
-    description:
-      "Dutch cocoa fudge crumb soaked in dark mocha rum syrup, finished with chocolate ganache drops.",
-  },
-];
-
-const SAVORY_FEASTS: SavoryFeastItem[] = [
-  {
-    title: "Savory Grilled & BBQ Chicken",
-    desc: "Slow-marinated chicken quarters or wings fire-grilled and brushed with house sweet & tangy barbecue glaze.",
-    serves: "Half Pan (10-12 guests) / Full Pan (20-25 guests)",
-  },
-  {
-    title: "Smoked Tender Barbecue Ribs",
-    desc: "Fall-off-the-bone smoked pork ribs seasoned with our secret dry rub and caramelized under open flame.",
-    serves: "Half Pan / Full Pan",
-  },
-  {
-    title: "Southern Baked Mac & Cheese",
-    desc: "Four cheeses melted into creamy elbow pasta with a golden baked cheddar crust on top.",
-    serves: "Half Pan / Full Pan",
-  },
-  {
-    title: "Country Green Beans & Collard Greens",
-    desc: "Slow-simmered greens seasoned with smoked turkey, garlic, onions, and flavorful broth.",
-    serves: "Half Pan / Full Pan",
-  },
-  {
-    title: "Golden Sweet Cornbread & Potato Salad",
-    desc: "Fresh baked honey-butter cornbread squares served alongside our homemade creamy mustard-potato salad.",
-    serves: "By the dozen / Pan",
-  },
-];
+export const metadata: Metadata = pageMetadata(PAGES.services);
 
 export default function ServicesPage() {
-  const [selectedCakeCategory, setSelectedCakeCategory] = useState<CakeFilterCategory>("all");
-
-  const filteredCakes =
-    selectedCakeCategory === "all" ? CAKES : CAKES.filter((c) => c.type === selectedCakeCategory);
-
   return (
     <div className="bg-bone text-ink">
+      <JsonLd data={servicesJsonLd()} />
       {/* HERO SECTION */}
       <PageHero
-        eyebrow={`${COMPANY.divisions.catering} · Catering`}
+        eyebrow={`${COMPANY.divisions.catering} · ${COMPANY.contacts.location.city} Catering`}
         titleLine1="We cook,"
         titleLine2="You"
         titleAccent="Celebrate."
@@ -280,113 +204,7 @@ export default function ServicesPage() {
       </section>
 
       {/* DESSERT & CAKE MENU - exact parity with Home Page Catalog */}
-      <section
-        id="cakes"
-        className="mx-auto max-w-7xl scroll-mt-(--header-height) px-4 py-20 sm:px-6 lg:px-8"
-      >
-        <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-neutral-300 bg-neutral-100 px-3 py-1 text-[11px] font-bold tracking-wider text-neutral-700 uppercase">
-              <Sparkles className="h-3.5 w-3.5 text-[#ff5c1a]" />
-              <span>Scratch Bakery &amp; Infusions</span>
-            </span>
-            <h2 className="text-ink font-display mt-2 text-3xl leading-none uppercase sm:text-5xl">
-              DESSERT &amp; CAKE MENU
-            </h2>
-            <p className="mt-2 max-w-xl text-sm text-neutral-600">
-              Freshly baked in bundt molds and individually packaged. Order one for family dessert
-              or multiple for events.
-            </p>
-          </div>
-
-          {/* Filter Tabs - exact parity with Home Page filter tabs */}
-          <div className="flex items-center gap-2 rounded-xl border border-[#e7ddd0] bg-[#e7ddd0]/60 p-1.5">
-            {(
-              [
-                { key: "all", label: "All Cakes" },
-                { key: "pound", label: "Pound Cakes" },
-                { key: "infusion", label: "Infusion Cakes" },
-              ] as const satisfies readonly { key: CakeFilterCategory; label: string }[]
-            ).map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setSelectedCakeCategory(tab.key)}
-                className={`rounded-lg px-4 py-2 text-xs font-bold tracking-wider uppercase transition-all duration-150 ${
-                  selectedCakeCategory === tab.key
-                    ? "bg-[#141210] text-white shadow-sm"
-                    : "text-neutral-700 hover:bg-white/50 hover:text-black"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Cake Cards Grid - matches Home Page product card architecture */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredCakes.map((cake, idx) => (
-            <div
-              key={idx}
-              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#e7ddd0] bg-white transition-colors duration-200 hover:border-neutral-400"
-            >
-              <div className="flex flex-1 flex-col justify-between space-y-4 p-6">
-                <div>
-                  <div className="mb-2.5 flex items-center justify-between">
-                    <span
-                      className={`inline-flex w-fit items-center rounded-md px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase ${
-                        cake.type === "infusion"
-                          ? "border border-amber-900/20 bg-amber-900/10 text-amber-900"
-                          : "border border-neutral-200 bg-neutral-100 text-neutral-700"
-                      }`}
-                    >
-                      {cake.type === "infusion" ? "Gourmet Rum Infusion" : "Classic Pound Cake"}
-                    </span>
-                  </div>
-                  <h3 className="text-ink font-display text-xl uppercase">{cake.name}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-neutral-600">
-                    {cake.description}
-                  </p>
-                </div>
-
-                {/* Specs List with checkmarks - matches Home Page */}
-                <div className="space-y-1.5 border-t border-neutral-100 pt-3">
-                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-500">
-                    <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
-                    <span>100% pure sweet cream butter &amp; real eggs</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-500">
-                    <Check className="h-3.5 w-3.5 shrink-0 text-[#ff5c1a]" />
-                    <span>
-                      {cake.type === "infusion"
-                        ? "Gourmet slow-soaked rum infusion"
-                        : "Eligible for free cake on $200+ catering"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Footer with Serving & Action Button - matches Home Page */}
-                <div className="flex items-center justify-between border-t border-neutral-100 pt-3">
-                  <div>
-                    <span className="block text-xs tracking-wider text-neutral-400 uppercase">
-                      Serving
-                    </span>
-                    <span className="text-ink font-display text-xl">Whole Cake</span>
-                  </div>
-
-                  <a
-                    href={getSmsLink(`Hi, I would like to order the ${cake.name}`)}
-                    className="flex items-center gap-1.5 rounded-lg bg-[#141210] px-4 py-2.5 text-xs font-bold tracking-wider text-white uppercase transition-colors hover:bg-[#ff5c1a]"
-                  >
-                    <MessageSquare className="h-3.5 w-3.5" />
-                    <span>Text to Order</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <CakeMenu />
 
       {/* SAVORY CELEBRATION FEAST CATERING - matches Why DTF dark cards on Home Page */}
       <section className="border-t border-[#2e2a27] bg-[#141210] py-20 text-[#faf6ef]">

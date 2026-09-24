@@ -37,7 +37,7 @@ export default function Header() {
               alt=""
               width={247}
               height={256}
-              priority
+              loading="eager"
               className="h-12 w-auto transition-transform duration-200 group-hover:scale-105"
             />
             <div className="flex flex-col">
@@ -51,7 +51,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation - leveled text links without glowing pill buttons */}
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav aria-label="Main" className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
