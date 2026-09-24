@@ -264,7 +264,7 @@ export default function ServicesPage() {
               className="flex items-center gap-2 rounded-xl bg-[#ff5c1a] px-6 py-3.5 text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-[#ff5c1a]/20 transition-all duration-200 hover:bg-[#ff7538] hover:shadow-[#ff5c1a]/35"
             >
               <Phone className="h-4 w-4" />
-              <span>Call {COMPANY.contacts.phone.display} for Menu Customization</span>
+              <span>Call for Menu Customization</span>
             </a>
             <a
               href={getSmsLink(

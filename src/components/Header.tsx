@@ -78,7 +78,7 @@ export default function Header() {
               className="flex items-center gap-2 text-xs font-bold text-[#faf6ef]/90 transition-colors hover:text-[#ff5c1a]"
             >
               <Phone className="h-4 w-4 text-[#ff5c1a]" />
-              <span>{COMPANY.contacts.phone.display}</span>
+              <span>Call to Order</span>
             </a>
             <a
               href={COMPANY.contacts.phone.sms}
@@ -132,7 +132,7 @@ export default function Header() {
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#ff5c1a] py-3 text-center text-sm font-bold tracking-wider text-white uppercase"
             >
               <MessageSquare className="h-4 w-4" />
-              <span>Text Orders: {COMPANY.contacts.phone.display}</span>
+              <span>Text to Order</span>
             </a>
             <a
               href={COMPANY.contacts.phone.tel}

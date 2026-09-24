@@ -28,7 +28,7 @@ export default function Footer() {
               className="flex items-center gap-2 rounded-lg bg-[#ff5c1a] px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-colors duration-200 hover:bg-[#ff7a40]"
             >
               <MessageSquare className="h-4 w-4" />
-              <span>Text Order {COMPANY.contacts.phone.display}</span>
+              <span>Text to Order</span>
             </a>
             <a
               href={COMPANY.contacts.phone.tel}
