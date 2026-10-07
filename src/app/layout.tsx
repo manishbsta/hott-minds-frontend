@@ -76,10 +76,6 @@ export const metadata: Metadata = {
         },
       }
     : { index: false, follow: false },
-  verification: {
-    google: SITE.verification.google,
-    other: SITE.verification.bing ? { "msvalidate.01": SITE.verification.bing } : undefined,
-  },
 };
 
 export const viewport: Viewport = {

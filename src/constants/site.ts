@@ -6,15 +6,14 @@ import { COMPANY } from "@/constants/company";
  */
 
 function resolveSiteUrl(): string {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
-  if (explicit) return explicit.replace(/\/+$/, "");
+  if (process.env.NODE_ENV === "development") return "http://localhost:3000";
   const vercelProduction = process.env.VERCEL_PROJECT_PRODUCTION_URL;
   if (vercelProduction) return `https://${vercelProduction}`;
-  return "http://localhost:3000";
+  return "https://hottminds.com";
 }
 
 export const SITE = {
-  /** Canonical origin without a trailing slash. Set NEXT_PUBLIC_SITE_URL in production. */
+  /** Canonical origin without a trailing slash. */
   url: resolveSiteUrl(),
   locale: "en_US",
   language: "en-US",
@@ -23,10 +22,6 @@ export const SITE = {
   description: `${COMPANY.name} (${COMPANY.legalName}) is a ${COMPANY.contacts.location.city}, ${COMPANY.contacts.location.region} small business run by ${COMPANY.owners.combined}. ${COMPANY.divisions.apparel} is a custom DTF (direct-to-film) apparel print studio for tees, hoodies, caps, and mugs; ${COMPANY.divisions.catering} caters parties with hot buffet pans, homemade pound cakes, and rum infusion cakes.`,
   /** Only production deployments may be indexed; Vercel preview deployments stay out of search. */
   isIndexable: (process.env.VERCEL_ENV ?? "production") === "production",
-  verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
-    bing: process.env.BING_SITE_VERIFICATION,
-  },
 } as const;
 
 export interface PageSeo {
