@@ -1,5 +1,6 @@
+import { after } from "next/server";
 import { generateInquiryEmail } from "@/lib/email-template";
-import { MailerLogicError, sendEmail } from "@/lib/mailerlogic";
+import { MailerLogicError, sendEmail, type MailerLogicSendRequest } from "@/lib/mailerlogic";
 import { verifyTurnstile } from "@/lib/turnstile";
 import type { ContactFormData } from "@/types";
 
@@ -24,6 +25,21 @@ const LIMITS: Record<keyof ContactFormData, number> = {
 type FieldErrors = Partial<Record<keyof ContactFormData, string>>;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/**
+ * Comma-separated addresses that get their own copy of every notification (set
+ * CONTACT_COPY_EMAIL= to disable). Each copy is a separate send because MailerLogic accepts
+ * `bcc`/`cc` but never delivers them. Malformed entries and the main recipient are skipped.
+ */
+const COPY_ADDRESSES = (process.env.CONTACT_COPY_EMAIL ?? "hottmindsdtf@gmail.com")
+  .split(",")
+  .map((address) => address.trim())
+  .filter((address) => {
+    if (!address || address.toLowerCase() === TO_ADDRESS.toLowerCase()) return false;
+    if (EMAIL_REGEX.test(address)) return true;
+    console.warn(`[contact] Ignoring invalid CONTACT_COPY_EMAIL entry: "${address}"`);
+    return false;
+  });
 
 /** Trim, strip control characters (keeping newlines/tabs in the message), collapse single-line fields. */
 function clean(value: unknown, multiline = false): string {
@@ -113,22 +129,22 @@ export async function POST(request: Request) {
 
   const { html, text, subject: emailSubject } = generateInquiryEmail({ data: result.data });
 
+  const notification = {
+    from: { email: FROM_ADDRESS, name: FROM_NAME },
+    reply_to: result.data.email,
+    subject: emailSubject,
+    html,
+    text,
+    // Internal notification: keep it on the transactional stream and don't rewrite links / add pixels.
+    stream_type: "transactional",
+    track_opens: false,
+    track_clicks: false,
+    metadata: { source: "hottminds.com/contact" },
+  } satisfies Omit<MailerLogicSendRequest, "to">;
+
   try {
-    const sent = await sendEmail({
-      from: { email: FROM_ADDRESS, name: FROM_NAME },
-      to: TO_ADDRESS,
-      reply_to: result.data.email,
-      subject: emailSubject,
-      html,
-      text,
-      // Internal notification: keep it on the transactional stream and don't rewrite links / add pixels.
-      stream_type: "transactional",
-      track_opens: false,
-      track_clicks: false,
-      tag: "contact-form",
-      metadata: { source: "hottminds.com/contact" },
-    });
-    console.info(`[contact] Notification queued (email_id=${sent.email_id})`);
+    const sent = await sendEmail({ ...notification, to: TO_ADDRESS, tag: "contact-form" });
+    console.info(`[contact] Notification queued (email_id=${sent.email_id}, to=${TO_ADDRESS})`);
   } catch (err) {
     if (!(err instanceof MailerLogicError)) {
       console.error("[contact] Unexpected error sending notification:", err);
@@ -170,6 +186,29 @@ export async function POST(request: Request) {
       { error: "We couldn't send your message right now. Please try again shortly." },
       { status: 502 }
     );
+  }
+
+  // Copies go out after the response so the visitor never waits on them, and only once the main
+  // notification is queued — a failure there makes the visitor resend, which would duplicate copies.
+  if (COPY_ADDRESSES.length > 0) {
+    after(async () => {
+      const results = await Promise.allSettled(
+        COPY_ADDRESSES.map((to) => sendEmail({ ...notification, to, tag: "contact-form-copy" }))
+      );
+      results.forEach((outcome, i) => {
+        const to = COPY_ADDRESSES[i];
+        if (outcome.status === "fulfilled") {
+          console.info(`[contact] Copy queued (email_id=${outcome.value.email_id}, to=${to})`);
+          return;
+        }
+        const err = outcome.reason;
+        console.error(
+          err instanceof MailerLogicError
+            ? `[contact] Copy to ${to} failed: status=${err.status} request_id=${err.requestId ?? "n/a"} — ${err.message}`
+            : `[contact] Copy to ${to} failed: ${String(err)}`
+        );
+      });
+    });
   }
 
   return Response.json({ ok: true }, { status: 200 });
