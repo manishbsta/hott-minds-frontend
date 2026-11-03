@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AlertCircle, ArrowRight, Check, Loader2 } from "lucide-react";
+import TurnstileWidget, { type TurnstileHandle } from "@/components/TurnstileWidget";
 import { COMPANY, getSmsLink } from "@/constants/company";
 import type { ContactFormData } from "@/types";
+
+/** Public Turnstile site key; the matching secret is verified by /api/contact. */
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 const EMPTY_FORM: ContactFormData = {
   name: "",
@@ -41,6 +45,8 @@ function isValidPhone(phone: string): boolean {
 export default function ContactForm() {
   const [formData, setFormData] = useState<ContactFormData>(EMPTY_FORM);
   const [status, setStatus] = useState<Status>({ state: "idle" });
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<TurnstileHandle>(null);
   const submitting = status.state === "submitting";
 
   const update =
@@ -71,13 +77,21 @@ export default function ContactForm() {
       return;
     }
 
+    if (TURNSTILE_SITE_KEY && !captchaToken) {
+      setStatus({
+        state: "error",
+        message: "Please complete the security check above the Send button.",
+      });
+      return;
+    }
+
     setStatus({ state: "submitting" });
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken: captchaToken }),
       });
       const data = (await res.json().catch(() => null)) as {
         error?: string;
@@ -103,6 +117,9 @@ export default function ContactForm() {
         state: "error",
         message: "Network error — please check your connection and try again.",
       });
+    } finally {
+      // Turnstile tokens are single-use, so every attempt needs a fresh one.
+      captchaRef.current?.reset();
     }
   };
 
@@ -163,7 +180,7 @@ export default function ContactForm() {
               type="tel"
               required
               maxLength={30}
-              pattern="[0-9+().\-\s]{7,30}"
+              pattern="[0-9+\(\)\.\-\s]{7,30}"
               title="Please enter a valid phone number (at least 7 digits)."
               autoComplete="tel"
               placeholder="(773) 555-0123"
@@ -207,6 +224,16 @@ export default function ContactForm() {
           />
         </div>
       </fieldset>
+
+      {TURNSTILE_SITE_KEY && (
+        <TurnstileWidget
+          ref={captchaRef}
+          siteKey={TURNSTILE_SITE_KEY}
+          action="contact"
+          onTokenChange={setCaptchaToken}
+          className="mt-6"
+        />
+      )}
 
       <div aria-live="polite" role="status">
         {status.state === "success" && (

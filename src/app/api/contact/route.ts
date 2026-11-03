@@ -1,5 +1,6 @@
 import { generateInquiryEmail } from "@/lib/email-template";
 import { MailerLogicError, sendEmail } from "@/lib/mailerlogic";
+import { verifyTurnstile } from "@/lib/turnstile";
 import type { ContactFormData } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -8,6 +9,9 @@ export const maxDuration = 30;
 const FROM_ADDRESS = process.env.CONTACT_FROM_EMAIL ?? "notifications@hottminds.com";
 const FROM_NAME = process.env.CONTACT_FROM_NAME ?? "Hott Minds Website";
 const TO_ADDRESS = process.env.CONTACT_TO_EMAIL ?? "macinvestments40@yahoo.com";
+
+/** Must match the `action` ContactForm renders its Turnstile widget with. */
+const CAPTCHA_ACTION = "contact";
 
 const LIMITS: Record<keyof ContactFormData, number> = {
   name: 100,
@@ -57,6 +61,15 @@ function validate(body: unknown): { data: ContactFormData } | { errors: FieldErr
   return Object.keys(errors).length > 0 ? { errors } : { data };
 }
 
+/** Vercel overwrites these headers with the real client address, so visitors can't spoof them. */
+function clientIp(request: Request): string | null {
+  return (
+    request.headers.get("x-real-ip") ??
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    null
+  );
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -70,6 +83,31 @@ export async function POST(request: Request) {
     return Response.json(
       { error: "Please correct the highlighted fields.", fields: result.errors },
       { status: 422 }
+    );
+  }
+
+  const captcha = await verifyTurnstile((body as { turnstileToken?: unknown })?.turnstileToken, {
+    action: CAPTCHA_ACTION,
+    remoteIp: clientIp(request),
+  });
+  if (!captcha.ok) {
+    if (captcha.reason === "rejected") {
+      console.warn(`[contact] Turnstile rejected submission — ${captcha.detail}`);
+      return Response.json(
+        { error: "The security check failed or expired. Please complete it again and resend." },
+        { status: 403 }
+      );
+    }
+
+    console.error(`[contact] Turnstile ${captcha.reason} — ${captcha.detail}`);
+    return Response.json(
+      {
+        error:
+          captcha.reason === "misconfigured"
+            ? "Messaging is temporarily unavailable. Please call or text us instead."
+            : "We couldn't run the security check right now. Please try again.",
+      },
+      { status: 503 }
     );
   }
 
